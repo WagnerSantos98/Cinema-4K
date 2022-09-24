@@ -15,13 +15,14 @@ session_start();
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../assests/css/style.css">
+    <link rel="stylesheet" href="../assests/css/assentos.css">
 
     <!--Icons Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="../assests/js/app.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
             
     <title>Painel de Biblioteca</title> 
 </head>
@@ -51,26 +52,19 @@ session_start();
         </nav>
         
       </header>
-      <div class="row">
-    <div class="col s12">
-      <ul class="tabs">
-        <li class="tab col s3"><a href="#test1">Test 1</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
-        <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
-        <li class="tab col s3"><a href="#test4">Test 4</a></li>
-      </ul>
 
-    <!--Ingresso Cinema-->
-    </div>
-    
-    </div>
-    <div id="test2" class="col s12">Test 2</div>
-    <div id="test3" class="col s12">Test 3</div>
-    <div id="test4" class="col s12">Test 4</div>
-  </div>
-
-      <!-- Page content-->
-      <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+            <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a class="active" href="#test1">Test 1</a></li>
+                <!--<li class="tab col s3"><a href="#test2">Test 2</a></li>-->
+                <li class="tab col s3"><a href="#test3">Disabled Tab</a></li>
+                <li class="tab col s3"><a href="#test4">Test 4</a></li>
+            </ul>
+            </div>
+        <div id="test1" class="col s12">
+        <div class="container-fluid">
                 
                 <div class="demo">
                     <div id="seat-map">
@@ -93,7 +87,25 @@ session_start();
             </div>
 
             </div>
+        </div>
+        <div id="test2" class="col s12">Test 2</div>
+        <div id="test3" class="col s12">Test 3</div>
+        <div id="test4" class="col s12">Test 4</div>
+    </div>
+  </div>
+      
 
+            <script>
+                //Animação Tabs
+document.addEventListener("DOMContentLoaded", function(){
+	const tab = document.querySelector('.tabs');
+	M.Tabs.init(tab, {
+	  swipeable: true,
+	  duration: 300
+	});
+  })
+            </script>
 
+<script type="text/javascript" src="../assests/js/jquery.seat-charts.min.js"></script>
 </body>
 </html>
