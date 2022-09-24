@@ -12,17 +12,21 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="../assests/css/style.css">
     <link rel="stylesheet" href="../assests/css/assentos.css">
+    <link rel="stylesheet" href="../assests/css/style.css">
 
     <!--Icons Font Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+
+    <!--JS Compiled Bootstrap-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../assests/js/app.js"></script>
             
     <title>Painel de Biblioteca</title> 
 </head>
@@ -53,18 +57,7 @@ session_start();
         
       </header>
 
-      <div class="container">
-        <div class="row">
-            <div class="col s12">
-            <ul class="tabs">
-                <li class="tab col s3"><a class="active" href="#test1">Test 1</a></li>
-                <!--<li class="tab col s3"><a href="#test2">Test 2</a></li>-->
-                <li class="tab col s3"><a href="#test3">Disabled Tab</a></li>
-                <li class="tab col s3"><a href="#test4">Test 4</a></li>
-            </ul>
-            </div>
-        <div id="test1" class="col s12">
-        <div class="container-fluid">
+      <div class="container-fluid">
                 
                 <div class="demo">
                     <div id="seat-map">
@@ -87,13 +80,7 @@ session_start();
             </div>
 
             </div>
-        </div>
-        <div id="test2" class="col s12">Test 2</div>
-        <div id="test3" class="col s12">Test 3</div>
-        <div id="test4" class="col s12">Test 4</div>
-    </div>
-  </div>
-      
+  
 
             <script>
                 //Animação Tabs
