@@ -63,6 +63,8 @@ session_start();
                     <div id="seat-map">
                      <div class="front">TELA</div>					
                  </div>
+
+                 
                  
                  <div class="booking-details">
                      <p>Filme: <span> Gingerclown</span></p>
