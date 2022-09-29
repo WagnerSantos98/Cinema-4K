@@ -65,17 +65,55 @@ session_start();
       <div class="row">
     <div class="col s12">
       <ul class="tabs">
-        <li class="tab col s3"><a href="#test1">Test 1</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
+        <li class="tab col s3"><a class="active" href="#test1">Test 1</a></li>
+        <li class="tab col s3"><a href="#test2">Test 2</a></li>
         
       </ul>
     </div>
-    <div id="test1" class="col s12">Test 1</div>
+
+    <div id="test1" class="col s12">
+    <div class="col s12 m12">
+    <div class="card horizontal">
+      <div class="card-data">
+        <h2>30</h2>
+        <p>Sex 22:30</p>
+        <p>Set 2022</p>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <h2 class="header">MAIARA E MARAISA</h2>
+          <p>SÃO PAULO</p>
+          <P>TOKIO MARINE HALL</P>
+
+          <a href="#modal1" class="waves-effect waves-light btn modal-trigger" style="float: right;">Ingressos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
     <div id="test2" class="col s12">
-    
+      
     </div>
     
   </div>
+  
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Ingressos</h4>
+      
+      <h5>CAMAROTE</h5>
+      <p>INTEIRA</p>
+      <P>MEIA ESTUDANTE</P>
+      <P>MEIA IDOSO/PROF/PCD</P>
+      
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
 </div>
 
       <div class="container-fluid">
@@ -103,6 +141,8 @@ session_start();
             </div>
 
             </div>
+
+            
   
 
             <script>
@@ -114,6 +154,11 @@ document.addEventListener("DOMContentLoaded", function(){
 	  duration: 300
 	});
   })
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
  </script>
 
 <script type="text/javascript" src="../assests/js/jquery.seat-charts.min.js"></script>
