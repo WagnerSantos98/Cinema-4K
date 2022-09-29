@@ -73,3 +73,20 @@
   .btn-nav:hover{
     background:rgba(0,0,0,.3);
   }
+
+  /*Carousel*/
+  .carousel {
+    height: 300px !important;
+  }
+  
+  /* set to flexbox to center the images with the indicator icons */
+  .carousel-item {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+  }
+  
+  .carousel-item img {
+    width: auto !important;
+    height: 200px !important;
+  }

@@ -1,10 +1,3 @@
-<?php
-
-session_start();
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -41,19 +34,27 @@ session_start();
                 <a href="../index.php">Home</a>   
             </li>
             <li>
-                <a href="pages/eventos.php">Eventos</a>
+                <a href="../pages/eventos.php">Ingressos</a>
             </li>
             <li>
-                <a href="pages/ingressos.php">Ingressos</a>
+                <a href="../pages/ingressos.php">Ingressos</a>
             </li>
             <li>
-                <a href="pages/configuracoes.php">Configurações</a>
+                <a href="../pages/configuracoes.php">Configurações</a>
             </li>
             
           </ul>
         </nav>
         
       </header>
+
+      <div class="carousel">
+    <a class="carousel-item" href="#one!"><img src="../assests/img/beijo-em-franz-kafka.jpg"></a>
+    <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
+    <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
+    <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
+    <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
+  </div>
 
 
 </body>
