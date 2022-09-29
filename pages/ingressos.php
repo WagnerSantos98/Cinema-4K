@@ -77,7 +77,7 @@ session_start();
                      <button class="checkout-button btn btn-primary">COMPRAR</button>
                              
                      <div id="legend"></div>
-                 </div>
+                 </div> 
                  <div style="clear:both"></div>
             </div>
 
