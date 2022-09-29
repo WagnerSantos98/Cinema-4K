@@ -46,6 +46,9 @@ session_start();
                 <a href="../index.php">Home</a>   
             </li>
             <li>
+                <a href="../pages/eventos.php">Eventos</a>
+            </li>
+            <li>
                 <a href="../pages/ingressos.php">Ingressos</a>
             </li>
             <li>
@@ -111,17 +114,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	  duration: 300
 	});
   })
-
-  document.addEventListener('DOMContentLoaded', function() {
-   var elems = document.querySelectorAll('.carousel');
-   var instances = M.Carousel.init(elems, {
-     indicators: true,
-     padding: 200,
-   });
- });
-
-  
-            </script>
+ </script>
 
 <script type="text/javascript" src="../assests/js/jquery.seat-charts.min.js"></script>
 </body>

@@ -76,7 +76,7 @@
 
   /*Carousel*/
   .carousel {
-    height: 300px !important;
+    height: 700px !important;
   }
   
   /* set to flexbox to center the images with the indicator icons */
@@ -88,5 +88,9 @@
   
   .carousel-item img {
     width: auto !important;
-    height: 200px !important;
+    height: 100px !important;
   }
+
+.title-evento{
+  color: #000;
+}
