@@ -57,6 +57,18 @@ session_start();
         
       </header>
 
+      <!--Tabs Ingrssos/Cinema-->
+      <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#ingressos">Ingresos Cinema</a></li>
+        <li class="tab col s3"><a href="#shows">Ingressos Shows</a></li>
+      </ul>
+    </div>
+    <div id="ingressos" class="col s12">Test 1</div>
+    <div id="shows" class="col s12">Test 2</div>
+  </div>
+
       <div class="container-fluid">
                 
                 <div class="demo">
