@@ -28,7 +28,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="../assests/js/app.js"></script>
             
-    <title>Painel de Biblioteca</title> 
+    <title>Cinema 4K</title> 
 </head>
 <body>
     <!--Navbar-->   
@@ -56,31 +56,24 @@ session_start();
         </nav>
         
       </header>
-
+      
       <!--Tabs Ingrssos/Cinema-->
+      <div class="container">
       <div class="row">
     <div class="col s12">
       <ul class="tabs">
-        <li class="tab col s3"><a class="active" href="#ingressos">Ingresos Cinema</a></li>
-        <li class="tab col s3"><a href="#shows">Ingressos Shows</a></li>
+        <li class="tab col s3"><a href="#test1">Test 1</a></li>
+        <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
+        
       </ul>
     </div>
-    <!--Ingressos Cinema-->
-    <div id="ingressos" class="col s12">
-
+    <div id="test1" class="col s12">Test 1</div>
+    <div id="test2" class="col s12">
+    
     </div>
     
-    <!--Ingressos Shows-->
-    <div id="shows" class="col s12">
-    <div class="carousel">
-    <a class="carousel-item" href="#one!"><img src="../assests/img/beijo-em-franz-kafka.jpg"></a>
-    <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
-    <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
-    <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
-    <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
   </div>
-    </div>
-  </div>
+</div>
 
       <div class="container-fluid">
                 
@@ -118,6 +111,16 @@ document.addEventListener("DOMContentLoaded", function(){
 	  duration: 300
 	});
   })
+
+  document.addEventListener('DOMContentLoaded', function() {
+   var elems = document.querySelectorAll('.carousel');
+   var instances = M.Carousel.init(elems, {
+     indicators: true,
+     padding: 200,
+   });
+ });
+
+  
             </script>
 
 <script type="text/javascript" src="../assests/js/jquery.seat-charts.min.js"></script>
