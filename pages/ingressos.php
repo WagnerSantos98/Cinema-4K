@@ -65,8 +65,15 @@ session_start();
         <li class="tab col s3"><a href="#shows">Ingressos Shows</a></li>
       </ul>
     </div>
-    <div id="ingressos" class="col s12">Test 1</div>
-    <div id="shows" class="col s12">Test 2</div>
+    <!--Ingressos Cinema-->
+    <div id="ingressos" class="col s12">
+
+    </div>
+    
+    <!--Ingressos Shows-->
+    <div id="shows" class="col s12">
+
+    </div>
   </div>
 
       <div class="container-fluid">
