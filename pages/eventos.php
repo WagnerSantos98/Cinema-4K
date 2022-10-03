@@ -17,7 +17,7 @@
     <script src="../assests/js/app.js"></script>
             
     <title>Painel de Biblioteca</title> 
-</head>
+</head> 
 <body>
     <!--Navbar-->   
     <header class="main-header">
@@ -25,7 +25,7 @@
         <input type="checkbox" id="btn-nav">
         
 
-        <!--Logout--->
+        <!--Logout Cinema---> 
         <a class="navbar-brand" href="pages/logout.php" style="margin-left: 98%; color: #fff;" ><i class="fa-solid fa-right-from-bracket"></i></a>
         
         <nav>
