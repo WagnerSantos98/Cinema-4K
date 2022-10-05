@@ -32,7 +32,7 @@ session_start();
         <input type="checkbox" id="btn-nav">
         
 
-        <!--Logout--->
+        <!--Logout--->  
         <a class="navbar-brand" href="pages/logout.php" style="margin-left: 98%; color: #fff;" ><i class="fa-solid fa-right-from-bracket"></i></a>
         
         <nav>
@@ -41,7 +41,7 @@ session_start();
                 <a href="../index.php">Home</a>   
             </li>
             <li>
-                <a href="pages/eventos.php">Eventos</a>
+                <a href="pages/eventos.php">Eventos</a> 
             </li>
             <li>
                 <a href="pages/ingressos.php">Ingressos</a>
