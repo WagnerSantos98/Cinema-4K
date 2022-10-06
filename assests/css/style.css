@@ -99,3 +99,19 @@
   height: 500px;/*Altura da linha*/
   border-left: 2px solid;/* Adiciona borda esquerda na div como ser fosse uma linha.*/
 }
+
+/*Card Alerts*/
+  .alert,
+  .card-content,
+  span{
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-right: 10px;
+  }
+
+  .material-icons{
+    font-size: 1.5em;
+    position: relative;
+    top: 15px;
+    margin-right: 0.5em;
+  }

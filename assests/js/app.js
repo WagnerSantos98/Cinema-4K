@@ -73,18 +73,8 @@ function recalculateTotal(sc) {
 	return total;
 }
 
-//Animação Tabs
-document.addEventListener("DOMContentLoaded", function(){
-	const tab = document.querySelector('.tabs');
-	M.Tabs.init(tab, {
-	  swipeable: true,
-	  duration: 300
-	});
-  })
+//Alert
+var toastHTML = '<div class="alert card green lighten-4 green-text text-darken-4"><div class="card-content"><p><i class="material-icons">check_circle</i><span>This is an alert:</span> It has text within it.</p></div></div>';
+M.toast({html: toastHTML})
 
-//Carousel
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems);
-});
   
