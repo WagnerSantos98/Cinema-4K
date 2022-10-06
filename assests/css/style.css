@@ -115,3 +115,7 @@
     top: 15px;
     margin-right: 0.5em;
   }
+
+  div.pagination{
+    margin-top: 1em;
+  }

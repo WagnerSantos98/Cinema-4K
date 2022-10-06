@@ -51,6 +51,8 @@ if (isset($_POST['cadastrar_usuario'])) {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+
     <script src="../assests/js/app.js"></script>
             
     <title>Painel Sistema Integrado</title> 
@@ -138,7 +140,52 @@ if (isset($_POST['cadastrar_usuario'])) {
 
         </div>
 
-        <div id="control_usuario" class="col s12">Test 2</div>
+        <div id="control_usuario" class="col s12">
+        
+        <div class="col s12 m12 l6 offset-l2 center">
+	<!--<input type="text" id="search" placeholder="Type to search..." />-->
+        <table cellpadding="1" cellspacing="1" class="table table-hover" id="myTable">
+          <thead>
+            <tr>
+              <th>nombre</th>
+              <th>apellido</th>
+              <th>edad</th>
+              <th>mail</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr>
+            	<td>Axel</td>
+            	<td>Estes</td>
+            	<td>33</td>
+            	<td>gravida.sagittis.Duis@ultricesposuerecubilia.co.uk</td>
+            </tr>
+            <tr>
+            	<td>Sean</td>
+            	<td>Macias</td>
+            	<td>63</td>
+            	<td>ultrices.sit.amet@Cum.com</td>
+            </tr>
+            <tr>
+            	<td>Keith</td>
+            	<td>Merrill</td>
+            	<td>11</td>
+            	<td>Morbi.sit.amet@adipiscingligulaAenean.edu</td>
+            </tr>
+            
+            
+            
+            </tbody>
+          </table>
+          <div class="col-md-12 center text-center">
+	    <span class="left" id="total_reg"></span>
+            <ul class="pagination pager" id="myPager"></ul>
+          </div>
+      </div>
+      
+    </div>
+
+        </div>
         
         </div>
 
@@ -167,6 +214,19 @@ $(".btn").click(() => {
 	Map.toast({
 		html: 'Cadastro realizado com sucesso!'
 	});
+});
+
+//Table and Pagination
+$(document).ready(function(){
+  $('#myTable').pageMe({
+    pagerSelector:'#myPager',
+    activeColor: 'blue',
+    prevText:'Anterior',
+    nextText:'Seguinte',
+    showPrevNext:true,
+    hidePageNumbers:false,
+    perPage:10
+  });
 });
 </script>
 

@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
 	<link rel="stylesheet" type="text/css" href="../assests/css/login.css">
     
 
-	<title>Login - Cinema 4K</title>
+	<title>Login - Painel Sistema Integrado</title>
 </head>
 <body>
 	<div class="container">
