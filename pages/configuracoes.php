@@ -12,7 +12,20 @@ if(isset($_POST['cadastrar_usuario'])){
   $sql = "SELECT * FROM tb_usuarios WHERE email_user='$email_user'";
   $result = mysqli_query($con, $sql);
   if(!$result->num_rows > 0){
-    
+    $sql = "INSERT INTO tb_usuarios (username, tipo_acesso, email_user, senha)
+                 VALUES ('$username', '$tipo_acesso', '$email_user', '$senha')";
+    $result = mysqli_query($con, $sql);
+    if($result){
+      echo "<script>alert('Registro do usuário concluído.')</script>";
+      $username = "";
+      $tipo_acesso = "";
+      $email_user = "";
+      $_POST['senha'] = "";
+    }else{
+      echo "<scrirpt>alert('Algo errado aconteceu.')</script>";
+    }
+  }else{
+    echo "<script>alert('Email já cadastrado.)</script>";
   }
 
 }
