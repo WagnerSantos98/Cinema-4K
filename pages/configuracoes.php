@@ -123,7 +123,7 @@ if(isset($_POST['cadastrar_usuario'])){
         </div>
       </div>
 
-      <a class="waves-effect waves-light btn">button</a>
+      <button name="cadastrar_usuario" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
 
      <!-- <div class="alert card green lighten-4 green-text text-darken-4">
 		<div class="card-content">
