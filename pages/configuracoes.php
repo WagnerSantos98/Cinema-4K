@@ -50,13 +50,12 @@
 
       <!--Tabs Materialize-->
       <div class="container">
+
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
                     <li class="tab col s3"><a class="active" href="#cad_usuario">Cadastro de usuário</a></li>
                     <li class="tab col s3"><a  href="#control_usuario">Controle de acesso</a></li>
-                    <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
-                    <li class="tab col s3"><a href="#test4">Test 4</a></li>
                 </ul>
             </div>
         <!--Cadastro de Usuário-->
@@ -65,40 +64,28 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
+          <input placeholder="Placeholder" name="username" id="username" type="text" class="validate">
+          <label for="username">Usuário</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
+            <select id="tipo_acesso" name="tipo_acesso">
+              <option value="" disabled selected>Selecione...</option>
+              <option>ADM</option>
+              <option>USER</option>
+            </select>
+      <label>Nívl de acesso</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
+          <input id="email_user" name="email_user" type="email" class="validate">
+          <label for="email_user">Email</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email_inline" type="email" class="validate">
-            <label for="email_inline">Email</label>
-            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-          </div>
+          <input id="senha" name="senha" type="password" class="validate">
+          <label for="senha">Senha</label>
         </div>
       </div>
     </form>
@@ -107,9 +94,9 @@
         </div>
 
         <div id="control_usuario" class="col s12">Test 2</div>
-        <div id="test3" class="col s12">Test 3</div>
-        <div id="test4" class="col s12">Test 4</div>
+        
         </div>
+
       </div>
 
     <script>
