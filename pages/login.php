@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
 	$email_user = $_POST['email_user'];
 	$senha = md5($_POST['senha']);
 
-	$sql = "SELECT * FROM tb_usuarios WHERE email_user='$email_user' AND senha='$senha'";
+	$sql = "SELECT * FROM tb_usuario WHERE email_user='$email_user' AND senha='$senha'";
 	$result = mysqli_query($con, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);

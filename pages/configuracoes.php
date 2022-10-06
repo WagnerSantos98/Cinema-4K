@@ -1,34 +1,36 @@
 <?php
 
 include_once('../db/conexao.php');
+session_start();
 
+error_reporting(0);
 //Cadastro Usuário
-if(isset($_POST['cadastrar_usuario'])){
-  $username = $_POST['username'];
-  $tipo_acesso = $_POST['tipo_acesso'];
+if (isset($_POST['cadastrar_usuario'])) {
+	$username = $_POST['username'];
+	$tipo_acesso = $_POST['tipo_acesso'];
   $email_user = $_POST['email_user'];
-  $senha = md5 ($_POST['senha']);
+	$senha = md5($_POST['senha']);
 
-  $sql = "SELECT * FROM tb_usuarios WHERE email_user='$email_user'";
-  $result = mysqli_query($con, $sql);
-  if(!$result->num_rows > 0){
-    $sql = "INSERT INTO tb_usuarios (username, tipo_acesso, email_user, senha)
-                 VALUES ('$username', '$tipo_acesso', '$email_user', '$senha')";
-    $result = mysqli_query($con, $sql);
-    if($result){
-      echo "<script>alert('Registro do usuário concluído.')</script>";
-      $username = "";
-      $tipo_acesso = "";
-      $email_user = "";
-      $_POST['senha'] = "";
-    }else{
-      echo "<scrirpt>alert('Algo errado aconteceu.')</script>";
-    }
-  }else{
-    echo "<script>alert('Email já cadastrado.)</script>";
-  }
-
+		$sql = "SELECT * FROM tb_usuario WHERE email_user='$email_user'";
+		$result = mysqli_query($conn, $sql);
+		if (!$result->num_rows > 0) {
+			$sql = "INSERT INTO tb_usuario (username, tipo_acesso, email_user, senha)
+					VALUES ('$username', '$tipo_acesso', '$email_user', '$senha')";
+			$result = mysqli_query($con, $sql);
+			if ($result) {
+				echo "<script>alert('Wow! Registro do usuário concluído.')</script>";
+				$username = "";
+        $tipo_acesso = "";
+				$email_user = "";
+				$_POST['senha'] = "";
+			} else {
+				echo "<script>alert('Woops! Algo errado aconteceu.')</script>";
+			}
+		} else {
+			echo "<script>alert('Woops! E-mail já existe.')</script>";
+		}
 }
+
 
 
 ?>
@@ -44,7 +46,8 @@ if(isset($_POST['cadastrar_usuario'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../assests/css/style.css">
 
-    <!--Icons Materialize-->
+    <!--Icons Materialize and Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -60,7 +63,7 @@ if(isset($_POST['cadastrar_usuario'])){
         
 
         <!--Logout--->
-        <a class="navbar-brand" href="pages/logout.php" style="margin-left: 98%; color: #fff;" ><i class="fa-solid fa-right-from-bracket"></i></a>
+        <a class="navbar-brand" href="../pages/logout.php" style="margin-left: 98%; color: #fff;" ><i class="fa-solid fa-right-from-bracket"></i></a>
         
         <nav>
           <ul class="navigation">
@@ -95,7 +98,7 @@ if(isset($_POST['cadastrar_usuario'])){
         <!--Cadastro de Usuário-->
         <div id="cad_usuario" class="col s12">
         <div class="row">
-    <form class="col s12">
+    <form class="col s12" method="POST" action="">
       <div class="row">
         <div class="input-field col s6">
           <input placeholder="Placeholder" name="username" id="username" type="text" class="validate">
