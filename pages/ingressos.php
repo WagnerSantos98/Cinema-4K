@@ -28,7 +28,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="../assests/js/app.js"></script>
             
-    <title>Cinema 4K</title> 
+    <title>Painel Sistema Integrado</title> 
 </head>
 <body>
     <!--Navbar-->   

@@ -18,14 +18,14 @@
     <script src="../assets/js/app.js"></script>
 
     
-    <title>Cinema 4K</title>
+    <title>Painel Sistema Integrado</title>
 
 </head>
 <body>
     <div class="d-flex" id="wrapper">
         <!--Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading border-bottom bg-light">Cinema 4K</div>
+            <div class="sidebar-heading border-bottom bg-light">Painel Sistema Integrado</div>
             <div class="list-gtoup list-group-flush">
                 <a href="/index.html" class="list-group-item list-group-item-action list-group-item-light p-3">Home</a>
                 <a href="/pages/cinemas.html" class="list-group-item list-group-item-action list-group-item-light p-3">Cinemas</a>
