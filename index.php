@@ -47,6 +47,9 @@ session_start();
                 <a href="pages/ingressos.php">Ingressos</a>
             </li>
             <li>
+                <a href="pages/controle_acesso.php">Controle de Acesso</a>
+            </li>
+            <li>
                 <a href="pages/configuracoes.php">Configurações</a>
             </li>
             
@@ -55,6 +58,7 @@ session_start();
         
       </header>
 
+      
 
 </body>
 </html>

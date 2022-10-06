@@ -51,7 +51,6 @@ if (isset($_POST['cadastrar_usuario'])) {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
 
     <script src="../assests/js/app.js"></script>
             
@@ -142,7 +141,7 @@ if (isset($_POST['cadastrar_usuario'])) {
 
         <div id="control_usuario" class="col s12">
         
-        <div class="col s12 m12 l6 offset-l2 center">
+       
 	<!--<input type="text" id="search" placeholder="Type to search..." />-->
         <table cellpadding="1" cellspacing="1" class="table table-hover" id="myTable">
           <thead>
@@ -154,24 +153,43 @@ if (isset($_POST['cadastrar_usuario'])) {
             </tr>
           </thead>
           <tbody >
-            <tr>
-            	<td>Axel</td>
-            	<td>Estes</td>
-            	<td>33</td>
-            	<td>gravida.sagittis.Duis@ultricesposuerecubilia.co.uk</td>
+           
+           
+            
+            	<td>Joshua</td>
+            	<td>Obrien</td>
+            	<td>69</td>
+            	<td>varius.et@consequat.ca</td>
             </tr>
             <tr>
-            	<td>Sean</td>
-            	<td>Macias</td>
-            	<td>63</td>
-            	<td>ultrices.sit.amet@Cum.com</td>
+            	<td>Clark</td>
+            	<td>Evans</td>
+            	<td>37</td>
+            	<td>Integer.in@odioauctorvitae.co.uk</td>
             </tr>
             <tr>
-            	<td>Keith</td>
-            	<td>Merrill</td>
-            	<td>11</td>
-            	<td>Morbi.sit.amet@adipiscingligulaAenean.edu</td>
+            	<td>Andrew</td>
+            	<td>Mccullough</td>
+            	<td>70</td>
+            	<td>eu.nibh.vulputate@magna.co.uk</td>
             </tr>
+            <tr>
+            	<td>Nolan</td>
+            	<td>Thompson</td>
+            	<td>44</td>
+            	<td>dolor.sit@quisurnaNunc.net</td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="col s12 m7 l6 pagination">
+            <div id="pagination-long"></div>
+            <div id="pagination-short"></div>
+        </div>
+      </div>
+      <div class="col s12 m2 l2">
+        More info in <a href="https://github.com/pinzon1992/materialize_table_pagination">GITHUB</a>
+      </div>
+    </div>
             
             
             
