@@ -185,7 +185,7 @@ if (isset($_POST['cadastrar_usuario'])) {
             <div id="pagination-long"></div>
             <div id="pagination-short"></div>
         </div>
-      </div>
+</div>
       <div class="col s12 m2 l2">
         More info in <a href="https://github.com/pinzon1992/materialize_table_pagination">GITHUB</a>
       </div>
