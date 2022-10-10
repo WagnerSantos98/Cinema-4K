@@ -183,7 +183,7 @@ if (isset($_POST['cadastrar_usuario'])) {
           </table>
           <div class="col s12 m7 l6 pagination">
             <div id="pagination-long"></div>
-            <div id="pagination-short"></div>
+            <div id="pagination-short"></div>   
         </div>
 </div>
       <div class="col s12 m2 l2">
