@@ -104,7 +104,7 @@ $sql = mysqli_query($con, $sql)
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="capa" name="imagem" type="file" class="validate">
+          <input id="imagem" name="imagem" type="file" class="validate">
         </div>
       </div>
       
