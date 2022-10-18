@@ -143,6 +143,7 @@ if (isset($_POST['cadastrar_usuario'])) {
         
        
 	<!--<input type="text" id="search" placeholder="Type to search..." />-->
+  <div class="container">
         <table cellpadding="1" cellspacing="1" class="table table-hover" id="myTable">
           <thead>
             <tr>
@@ -181,6 +182,7 @@ if (isset($_POST['cadastrar_usuario'])) {
             </tr>
             </tbody>
           </table>
+</div>
           <div class="col s12 m7 l6 pagination">
             <div id="pagination-long"></div>
             <div id="pagination-short"></div>   

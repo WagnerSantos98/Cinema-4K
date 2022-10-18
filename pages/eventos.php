@@ -48,28 +48,7 @@
         
       </header>
 
-    <div>
-        <center><h2>Eventos e Shows</h2></center>
-    </div>
-    <div class="">
-      <div class="carousel">
-    <a class="carousel-item" href="#one!"><img src="../assests/img/beijo-em-franz-kafka.jpg"></a>
-    <a class="carousel-item" href="#two!"><img src="../assests/img/PrimaveraSound_Destaques.jpg"></a>
-    <a class="carousel-item" href="#three!"><img src="../assests/img/HS_SP_Extra_Eventim.png"></a>
-    <a class="carousel-item" href="../pages/ingressos.php"><img src="../assests/img/maiara-maraisa.jpg"><div class="title-evento" style="color: #000;">MAIARA E MARAISA</div></a>
-    <a class="carousel-item" href="#five!"><img src="../assests/img/jao-bnsp.jpg"></a>
-  </div>
-    </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-   var elems = document.querySelectorAll('.carousel');
-   var instances = M.Carousel.init(elems, {
-     indicators: true,
-     padding: 200,
-   });
- });
-  </script>
+    
 
 </body>
 </html>
