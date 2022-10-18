@@ -1,3 +1,18 @@
+<?php
+include_once('./db/conexao.php');
+
+$titulo = $_POST['titulo'];
+$genero = $_POST['genero'];
+$duracao = $_POST['duracao'];
+$classificacao = $_POST['classificacao'];
+$sinopse = $_POST['sinopse'];
+$imagem = $_POST['imagem'];
+
+$sql = "INSERT INTO tb_eventos(titulo,genero,duracao,classificacao,sinopse,imagem)
+ VALUES ('$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$imagem');";
+$sql = mysqli_query($con, $sql)
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -48,7 +63,70 @@
         
       </header>
 
-    
+     <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s3"><a href="#cinema">Cinema</a></li>
+              <li class="tab col s3"><a href="#teatro">Teatro</a></li>
+              <li class="tab col s3"><a href="#show">Show</a></li>
+            </ul>
+          </div>
+      <!--Cadastro de Filme em Cartaz-->
+      <div id="cinema" class="col s12">
+      <div class="row">
+    <form class="col s12" enctype="multipart/form-data" method="POST" action="">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="titulo" name="titulo" type="text" class="validate">
+          <label for="titulo">Título</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="genero" name="genero" type="text" class="validate">
+          <label for="genero">Gênero</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="duracao" name="duracao" type="text" class="validate">
+          <label for="duracao">Duração</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="classificacao" name="classificacao" type="text" class="validate">
+          <label for="classificacao">Classificação</label>
+        </div>
+      </div>
+      <div class="row">
+      <div class="input-field col s12">
+          <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
+          <label for="sinopse">Sinopse</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="capa" name="imagem" type="file" class="validate">
+        </div>
+      </div>
+      
+    </form>
+  </div>
+        
+      </div>
+      <div id="teatro" class="col s12">Test 2</div>
+      <div id="show" class="col s12">Test 3</div>
+      </div>
+    </div>
 
+    <script>
+      //Animação Tabs
+    document.addEventListener("DOMContentLoaded", function(){
+	    const tab = document.querySelector('.tabs');
+	    M.Tabs.init(tab, {
+	  swipeable: true,
+	  duration: 300
+	});
+})
+
+    </script>
 </body>
 </html>
