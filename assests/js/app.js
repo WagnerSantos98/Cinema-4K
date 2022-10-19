@@ -73,8 +73,9 @@ function recalculateTotal(sc) {
 	return total;
 }
 
-//Alert
-var toastHTML = '<div class="alert card green lighten-4 green-text text-darken-4"><div class="card-content"><p><i class="material-icons">check_circle</i><span>This is an alert:</span> It has text within it.</p></div></div>';
-M.toast({html: toastHTML})
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
 
   

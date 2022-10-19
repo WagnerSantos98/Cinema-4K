@@ -55,6 +55,8 @@ if(isset($_POST['cadastrar_teatro'])){
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../assests/js/app.js"></script>
             
     <title>Painel Sistema Integrado</title> 
@@ -118,8 +120,16 @@ if(isset($_POST['cadastrar_teatro'])){
           <label for="duracao">Duração</label>
         </div>
         <div class="input-field col s6">
-          <input id="classificacao" name="classificacao" type="text" class="validate">
-          <label for="classificacao">Classificação</label>
+          <select id="classificacao" name="classificacao">
+            <option value="" disabled selected>Selecione...</option>
+            <option>L</option>
+            <option>+10</option>
+            <option>+12</option>
+            <option>+14</option>
+            <option>+16</option>
+            <option>+18</option>
+          </select>
+        <label>Classificação</label>
         </div>
       </div>
       <div class="row">
@@ -185,6 +195,19 @@ if(isset($_POST['cadastrar_teatro'])){
 	});
 })
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+
+
+  $(document).ready(function(){
+             $('#duracao').mask('00000-000');
+             $('#telefone').mask('0000-0000');
+             $('#celular').mask('00000-0000');
+             $('#cpf').mask('000.000.000-00', {reverse: true});
+             $('#rg').mask('00.000.000-00', {reverse: true});
+        });
     </script>
 </body>
 </html>
