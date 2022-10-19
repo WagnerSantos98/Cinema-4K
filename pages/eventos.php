@@ -1,16 +1,42 @@
 <?php
-include_once('./db/conexao.php');
+include_once('../db/conexao.php');
+session_start();
 
-$titulo = $_POST['titulo'];
-$genero = $_POST['genero'];
-$duracao = $_POST['duracao'];
-$classificacao = $_POST['classificacao'];
-$sinopse = $_POST['sinopse'];
-$imagem = $_POST['imagem'];
+if(isset($_POST['cadastrar_cinema'])){
 
-$sql = "INSERT INTO tb_eventos(titulo,genero,duracao,classificacao,sinopse,imagem)
- VALUES ('$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$imagem');";
-$sql = mysqli_query($con, $sql)
+  if(!empty($_FILES["imagem"]["name"])){
+    $fileName = basename($_FILES["imagem"]["name"]);
+    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
+    $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+    if(in_array($fileType, $allowTypes)){
+      $imagem = $_FILES['imagem']['tmp_name'];
+      $imageContent = addslashes(file_get_contents($imagem));
+
+      $titulo = $_POST['titulo'];
+      $genero = $_POST['genero'];
+      $duracao = $_POST['duracao'];
+      $classificacao = $_POST['classificacao'];
+      $sinopse = $_POST['sinopse'];
+      $sql = "INSERT INTO tb_cinema(titulo,genero,duracao,classificacao,sinopse,imagem)
+      VALUES ('$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$imagem');";
+      $sql = mysqli_query($con, $sql);
+    }
+  }
+}
+
+
+//https://www.bilheteriaexpress.com.br/ingressos-para-fabiano-cambota-teatro-mario-covas-caraguatatuba-comedia-standup.html
+if(isset($_POST['cadastrar_teatro'])){
+  $evento = $_POST['evento'];
+  $artista = $_POST['artista'];
+  $localizacao = $_POST['localizacao'];
+  $classi = $_POST['classi'];
+  $sql = "INSERT INTO tb_teatro(evento,artista,localizacao,classi)
+  VALUES ('$evento', '$artista', '$localizacao', '$classi');";
+  $sql = mysqli_query($con, $sql);
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -107,12 +133,44 @@ $sql = mysqli_query($con, $sql)
           <input id="imagem" name="imagem" type="file" class="validate">
         </div>
       </div>
+
+      <button name="cadastrar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
       
     </form>
   </div>
         
       </div>
-      <div id="teatro" class="col s12">Test 2</div>
+      <!--Cadastro de Teatro em Cartaz-->
+      <div id="teatro" class="col s12">
+      <div class="row">
+    <form class="col s12" method="POST" action="">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="evento" name="evento" type="text" class="validate">
+          <label for="evento">Evento</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="artista" name="artista" type="text" class="validate">
+          <label for="artista">Artista</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="localizacao" name="localizacao" type="text" class="validate">
+          <label for="localizacao">Local</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="classi" name="classi" type="text" class="validate">
+          <label for="classi">Classificação</label>
+        </div>
+      </div>
+      
+
+      <button name="cadastrar_teatro" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
+      
+    </form>
+  </div>
+      </div>
       <div id="show" class="col s12">Test 3</div>
       </div>
     </div>
