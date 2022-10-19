@@ -55,8 +55,11 @@ if(isset($_POST['cadastrar_teatro'])){
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="../assests/js/app.js"></script>
             
     <title>Painel Sistema Integrado</title> 
@@ -116,7 +119,7 @@ if(isset($_POST['cadastrar_teatro'])){
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="duracao" name="duracao" type="text" class="validate">
+          <input id="duracao"  name="duracao" type="text" class="duracao">
           <label for="duracao">Duração</label>
         </div>
         <div class="input-field col s6">
@@ -201,13 +204,17 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 
-  $(document).ready(function(){
-             $('#duracao').mask('00000-000');
-             $('#telefone').mask('0000-0000');
-             $('#celular').mask('00000-0000');
-             $('#cpf').mask('000.000.000-00', {reverse: true});
-             $('#rg').mask('00.000.000-00', {reverse: true});
-        });
+  $(document).ready(function() {
+  $(".uracao").mask("00:00:00");
+});
+
+jQuery(function($){
+   $("#duracao").mask("99/99/9999");
+   $("#phone").mask("(999) 999-9999");
+   $("#tin").mask("99-9999999");
+   $("#ssn").mask("999-99-9999");
+});
     </script>
+    
 </body>
 </html>
