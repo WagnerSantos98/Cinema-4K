@@ -1,7 +1,9 @@
 <?php
 
 session_start();
-
+if(isset($_SESSION['username'])){
+    header("Location: pages/login.php");
+}
 
 
 ?>
@@ -30,6 +32,7 @@ session_start();
     <header class="main-header">
         <label for="btn-nav" class="btn-nav"><i class="fa fa-bars"></i></label>
         <input type="checkbox" id="btn-nav">
+        <?php echo "<p style='color: black'>Bem-vindo " . $_SESSION['username'] . "</p>"; ?>
         
 
         <!--Logout--->  
