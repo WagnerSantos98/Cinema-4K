@@ -13,13 +13,14 @@ if(isset($_POST['cadastrar_cinema'])){
       $imagem = $_FILES['imagem']['tmp_name'];
       $imageContent = addslashes(file_get_contents($imagem));
 
+      $codigo = $_POST['codigo'];
       $titulo = $_POST['titulo'];
       $genero = $_POST['genero'];
       $duracao = $_POST['duracao'];
       $classificacao = $_POST['classificacao'];
       $sinopse = $_POST['sinopse'];
-      $sql = "INSERT INTO tb_cinema(titulo,genero,duracao,classificacao,sinopse,imagem)
-      VALUES ('$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$imagem');";
+      $sql = "INSERT INTO tb_cinema(codigo,titulo,genero,duracao,classificacao,sinopse,imagem)
+      VALUES ('$codigo', '$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$imagem');";
       $sql = mysqli_query($con, $sql);
     }
   }
@@ -104,6 +105,12 @@ if(isset($_POST['cadastrar_teatro'])){
       <div id="cinema" class="col s12">
       <div class="row">
     <form class="col s12" enctype="multipart/form-data" method="POST" action="">
+      <div class="row">
+      <div class="input-field col s6">
+          <input id="codigo" name="codigo" type="text" class="validate">
+          <label for="codigo">Código</label>
+        </div>
+      </div>
       <div class="row">
         <div class="input-field col s6">
           <input id="titulo" name="titulo" type="text" class="validate">
