@@ -55,9 +55,6 @@ if(isset($_POST['cadastrar_teatro'])){
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="../assests/js/app.js"></script>
@@ -208,12 +205,21 @@ document.addEventListener('DOMContentLoaded', function() {
   $(".uracao").mask("00:00:00");
 });
 
-jQuery(function($){
-   $("#duracao").mask("99/99/9999");
-   $("#phone").mask("(999) 999-9999");
-   $("#tin").mask("99-9999999");
-   $("#ssn").mask("999-99-9999");
-});
+jQuery("input.duracao")
+        .mask("99:99:99")
+        .focusout(function (event) {  
+            var target, phone, element;  
+            target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+            phone = target.value.replace(/\D/g, '');
+            element = $(target);  
+            element.unmask();  
+            if(phone.length > 10) {  
+                element.mask("99:99:99");  
+            } else {  
+                element.mask("99:99:99");  
+            }  
+        });
+//https://pt.stackoverflow.com/questions/42238/m%C3%A1scara-de-telefones-usando-jquery-mask-plugin
     </script>
     
 </body>
