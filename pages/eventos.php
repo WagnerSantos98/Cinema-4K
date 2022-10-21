@@ -26,8 +26,21 @@ if(isset($_POST['cadastrar_cinema'])){
   }
 }
 
+//Consulta Cinema
+$codigo = filter_input(INPUT_GET, 'codigo', FILTER_SANITIZE_STRING);
+if(!empty($codigo)){
 
-//https://www.bilheteriaexpress.com.br/ingressos-para-fabiano-cambota-teatro-mario-covas-caraguatatuba-comedia-standup.html
+  $result_cinema = "SELECT* FROM tb_cinema WHERE codigo =:codigo LIMIT :limit";
+
+  $resultado_cinema = $conn->prepare($result_cinema);
+  $resultado_cinema->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+  $resultado_cinema->bindParam(':limit', $codigo, PDO::PARAM_INT);
+  $resultado_cinema->execute();
+
+  if()
+}
+
+
 if(isset($_POST['cadastrar_teatro'])){
   $evento = $_POST['evento'];
   $artista = $_POST['artista'];
@@ -129,7 +142,7 @@ if(isset($_POST['cadastrar_teatro'])){
         <div class="input-field col s6">
           <select id="classificacao" name="classificacao">
             <option value="" disabled selected>Selecione...</option>
-            <option>L</option>
+            <option>Livre</option>
             <option>+10</option>
             <option>+12</option>
             <option>+14</option>
