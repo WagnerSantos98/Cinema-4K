@@ -1,9 +1,6 @@
 <?php
 
 session_start();
-if(isset($_SESSION['username'])){
-    header("Location: pages/login.php");
-}
 
 
 ?>
@@ -32,7 +29,7 @@ if(isset($_SESSION['username'])){
     <header class="main-header">
         <label for="btn-nav" class="btn-nav"><i class="fa fa-bars"></i></label>
         <input type="checkbox" id="btn-nav">
-        <?php echo "<p style='color: black'>Bem-vindo " . $_SESSION['username'] . "</p>"; ?>
+        
         
 
         <!--Logout--->  
@@ -48,9 +45,6 @@ if(isset($_SESSION['username'])){
             </li>
             <li>
                 <a href="pages/ingressos.php">Ingressos</a>
-            </li>
-            <li>
-                <a href="pages/controle_acesso.php">Controle de Acesso</a>
             </li>
             <li>
                 <a href="pages/configuracoes.php">Configurações</a>
