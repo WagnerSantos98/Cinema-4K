@@ -74,22 +74,6 @@ function recalculateTotal(sc) {
 }
 
 
-$(document).ready(function(){
-	$("input[name='codigo']").blur(function(){
-		var $titulo = $("input[name='titulo']");
-		var $genero = $("input[name='genero']");
-		var $duracao = $("input[name='duracao']");
-		var $sinopse = $("input[name='sinopse']");
-		var codigo = $(this).val();
 
-		$.getJSON('eventos.php', (codigo),
-		function(retorno){
-			$titulo.val(retorno.titulo);
-			$genero.val(retorno.genero);
-			$duracao.val(retorno.duracao);
-			$sinopse.val(retorno.sinopse);
-		})
-	});
-});
 
   

@@ -75,7 +75,7 @@ if (isset($_POST['cadastrar_usuario'])) {
                 <a href="../pages/eventos.php">Eventos</a>
             </li>
             <li>
-                <a href="../pages/ingressos.php">Ingressos</a>
+                <a href="../pages/cartaz.php">Cartaz/Em Breve</a>
             </li>
             <li>
                 <a href="../pages/configuracoes.php">Configurações</a>

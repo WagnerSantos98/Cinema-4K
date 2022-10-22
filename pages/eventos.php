@@ -4,14 +4,6 @@ session_start();
 
 if(isset($_POST['cadastrar_cinema'])){
 
-  if(!empty($_FILES["imagem"]["name"])){
-    $fileName = basename($_FILES["imagem"]["name"]);
-    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
-
-    $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-    if(in_array($fileType, $allowTypes)){
-      $imagem = $_FILES['imagem']['tmp_name'];
-      $imageContent = addslashes(file_get_contents($imagem));
 
       $codigo = $_POST['codigo'];
       $titulo = $_POST['titulo'];
@@ -19,15 +11,13 @@ if(isset($_POST['cadastrar_cinema'])){
       $duracao = $_POST['duracao'];
       $classificacao = $_POST['classificacao'];
       $sinopse = $_POST['sinopse'];
-      $sql = "INSERT INTO tb_cinema(codigo,titulo,genero,duracao,classificacao,sinopse,imagem)
-      VALUES ('$codigo', '$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$imagem');";
+      $sql = "INSERT INTO tb_cinema(codigo,titulo,genero,duracao,classificacao,sinopse)
+      VALUES ('$codigo', '$titulo', '$genero', '$duracao', '$classificacao', '$sinopse');";
       $sql = mysqli_query($con, $sql);
     }
-  }
-}
 
 //Consulta Cinema
-$codigo = filter_input(INPUT_GET, 'codigo', FILTER_SANITIZE_STRING);
+/*$codigo = filter_input(INPUT_GET, 'codigo', FILTER_SANITIZE_STRING);
 if(!empty($codigo)){
 
   $result_cinema = "SELECT* FROM tb_cinema WHERE codigo =:codigo LIMIT :limit";
@@ -37,8 +27,8 @@ if(!empty($codigo)){
   $resultado_cinema->bindParam(':limit', $codigo, PDO::PARAM_INT);
   $resultado_cinema->execute();
 
-  if()
-}
+
+}*/
 
 
 if(isset($_POST['cadastrar_teatro'])){
@@ -94,7 +84,7 @@ if(isset($_POST['cadastrar_teatro'])){
                 <a href="../pages/eventos.php">Eventos</a>
             </li>
             <li>
-                <a href="../pages/ingressos.php">Ingressos</a>
+                <a href="../pages/cartaz.php">Cartaz/Em Breve</a>
             </li>
             <li>
                 <a href="../pages/configuracoes.php">Configurações</a>
@@ -118,12 +108,6 @@ if(isset($_POST['cadastrar_teatro'])){
       <div id="cinema" class="col s12">
       <div class="row">
     <form class="col s12" enctype="multipart/form-data" method="POST" action="">
-      <div class="row">
-      <div class="input-field col s6">
-          <input id="codigo" name="codigo" type="text" class="validate">
-          <label for="codigo">Código</label>
-        </div>
-      </div>
       <div class="row">
         <div class="input-field col s6">
           <input id="titulo" name="titulo" type="text" class="validate">
@@ -156,11 +140,6 @@ if(isset($_POST['cadastrar_teatro'])){
       <div class="input-field col s12">
           <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
           <label for="sinopse">Sinopse</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="imagem" name="imagem" type="file" class="validate">
         </div>
       </div>
 
@@ -239,7 +218,6 @@ jQuery("input.duracao")
                 element.mask("99:99:99");  
             }  
         });
-//https://pt.stackoverflow.com/questions/42238/m%C3%A1scara-de-telefones-usando-jquery-mask-plugin
     </script>
     
 </body>
