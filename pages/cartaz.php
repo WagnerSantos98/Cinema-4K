@@ -103,7 +103,7 @@ $resultado_filmes = mysqli_query($con, $result_filmes);
         $qtd_pagina = ceil($row_pag['num_result'] / $qnt_pagina);
 
         //Limitar
-        $max_links = 2;
+        $max_links =2;
         echo "<a href = 'cartaz.php?pagina=1'>< </a>";
     for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
         if($pag_ant >= 1){
