@@ -1,10 +1,19 @@
 <?php
 include_once('../db/conexao.php');
 session_start();
-
-$result_filme = "SELECT * FROM tb_cinema WHERE id = '7'";
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_filme = "SELECT * FROM tb_cinema WHERE id = '$id'";
 $resultado_filme = mysqli_query($con, $result_filme);
 $row_filmes = mysqli_fetch_assoc($resultado_filme);
+
+
+
+if (isset($_POST['editar_filme'])) {
+  $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+  $result_f = "UPDATE tb_cinema SET titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse=$sinopse' WHERE id='$id'";
+  $resultado_f = mysqli_query($con, $result_f);
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -155,7 +164,7 @@ $row_filmes = mysqli_fetch_assoc($resultado_filme);
         </div>
       </div>
 
-      <button name="editar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
+      <button name="editar_filme" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Atualizar</button>
       
     </form>
   </div>
