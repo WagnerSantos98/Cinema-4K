@@ -2,17 +2,9 @@
 include_once('../db/conexao.php');
 session_start();
 
-if(isset($_POST['editar_cinema'])){
-$codigo = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_NUMBER_INT);
-$titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
-$genero = filter_input(INPUT_POST, 'genero', FILTER_SANITIZE_STRING);
-$duracao = filter_input(INPUT_POST, 'duracao', FILTER_SANITIZE_STRING);
-$classificacao = filter_input(INPUT_POST, 'classificacao', FILTER_SANITIZE_STRING);
-$sinopse = filter_input(INPUT_POST, 'sinopse', FILTER_SANITIZE_STRING);
-
-$result_filmes = "UPDATE tb_cinema SET titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse='$sinopse' WHERE codigo='$codigo'";
-$resultado_filmes = mysqli_query($con, $result_filmes);
-}
+$result_filme = "SELECT * FROM tb_cinema WHERE id = '1'";
+$resultado_filme = mysqli_query($con, $result_filme);
+$row_filmes = mysqli_fetch_assoc($resultado_filme);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -130,7 +122,7 @@ $resultado_filmes = mysqli_query($con, $result_filmes);
     <form class="col s12" enctype="multipart/form-data" method="POST" action="">
       <div class="row">
         <div class="input-field col s6">
-          <input id="titulo" name="titulo" type="text" class="validate">
+          <input id="titulo" name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
           <label for="titulo">Título</label>
         </div>
         <div class="input-field col s6">
