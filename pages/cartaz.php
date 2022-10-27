@@ -163,7 +163,7 @@ $resultado_filmes = mysqli_query($con, $result_filmes);
         </div>
       </div>
 
-      <button name="editar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
+      <button name="editar_cinema" class="waves-effect waves-light btn" type="submit">Atualizar</button>
       
     </form>
   </div>
