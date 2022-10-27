@@ -2,7 +2,7 @@
 include_once('../db/conexao.php');
 session_start();
 
-$result_filme = "SELECT * FROM tb_cinema WHERE id = '1'";
+$result_filme = "SELECT * FROM tb_cinema WHERE id = '7'";
 $resultado_filme = mysqli_query($con, $result_filme);
 $row_filmes = mysqli_fetch_assoc($resultado_filme);
 ?>
@@ -126,18 +126,18 @@ $row_filmes = mysqli_fetch_assoc($resultado_filme);
           <label for="titulo">Título</label>
         </div>
         <div class="input-field col s6">
-          <input id="genero" name="genero" type="text" class="validate">
+          <input id="genero" name="genero" type="text" class="validate" value="<?php echo $row_filmes['genero']; ?>">
           <label for="genero">Gênero</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="duracao"  name="duracao" type="text" class="duracao">
+          <input id="duracao"  name="duracao" type="text" class="duracao" value="<?php echo $row_filmes['duracao']; ?>">
           <label for="duracao">Duração</label>
         </div>
         <div class="input-field col s6">
-          <select id="classificacao" name="classificacao">
-            <option value="" disabled selected>Selecione...</option>
+          <select id="classificacao" name="classificacao" value="<?php echo $row_filmes['classificacao']; ?>">
+            <option disabled selected>Selecione...</option>
             <option>Livre</option>
             <option>+10</option>
             <option>+12</option>
