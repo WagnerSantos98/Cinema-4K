@@ -1,18 +1,36 @@
 <?php
 include_once('../db/conexao.php');
 session_start();
-$result_filme = "SELECT * FROM tb_cinema WHERE id = '7'";
+
+if (isset($_POST['editar'])) {
+$id = $_GET['id'];
+$result_filme = "SELECT * FROM tb_cinema WHERE id = '$id'";
 $resultado_filme = mysqli_query($con, $result_filme);
 $row_filmes = mysqli_fetch_assoc($resultado_filme);
-
-
-
-if (isset($_POST['editar_filme'])) {
-  //$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-  $result_f = "UPDATE tb_cinema SET titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse=$sinopse'";
-  $resultado_f = mysqli_query($con, $result_f);
-
 }
+
+
+/*if (isset($_POST['editar_filme'])) {
+  $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+  $codigo = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_STRING);
+  $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
+  $genero = filter_input(INPUT_POST, 'genero', FILTER_SANITIZE_STRING);
+  $duracao = filter_input(INPUT_POST, 'duracao', FILTER_SANITIZE_STRING);
+  $classificacao = filter_input(INPUT_POST, 'classificacao', FILTER_SANITIZE_STRING);
+  $sinopse = filter_input(INPUT_POST, 'sinopse', FILTER_SANITIZE_STRING);
+
+
+  $result_f = "UPDATE tb_cinema SET  titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse='$sinopse' WHERE id = '$id'";
+  $resultado_f = mysqli_query($con, $result_f);
+  if(mysqli_insert_id($con)){
+    $_SESSION['msg'] = "<p style='color:green;'>'Registro atualizado com sucesso'</p>";
+    header("Location: ../pages/cartaz.php");
+  }else{
+    $_SESSION['msg'] = "<p style='color:red;'>'Não foi possível atualizar o registro'</p>";
+    header("Location: ../pages/cartaz.php");
+  }
+
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -86,12 +104,14 @@ if (isset($_POST['editar_filme'])) {
         $resultado_cartaz = mysqli_query($con,$result_cartaz);
 
         while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
+            echo "ID: " . $row_filme['id']. "<br>";
+            echo "cCódigo: " . $row_filme['codigo']. "<br>";
             echo "Titulo: " . $row_filme['titulo'] . "<br>";
             echo "Gênero: " . $row_filme['genero'] . "<br>";
             echo "Duração: " . $row_filme['duracao'] . "<br>";
             echo "Classificação: " . $row_filme['classificacao'] . "<br>";
             echo "Sinopse: " . $row_filme['sinopse'] . "<br>";
-            echo "<a  class='waves-effect waves-light btn modal-trigger' href='#modal1'>Editar</a><br><hr>";
+            echo "<a  class='waves-effect waves-light btn modal-trigger' name='editar' href='#modal1'>Editar</a><br><hr>";
 
         }
 
@@ -129,6 +149,14 @@ if (isset($_POST['editar_filme'])) {
       <div class="row">
     <form class="col s12" enctype="multipart/form-data" method="POST" action="">
       <div class="row">
+      <div class="input-field col s6">
+          <input id="id" name="id" type="text" class="validate" name="id" value="<?php echo $row_filmes['id']; ?>">
+          <label for="id">ID</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="codigo" name="codigo" type="text" class="validate" value="<?php echo $row_filmes['codigo']; ?>">
+          <label for="codigo">Título</label>
+        </div>
         <div class="input-field col s6">
           <input id="titulo" name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
           <label for="titulo">Título</label>
