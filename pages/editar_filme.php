@@ -2,46 +2,32 @@
 include_once('../db/conexao.php');
 session_start();
 
-if(isset($_POST['cadastrar_cinema'])){
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_filme = "SELECT * FROM tb_cinema WHERE id = '$id'";
+$resultado_filme = mysqli_query($con, $result_filme);
+$row_filmes = mysqli_fetch_assoc($resultado_filme);
+
+if (isset($_POST['editar_filme'])) {
+  $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+  $codigo = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_STRING);
+  $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
+  $genero = filter_input(INPUT_POST, 'genero', FILTER_SANITIZE_STRING);
+  $duracao = filter_input(INPUT_POST, 'duracao', FILTER_SANITIZE_STRING);
+  $classificacao = filter_input(INPUT_POST, 'classificacao', FILTER_SANITIZE_STRING);
+  $sinopse = filter_input(INPUT_POST, 'sinopse', FILTER_SANITIZE_STRING);
 
 
-      $codigo = $_POST['codigo'];
-      $titulo = $_POST['titulo'];
-      $genero = $_POST['genero'];
-      $duracao = $_POST['duracao'];
-      $classificacao = $_POST['classificacao'];
-      $sinopse = $_POST['sinopse'];
-      $sql = "INSERT INTO tb_cinema(codigo,titulo,genero,duracao,classificacao,sinopse)
-      VALUES ('$codigo', '$titulo', '$genero', '$duracao', '$classificacao', '$sinopse');";
-      $sql = mysqli_query($con, $sql);
-    }
+  $result_f = "UPDATE tb_cinema SET  titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse='$sinopse' WHERE id = '$id'";
+  $resultado_f = mysqli_query($con, $result_f);
+  if(mysqli_insert_id($con)){
+    $_SESSION['msg'] = "<p style='color:green;'>'Registro atualizado com sucesso'</p>";
+    header("Location: ../pages/cartaz.php");
+  }else{
+    $_SESSION['msg'] = "<p style='color:red;'>'Não foi possível atualizar o registro'</p>";
+    header("Location: ../pages/cartaz.php");
+  }
 
-//Consulta Cinema
-/*$codigo = filter_input(INPUT_GET, 'codigo', FILTER_SANITIZE_STRING);
-if(!empty($codigo)){
-
-  $result_cinema = "SELECT* FROM tb_cinema WHERE codigo =:codigo LIMIT :limit";
-
-  $resultado_cinema = $conn->prepare($result_cinema);
-  $resultado_cinema->bindParam(':codigo', $codigo, PDO::PARAM_STR);
-  $resultado_cinema->bindParam(':limit', $codigo, PDO::PARAM_INT);
-  $resultado_cinema->execute();
-
-
-}*/
-
-
-if(isset($_POST['cadastrar_teatro'])){
-  $evento = $_POST['evento'];
-  $artista = $_POST['artista'];
-  $localizacao = $_POST['localizacao'];
-  $classi = $_POST['classi'];
-  $sql = "INSERT INTO tb_teatro(evento,artista,localizacao,classi)
-  VALUES ('$evento', '$artista', '$localizacao', '$classi');";
-  $sql = mysqli_query($con, $sql);
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -95,36 +81,33 @@ if(isset($_POST['cadastrar_teatro'])){
         
       </header>
 
-     <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <ul class="tabs">
-              <li class="tab col s3"><a href="#cinema">Cinema</a></li>
-              <li class="tab col s3"><a href="#teatro">Teatro</a></li>
-              <li class="tab col s3"><a href="#show">Show</a></li>
-            </ul>
-          </div>
-      <!--Cadastro de Filme em Cartaz-->
-      <div id="cinema" class="col s12">
-      <div class="row">
-    <form class="col s12"  method="POST" action="">
-      <div class="row">
+    <div class="container">
+    <div class="row">
+    <form class="col s12" method="POST" action="">
+    <div class="row">
+    <div class="input-field col s6">
+          <input id="id" name="id" type="hidden" class="validate">
+        </div>
         <div class="input-field col s6">
-          <input id="titulo" name="titulo" type="text" class="validate">
+          <input id="codigo" name="codigo" type="text" class="validate" value="<?php echo $row_filmes['codigo']; ?>">
+          <label for="codigo">Código</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="titulo" name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
           <label for="titulo">Título</label>
         </div>
         <div class="input-field col s6">
-          <input id="genero" name="genero" type="text" class="validate">
+          <input id="genero" name="genero" type="text" class="validate" value="<?php echo $row_filmes['genero']; ?>">
           <label for="genero">Gênero</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input id="duracao"  name="duracao" type="text" class="duracao">
+          <input id="duracao"  name="duracao" type="text" class="duracao" value="<?php echo $row_filmes['duracao']; ?>">
           <label for="duracao">Duração</label>
         </div>
         <div class="input-field col s6">
-          <select id="classificacao" name="classificacao">
+          <select id="classificacao" name="classificacao" value="<?php echo $row_filmes['classificacao']; ?>">
             <option value="" disabled selected>Selecione...</option>
             <option>Livre</option>
             <option>+10</option>
@@ -138,50 +121,12 @@ if(isset($_POST['cadastrar_teatro'])){
       </div>
       <div class="row">
       <div class="input-field col s12">
-          <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
+          <textarea id="sinopse" name="sinopse" class="materialize-textarea" value="<?php echo $row_filmes['sinopse']; ?>"></textarea>
           <label for="sinopse">Sinopse</label>
         </div>
       </div>
 
-      <button name="cadastrar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
-      
-    </form>
-  </div>
-        
-      </div>
-      <!--Cadastro de Teatro em Cartaz-->
-      <div id="teatro" class="col s12">
-      <div class="row">
-    <form class="col s12" method="POST" action="">
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="evento" name="evento" type="text" class="validate">
-          <label for="evento">Evento</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="artista" name="artista" type="text" class="validate">
-          <label for="artista">Artista</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="localizacao" name="localizacao" type="text" class="validate">
-          <label for="localizacao">Local</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="classi" name="classi" type="text" class="validate">
-          <label for="classi">Classificação</label>
-        </div>
-      </div>
-      
-
-      <button name="cadastrar_teatro" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
-      
-    </form>
-  </div>
-      </div>
-      <div id="show" class="col s12">Test 3</div>
-      </div>
+      <button name="editar_filme" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Atualizar</button>
     </div>
 
     <script>
