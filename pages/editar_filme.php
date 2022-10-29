@@ -2,11 +2,14 @@
 include_once('../db/conexao.php');
 session_start();
 
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$result_filme = "SELECT * FROM tb_cinema WHERE id = '$id'";
+
+//Retorna o campos com valores do banco de dados
+$id_filme = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_filme = "SELECT * FROM tb_cinema WHERE id = '$id_filme'";
 $resultado_filme = mysqli_query($con, $result_filme);
 $row_filmes = mysqli_fetch_assoc($resultado_filme);
 
+//Alterar os dados dos filme
 if (isset($_POST['editar_filme'])) {
   $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
   $codigo = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_STRING);
@@ -17,17 +20,21 @@ if (isset($_POST['editar_filme'])) {
   $sinopse = filter_input(INPUT_POST, 'sinopse', FILTER_SANITIZE_STRING);
 
 
-  $result_f = "UPDATE tb_cinema SET  titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse='$sinopse' WHERE id = '$id'";
-  $resultado_f = mysqli_query($con, $result_f);
-  if(mysqli_insert_id($con)){
-    $_SESSION['msg'] = "<p style='color:green;'>'Registro atualizado com sucesso'</p>";
+  $sql = "UPDATE tb_cinema SET codigo='$codigo',  titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse='$sinopse' WHERE id = '$id'";
+  $sql = mysqli_query($con, $sql);
+  if(mysqli_affected_rows($con)){
+    $_SESSION['msg'] = "<p style='color:green;'>Registro atualizado com sucesso</p>";
     header("Location: ../pages/cartaz.php");
   }else{
-    $_SESSION['msg'] = "<p style='color:red;'>'Não foi possível atualizar o registro'</p>";
+    $_SESSION['msg'] = "<p style='color:red;'>Não foi possível atualizar o registro</p>";
     header("Location: ../pages/cartaz.php");
   }
 
 }
+
+ 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -84,9 +91,10 @@ if (isset($_POST['editar_filme'])) {
     <div class="container">
     <div class="row">
     <form class="col s12" method="POST" action="">
+    
     <div class="row">
     <div class="input-field col s6">
-          <input id="id" name="id" type="hidden" class="validate">
+          <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_filmes['id']; ?>">
         </div>
         <div class="input-field col s6">
           <input id="codigo" name="codigo" type="text" class="validate" value="<?php echo $row_filmes['codigo']; ?>">
@@ -108,7 +116,7 @@ if (isset($_POST['editar_filme'])) {
         </div>
         <div class="input-field col s6">
           <select id="classificacao" name="classificacao" value="<?php echo $row_filmes['classificacao']; ?>">
-            <option value="" disabled selected>Selecione...</option>
+            <option disabled selected>Selecione...</option>
             <option>Livre</option>
             <option>+10</option>
             <option>+12</option>
@@ -130,15 +138,8 @@ if (isset($_POST['editar_filme'])) {
     </div>
 
     <script>
-      //Animação Tabs
-    document.addEventListener("DOMContentLoaded", function(){
-	    const tab = document.querySelector('.tabs');
-	    M.Tabs.init(tab, {
-	  swipeable: true,
-	  duration: 300
-	});
-})
 
+//Select
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems);

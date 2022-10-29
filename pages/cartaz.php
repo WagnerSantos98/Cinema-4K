@@ -2,7 +2,7 @@
 include_once('../db/conexao.php');
 session_start();
 
-
+//Listar itens
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $result_filme = "SELECT * FROM tb_cinema WHERE id = '$id'";
 $resultado_filme = mysqli_query($con, $result_filme);
@@ -81,14 +81,14 @@ $row_filmes = mysqli_fetch_assoc($resultado_filme);
 
         while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
             echo "ID: " . $row_filme['id']. "<br>";
-            echo "cCódigo: " . $row_filme['codigo']. "<br>";
+            echo "Código: " . $row_filme['codigo']. "<br>";
             echo "Titulo: " . $row_filme['titulo'] . "<br>";
             echo "Gênero: " . $row_filme['genero'] . "<br>";
             echo "Duração: " . $row_filme['duracao'] . "<br>";
             echo "Classificação: " . $row_filme['classificacao'] . "<br>";
             echo "Sinopse: " . $row_filme['sinopse'] . "<br>";
-            echo "<a class='waves-effect waves-light btn' href='../pages/editar_filme.php?id=" . $row_filme['id'] . "'>Editar</a><br><hr>";
-            //echo "<a  class='waves-effect waves-light btn modal-trigger' name='editar' href='#modal1'>Editar</a><br><hr>";
+            echo "<a class='waves-effect waves-light btn' href='../pages/editar_filme.php?id=" . $row_filme['id'] . "'>Editar</a>";
+            echo "<a  class='waves-effect waves-light btn modal-trigger' name='editar' href='#modal1'>Excluir</a><hr>";
 
         }
 
@@ -117,75 +117,5 @@ $row_filmes = mysqli_fetch_assoc($resultado_filme);
         echo "<a href = 'cartaz.php?pagina=$qtd_pagina'> ></a>";
         ?>
      </div>
-
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-  <div id="cinema" class="col s12">
-      <div class="row">
-    <form class="col s12" method="POST" action="">
-      <div class="row">
-      <div class="input-field col s6">
-          <input id="id" name="id" type="text" class="validate" name="id" value="<?php echo $row_filmes['id']; ?>">
-          <label for="id">ID</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="codigo" name="codigo" type="text" class="validate" value="<?php echo $row_filmes['codigo']; ?>">
-          <label for="codigo">Título</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="titulo" name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
-          <label for="titulo">Título</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="genero" name="genero" type="text" class="validate" value="<?php echo $row_filmes['genero']; ?>">
-          <label for="genero">Gênero</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="duracao"  name="duracao" type="text" class="duracao" value="<?php echo $row_filmes['duracao']; ?>">
-          <label for="duracao">Duração</label>
-        </div>
-        <div class="input-field col s6">
-          <select id="classificacao" name="classificacao" value="<?php echo $row_filmes['classificacao']; ?>">
-            <option disabled selected>Selecione...</option>
-            <option>Livre</option>
-            <option>+10</option>
-            <option>+12</option>
-            <option>+14</option>
-            <option>+16</option>
-            <option>+18</option>
-          </select>
-        <label>Classificação</label>
-        </div>
-      </div>
-      <div class="row">
-      <div class="input-field col s12">
-          <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
-          <label for="sinopse">Sinopse</label>
-        </div>
-      </div>
-
-      <button name="editar_filme" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Atualizar</button>
-      
-    </form>
-  </div>
-  </div>    
-</div>
-
-<script>
-     document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
-  });
-
-</script>
 </body>
 </html>
