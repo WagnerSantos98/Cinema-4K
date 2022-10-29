@@ -7,6 +7,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $result_filme = "SELECT * FROM tb_cinema WHERE id = '$id'";
 $resultado_filme = mysqli_query($con, $result_filme);
 $row_filmes = mysqli_fetch_assoc($resultado_filme);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -88,7 +89,7 @@ $row_filmes = mysqli_fetch_assoc($resultado_filme);
             echo "Classificação: " . $row_filme['classificacao'] . "<br>";
             echo "Sinopse: " . $row_filme['sinopse'] . "<br>";
             echo "<a class='waves-effect waves-light btn' href='../pages/editar_filme.php?id=" . $row_filme['id'] . "'>Editar</a>";
-            echo "<a  class='waves-effect waves-light btn modal-trigger' name='editar' href='#modal1'>Excluir</a><hr>";
+            echo "<a class='waves-effect waves-light btn modal-trigger' href='../pages/excluir.php?id=" . $row_filme['id'] . "'>Excluir</a><hr>";
 
         }
 
@@ -117,5 +118,16 @@ $row_filmes = mysqli_fetch_assoc($resultado_filme);
         echo "<a href = 'cartaz.php?pagina=$qtd_pagina'> ></a>";
         ?>
      </div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+
+  
+</script>
 </body>
 </html>

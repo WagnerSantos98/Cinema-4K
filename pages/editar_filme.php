@@ -32,9 +32,6 @@ if (isset($_POST['editar_filme'])) {
 
 }
 
- 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

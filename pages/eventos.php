@@ -109,6 +109,10 @@ if(isset($_POST['cadastrar_teatro'])){
       <div class="row">
     <form class="col s12"  method="POST" action="">
       <div class="row">
+      <div class="input-field col s6">
+          <input id="codigo" name="codigo" type="text" class="validate">
+          <label for="codigo">Código</label>
+        </div>
         <div class="input-field col s6">
           <input id="titulo" name="titulo" type="text" class="validate">
           <label for="titulo">Título</label>
