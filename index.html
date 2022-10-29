@@ -103,7 +103,7 @@
             position: relative;
             margin-left: auto;
         }
-        .boas-vindas .container .container-body .container-text-select .container-select .container-text{
+        .boas-vindas .container .container-body .container-text-select .container-select select{
             width: 100%;
             background-color: #fff;
             border: 1px solid #e0e0e0;
@@ -111,8 +111,8 @@
             padding-right: 16px;
             margin-top: 11px;
         }
-        .container-select .container-text{
-            background: #101010;
+        .container-select select{
+            background: #fff;
             border-radius: 8px;
             width: 277px;
             height: 58px;
@@ -142,22 +142,12 @@
         input{
             outline: none;
         }
-        .boas-vindas .container .container-body .container-text-select .container-select ul{
+        .boas-vindas .container .container-body .container-text-select .container-select select{
             background-color: #fff;
             top: 50%;
         }
-        .container-select ul{
-            background-color: #101010;
-            position: absolute;
-            top: 55px;
-            left: 0;
-            width: 100%;
-            border-radius: 0 0 8px 8px;
-            height: 0;
-            overflow-y: scroll;
-            transition: all .5s;
-        }
-        ul{
+
+        select{
             display: block;
             list-style-type: disc;
             margin-block-start: 1em;
@@ -165,13 +155,6 @@
             margin-inline-start: 0px;
             margin-inline-end: 0px;
             padding-inline-start: 40px;
-        }
-
-        /*Animation Select*/
-        .container-select.active ul{
-            height: 231px;
-            z-index: 90;
-            transition: all .5s;
         }
         .boas-vindas .container .container-body .container-text-select .btn-acessar{
             width: 100%;
@@ -233,28 +216,13 @@
                         <span>Selecione o que deseja</span>
                         <div class="container-select" id="select-novo">
                             <div class="container-text">
-                                <img src="" alt="">
-                                <span>Cinema</span>
-                                <img src="assests/img/chevron-down-solid.svg" alt="">
-                                <input type="hidden" name="cod_praca" value="CIN">
+                                <select name="" id="" class="scroll">
+                                    <option value="">Cinema</option>
+                                    <option value="">Show</option>
+                                    <option value="">Teatro</option>
+                                </select>
+                                
                             </div>
-                            <ul class="scrool">
-                               <a href="">
-                                <li data-id="CIN">
-                                    <span>Cinema</span>
-                                </li>
-                               </a>
-                               <a href="">
-                                <li data-id="SHO">
-                                    <span>Show</span>
-                                </li>
-                               </a>
-                               <a href="">
-                                <li data-id="TEA">
-                                    <span>Teatro</span>
-                                </li>
-                               </a> 
-                            </ul>
                             <a href="" class="btn-acessar">Acessar</a>
                         </div>
                     </div>
@@ -268,5 +236,9 @@
     </div>
 
     <!--Footer-->
+
+
+    <!--Script Select-->
+
 </body>
 </html>
