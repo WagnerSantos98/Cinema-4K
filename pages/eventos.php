@@ -4,16 +4,16 @@ session_start();
 
 //Cadastro de Filme
 if(isset($_POST['cadastrar_cinema'])){
-      $codigo = $_POST['codigo'];
-      $titulo = $_POST['titulo'];
-      $genero = $_POST['genero'];
-      $duracao = $_POST['duracao'];
-      $classificacao = $_POST['classificacao'];
-      $sinopse = $_POST['sinopse'];
-      $sql = "INSERT INTO tb_cinema(codigo,titulo,genero,duracao,classificacao,sinopse)
-      VALUES ('$codigo', '$titulo', '$genero', '$duracao', '$classificacao', '$sinopse');";
-      $sql = mysqli_query($con, $sql);
-    }
+  $codigo = $_POST['codigo'];
+  $titulo = $_POST['titulo'];
+  $genero = $_POST['genero'];
+  $duracao = $_POST['duracao'];
+  $classificacao = $_POST['classificacao'];
+  $sinopse = $_POST['sinopse'];
+  $sql_cinema = "INSERT INTO tb_cinema(codigo,titulo,genero,duracao,classificacao,sinopse)
+  VALUES ('$codigo', '$titulo', '$genero', '$duracao', '$classificacao', '$sinopse');";
+  $sql_cinemas = mysqli_query($con, $sql_cinema);
+}
 
 //Cadastro de Peça de Teatro
 if(isset($_POST['cadastrar_teatro'])){
@@ -21,9 +21,9 @@ if(isset($_POST['cadastrar_teatro'])){
   $artista = $_POST['artista'];
   $localizacao = $_POST['localizacao'];
   $classi = $_POST['classi'];
-  $sql = "INSERT INTO tb_teatro(evento,artista,localizacao,classi)
+  $sql_teatro = "INSERT INTO tb_teatro(evento,artista,localizacao,classi)
   VALUES ('$evento', '$artista', '$localizacao', '$classi');";
-  $sql = mysqli_query($con, $sql);
+  $sql_teatros = mysqli_query($con, $sql_teatro);
 }
 
 
