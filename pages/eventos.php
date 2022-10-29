@@ -15,16 +15,6 @@ if(isset($_POST['cadastrar_cinema'])){
   $sql_cinemas = mysqli_query($con, $sql_cinema);
 }
 
-//Cadastro de Peça de Teatro
-if(isset($_POST['cadastrar_teatro'])){
-  $evento = $_POST['evento'];
-  $artista = $_POST['artista'];
-  $localizacao = $_POST['localizacao'];
-  $classi = $_POST['classi'];
-  $sql_teatro = "INSERT INTO tb_teatro(evento,artista,localizacao,classi)
-  VALUES ('$evento', '$artista', '$localizacao', '$classi');";
-  $sql_teatros = mysqli_query($con, $sql_teatro);
-}
 
 
 ?>
@@ -141,7 +131,7 @@ if(isset($_POST['cadastrar_teatro'])){
       <!--Cadastro de Teatro em Cartaz-->
       <div id="teatro" class="col s12">
       <div class="row">
-    <form class="col s12" method="POST" action="">
+    <form class="col s12" method="POST" action="../pages/cadastro.php">
       <div class="row">
         <div class="input-field col s6">
           <input id="evento" name="evento" type="text" class="validate">
