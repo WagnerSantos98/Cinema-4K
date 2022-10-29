@@ -2,9 +2,8 @@
 include_once('../db/conexao.php');
 session_start();
 
+//Cadastro de Filme
 if(isset($_POST['cadastrar_cinema'])){
-
-
       $codigo = $_POST['codigo'];
       $titulo = $_POST['titulo'];
       $genero = $_POST['genero'];
@@ -16,21 +15,7 @@ if(isset($_POST['cadastrar_cinema'])){
       $sql = mysqli_query($con, $sql);
     }
 
-//Consulta Cinema
-/*$codigo = filter_input(INPUT_GET, 'codigo', FILTER_SANITIZE_STRING);
-if(!empty($codigo)){
-
-  $result_cinema = "SELECT* FROM tb_cinema WHERE codigo =:codigo LIMIT :limit";
-
-  $resultado_cinema = $conn->prepare($result_cinema);
-  $resultado_cinema->bindParam(':codigo', $codigo, PDO::PARAM_STR);
-  $resultado_cinema->bindParam(':limit', $codigo, PDO::PARAM_INT);
-  $resultado_cinema->execute();
-
-
-}*/
-
-
+//Cadastro de Peça de Teatro
 if(isset($_POST['cadastrar_teatro'])){
   $evento = $_POST['evento'];
   $artista = $_POST['artista'];
