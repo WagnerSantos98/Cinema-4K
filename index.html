@@ -7,6 +7,11 @@
     <title>Site - Principal</title>
 
     <style>
+        
+        *{
+            box-sizing: border-box;
+            outline: none!important;
+        }
         body{
             font-size: 62.5%;
             position: relative;
@@ -36,6 +41,162 @@
         header .container .container-toogle{
             height: 100%;
             display: flex;
+            align-items: center;
+        }
+        .container-toogle{
+            position: relative;
+        }
+        a{
+            text-decoration: none;
+        }
+        .boas-vindas{
+            max-width: 1901px;
+            height: 100vh;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+        }
+        .boas-vindas .container{
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 30;
+            width: 488px;
+            margin: 0;
+        }
+        .boas-vindas .container .container-header{
+            height: 148px;
+            background: #262d31;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            background-image: url();
+            border-radius: 8px 8px 0 0;
+        }
+        .boas-vindas .container .container-body{
+            border-radius: 0 0 8px 8px;
+            padding: 41px 71px 62px 72px;
+            background-color: #fff;
+        }
+        .boas-vindas .container .container-body .container-text-select h1{
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 140%;
+            color: #262d31;
+            margin-bottom: 34px;
+        }
+        .boas-vindas .container .container-body .container-text-select span{
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 140%;
+            color: #828282;
+        }
+        .boas-vindas .container .container-body .container-text-select .container-select{
+            margin-bottom: 32px;
+            width: 100%;
+        }
+        .container-select{
+            position: relative;
+            margin-left: auto;
+        }
+        .boas-vindas .container .container-body .container-text-select .container-select .container-text{
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            padding-left: 32px;
+            padding-right: 16px;
+            margin-top: 11px;
+        }
+        .container-select .container-text{
+            background: #101010;
+            border-radius: 8px;
+            width: 277px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            padding-left: 35px;
+            padding-right: 40px;
+            position: relative;
+            cursor: pointer;
+        }
+        .boas-vindas .container .container-body .container-text-select .container-select .container-text span {
+            margin-left: 16px;
+        }
+        .boas-vindas .container .container-body .container-text-select .container-select .container-text img{
+            right: 16px;
+        }
+        .container-select .container-text img{
+            position: absolute;
+            top: 50%;
+            right: 40px;
+            width: 20px;
+            transform: translateY(-50%);
+        }
+        img{
+            outline: none;
+        }
+        input{
+            outline: none;
+        }
+        .boas-vindas .container .container-body .container-text-select .container-select ul{
+            background-color: #fff;
+            top: 50%;
+        }
+        .container-select ul{
+            background-color: #101010;
+            position: absolute;
+            top: 55px;
+            left: 0;
+            width: 100%;
+            border-radius: 0 0 8px 8px;
+            height: 0;
+            overflow-y: scroll;
+            transition: all .5s;
+        }
+        ul{
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+        }
+
+        /*Animation Select*/
+        .container-select.active ul{
+            height: 231px;
+            z-index: 90;
+            transition: all .5s;
+        }
+        .boas-vindas .container .container-body .container-text-select .btn-acessar{
+            width: 100%;
+        }
+        .btn-acessar{
+            margin-top: 25px;
+            background-color: red;
+            border-radius: 6px;
+            border: none;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 140%;
+            letter-spacing: .02em;
+            color: #fff;
+            width: 269px;
+            height: 51px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        section{
+            display: block;
         }
 
         @media (max-width: 1366px){
@@ -43,6 +204,7 @@
                 width: 90%;
             }
         }
+        
     </style>
 </head>
 <body>
@@ -63,6 +225,7 @@
                 <div class="container-header">
                     <img src="" alt="">
                     <img src="" alt="">
+                    
                 </div>
                 <div class="container-body">
                     <div class="container-text-select">
@@ -72,7 +235,26 @@
                             <div class="container-text">
                                 <img src="" alt="">
                                 <span>Cinema</span>
+                                <img src="assests/img/chevron-down-solid.svg" alt="">
+                                <input type="hidden" name="cod_praca" value="CIN">
                             </div>
+                            <ul class="scrool">
+                               <a href="">
+                                <li data-id="CIN">
+                                    <span>Cinema</span>
+                                </li>
+                               </a>
+                               <a href="">
+                                <li data-id="SHO">
+                                    <span>Show</span>
+                                </li>
+                               </a>
+                               <a href="">
+                                <li data-id="TEA">
+                                    <span>Teatro</span>
+                                </li>
+                               </a> 
+                            </ul>
                             <a href="" class="btn-acessar">Acessar</a>
                         </div>
                     </div>
