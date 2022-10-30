@@ -64,7 +64,9 @@ session_start();
         padding: 15px;
     }
 
-    .container{
+    .container .exibicao{
+        border-radius: 8px;
+        border: 3px solid #333;
         
     }
     /*Back to top button*/
@@ -120,20 +122,37 @@ session_start();
     <div id="cinema" class="block">
         <h2>Cinema</h2><br>
     <!--Container Cinema-->
-    <div class="container">    
-    <?php
-    $result_cartaz =  "SELECT * FROM tb_cinema";
-    $resultado_cartaz = mysqli_query($con,$result_cartaz);
+    <div class="container">
+        <div class="exibicao"> 
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a class="active" href="#cartaz">Em Cartaz</a></li>
+                        <li class="tab col s3"><a href="#breve">Em Breve</a></li>
+                        
+                    </ul>
+                </div>
+            <div id="cartaz" class="col s12">
+            <?php
+                    $result_cartaz =  "SELECT * FROM tb_cinema";
+                    $resultado_cartaz = mysqli_query($con,$result_cartaz);
 
-    while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
-        echo "Título: " . $row_filme['titulo'] . "<br>";
-        echo "Gênero: " . $row_filme['genero'] . "<br>";
-        echo "Duração: " . $row_filme['duracao'] . "<br>";
-        echo "Classificação: " . $row_filme['classificacao'] . "<br>";
-        echo "Sinopse: " . $row_filme['sinopse'] . "<br><br><hr>";
-    }
-    ?> 
-</div>
+                    while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
+                        echo "Título: " . $row_filme['titulo'] . "<br>";
+                        echo "Gênero: " . $row_filme['genero'] . "<br>";
+                        echo "Duração: " . $row_filme['duracao'] . "<br>";
+                        echo "Classificação: " . $row_filme['classificacao'] . "<br>";
+                        echo "Sinopse: " . $row_filme['sinopse'] . "<br><br><hr>";
+                    }
+                    ?>
+            </div>
+            <div id="breve" class="col s12">
+                
+            </div>
+            </div>   
+            
+        </div>
+    </div>
 
     </div>
     <div id="show" class="block">
@@ -195,6 +214,15 @@ session_start();
         e.preventDefault();
         $('html, body').animate({scrollTop:0},'500');
     });
+
+    //Animation Tabs
+    document.addEventListener("DOMContentLoaded", function(){
+	    const tab = document.querySelector('.tabs');
+	    M.Tabs.init(tab, {
+	  swipeable: true,
+	  duration: 300
+	});
+})
 </script>
 </body>
 </html>
