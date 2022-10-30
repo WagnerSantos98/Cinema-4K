@@ -1,9 +1,20 @@
+<?php
+include_once('../db/conexao.php');
+session_start();
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <title>Home Page</title>
 <style>
@@ -32,6 +43,7 @@
         position: fixed;
         width: 100%;
         top: 0px;
+        z-index: 90;
     }
     .navbar li{
         display: inline-block;
@@ -47,7 +59,14 @@
     .navbar li #login{
         color: black;  
     }
+    .navbar a{
+        display: inline-block;
+        padding: 15px;
+    }
 
+    .container{
+        
+    }
     /*Back to top button*/
     #button{
         display: inline-block;
@@ -99,7 +118,23 @@
         <h2>Home</h2>
     </div>
     <div id="cinema" class="block">
-        <h2>Cinema</h2>
+        <h2>Cinema</h2><br>
+    <!--Container Cinema-->
+    <div class="container">    
+    <?php
+    $result_cartaz =  "SELECT * FROM tb_cinema";
+    $resultado_cartaz = mysqli_query($con,$result_cartaz);
+
+    while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
+        echo "Título: " . $row_filme['titulo'] . "<br>";
+        echo "Gênero: " . $row_filme['genero'] . "<br>";
+        echo "Duração: " . $row_filme['duracao'] . "<br>";
+        echo "Classificação: " . $row_filme['classificacao'] . "<br>";
+        echo "Sinopse: " . $row_filme['sinopse'] . "<br><br><hr>";
+    }
+    ?> 
+</div>
+
     </div>
     <div id="show" class="block">
         <h2>Show</h2>

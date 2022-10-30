@@ -205,9 +205,9 @@
                             <div class="container-text">
                                 <select name="" id="" class="scroll" onchange="window.location.href=this.value;">
                                     <option selected disabled>Selecione...</option>
-                                    <option value="./content/homepage.html">Cinema</option>
-                                    <option value="./content/homepage.html">Show</option>
-                                    <option value="./content/homepage.html">Teatro</option>
+                                    <option value="./content/homepage.php">Cinema</option>
+                                    <option value="./content/homepage.php">Show</option>
+                                    <option value="./content/homepage.php">Teatro</option>
                                 </select>
                                 
                             </div>
