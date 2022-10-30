@@ -56,3 +56,21 @@ if(!empty($id)){
 	$_SESSION['msg'] = "<p style='color:red;'>Necessário selecionar uma peça de teatro.</p>";
 	header("Location: ../pages/cartaz.php");
 }
+
+//Exclusão de Usuario
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+if(!empty($id)){
+	$sql = "DELETE FROM tb_usuario WHERE id = '$id'";
+	$sql = mysqli_query($con, $sql);
+	if(mysqli_affected_rows($con)){
+		$_SESSION['msg'] = "<p style='color:green;'>Usuário excluído com sucesso.</p>";
+		header("Location: ../pages/configuracoes.php");
+	}else{
+		
+		$_SESSION['msg'] = "<p style='color:red;'>Erro ao excluir o usuário.</p>";
+		header("Location: ../pages/configuracoes.php");
+	}
+}else{	
+	$_SESSION['msg'] = "<p style='color:red;'>Necessário selecionar um usuário.</p>";
+	header("Location: ../pages/configuracoes.php");
+}

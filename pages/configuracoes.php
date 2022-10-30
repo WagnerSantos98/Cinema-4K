@@ -31,8 +31,6 @@ if (isset($_POST['cadastrar_usuario'])) {
 		}
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -140,76 +138,64 @@ if (isset($_POST['cadastrar_usuario'])) {
         </div>
 
         <div id="control_usuario" class="col s12">
+          <div class="container">
+            <h2>Usuários Cadastrados</h2>
+          <?php
+         if(isset($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+         }
+
+        $pagina_atual = filter_input(INPUT_GET,'pagina', FILTER_SANITIZE_NUMBER_INT);
+
+        $pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
+
+        //Quantidade de itens por página
+        $qnt_pagina = 2;
+
+        $inicio = ($qnt_pagina * $pagina) - $qnt_pagina;
+
+        $result_cartaz =  "SELECT * FROM tb_usuario LIMIT $inicio, $qnt_pagina";
+        $resultado_cartaz = mysqli_query($con,$result_cartaz);
+
+        while($row_usuario = mysqli_fetch_assoc($resultado_cartaz)){
+            echo "Username: " . $row_usuario['username']. "<br>";
+            echo "Tipo de Acesso: " . $row_usuario['tipo_acesso'] . "<br>";
+            echo "Email: " . $row_usuario['email_user'] . "<br>";
+            echo "<a class='waves-effect waves-light btn' href='../pages/editar_usuario.php?id=" . $row_usuario['id'] . "'>Editar</a>";
+            echo "<a class='waves-effect waves-light btn modal-trigger' href='../pages/excluir.php?id=" . $row_usuario['id'] . "'>Excluir</a><hr>";
+
+        }
+
+        //Paginação
+        $result_pag = "SELECT COUNT(codigo) AS num_result FROM tb_usuario";
+        $resultado_pag = mysqli_query($con,$result_pag);
+        $row_pag = mysqli_fetch_assoc($resultado_pag);
         
-       
-	<!--<input type="text" id="search" placeholder="Type to search..." />-->
-  <div class="container">
-        <table cellpadding="1" cellspacing="1" class="table table-hover" id="myTable">
-          <thead>
-            <tr>
-              <th>nombre</th>
-              <th>apellido</th>
-              <th>edad</th>
-              <th>mail</th>
-            </tr>
-          </thead>
-          <tbody >
-           
-           
-            
-            	<td>Joshua</td>
-            	<td>Obrien</td>
-            	<td>69</td>
-            	<td>varius.et@consequat.ca</td>
-            </tr>
-            <tr>
-            	<td>Clark</td>
-            	<td>Evans</td>
-            	<td>37</td>
-            	<td>Integer.in@odioauctorvitae.co.uk</td>
-            </tr>
-            <tr>
-            	<td>Andrew</td>
-            	<td>Mccullough</td>
-            	<td>70</td>
-            	<td>eu.nibh.vulputate@magna.co.uk</td>
-            </tr>
-            <tr>
-            	<td>Nolan</td>
-            	<td>Thompson</td>
-            	<td>44</td>
-            	<td>dolor.sit@quisurnaNunc.net</td>
-            </tr>
-            </tbody>
-          </table>
-</div>
-          <div class="col s12 m7 l6 pagination">
-            <div id="pagination-long"></div>
-            <div id="pagination-short"></div>   
-        </div>
-</div>
-      <div class="col s12 m2 l2">
-        More info in <a href="https://github.com/pinzon1992/materialize_table_pagination">GITHUB</a>
-      </div>
-    </div>
-            
-            
-            
-            </tbody>
-          </table>
-          <div class="col-md-12 center text-center">
-	    <span class="left" id="total_reg"></span>
-            <ul class="pagination pager" id="myPager"></ul>
+        $qtd_pagina = ceil($row_pag['num_result'] / $qnt_pagina);
+
+        //Limitar
+        $max_links = 2;
+        echo "<a href = 'cartaz.php?pagina=1'>< </a>";
+    for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
+        if($pag_ant >= 1){
+            echo "<a href = 'cartaz.php?pagina=$pag_ant'>$pag_ant</a>";
+        }
+    }
+    echo "$pagina";
+
+    for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
+        if($pag_dep <= $qtd_pagina){
+            echo "<a href = 'cartaz.php?pagina=$pag_dep'>$pag_dep</a>";
+        }
+    }
+        echo "<a href = 'cartaz.php?pagina=$qtd_pagina'> ></a>";
+        ?>
           </div>
-      </div>
+          
+        </div>
       
-    </div>
-
-        </div>
-        
-        </div>
-
-      </div>
+ 
 
     <script>
 //Animação Tabs

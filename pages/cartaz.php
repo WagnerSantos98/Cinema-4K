@@ -2,12 +2,6 @@
 include_once('../db/conexao.php');
 session_start();
 
-//Listar itens
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$result_filme = "SELECT * FROM tb_cinema WHERE id = '$id'";
-$resultado_filme = mysqli_query($con, $result_filme);
-$row_filmes = mysqli_fetch_assoc($resultado_filme);
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
