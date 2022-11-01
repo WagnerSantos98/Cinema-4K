@@ -2,7 +2,6 @@
 include_once('../db/conexao.php');
 session_start();
 
-
 //Retorna o campos com valores do banco de dados
 $id_usuario = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $result_usuario = "SELECT * FROM tb_usuario WHERE id = '$id_usuario'";
@@ -16,8 +15,6 @@ if (isset($_POST['atualizar_usuario'])) {
   $tipo_acesso = filter_input(INPUT_POST, 'tipo_acesso', FILTER_SANITIZE_STRING);
   $email_user = filter_input(INPUT_POST, 'email_user', FILTER_SANITIZE_EMAIL);
   $senha = filter_input(INPUT_POST, md5($_POST['senha'], FILTER_SANITIZE_STRING));
-
-
 
   $sql = "UPDATE tb_usuario SET username='$username',  tipo_acesso='$tipo_acesso', email_user='$email_user', senha='$senha' WHERE id = '$id'";
   $sql = mysqli_query($con, $sql);
