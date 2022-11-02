@@ -12,15 +12,20 @@ $row_filmes = mysqli_fetch_assoc($resultado_filme);
 //Alterar os dados dos filme
 if (isset($_POST['editar_filme'])) {
   $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-  $codigo = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_STRING);
   $titulo = filter_input(INPUT_POST, 'titulo', FILTER_SANITIZE_STRING);
   $genero = filter_input(INPUT_POST, 'genero', FILTER_SANITIZE_STRING);
   $duracao = filter_input(INPUT_POST, 'duracao', FILTER_SANITIZE_STRING);
   $classificacao = filter_input(INPUT_POST, 'classificacao', FILTER_SANITIZE_STRING);
   $sinopse = filter_input(INPUT_POST, 'sinopse', FILTER_SANITIZE_STRING);
+  $elenco = filter_input(INPUT_POST, 'elenco', FILTER_SANITIZE_STRING);
+  $diretor = filter_input(INPUT_POST, 'diretor', FILTER_SANITIZE_STRING);
+  $data_estreia = filter_input(INPUT_POST, 'data_estreia', FILTER_SANITIZE_STRING);
+  $distribuidora = filter_input(INPUT_POST, 'distribuidora', FILTER_SANITIZE_STRING);
+  $trailer = filter_input(INPUT_POST, 'trailer', FILTER_SANITIZE_STRING);
 
 
-  $sql = "UPDATE tb_cinema SET codigo='$codigo',  titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse='$sinopse' WHERE id = '$id'";
+  $sql = "UPDATE tb_cinema SET titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse='$sinopse', elenco='$elenco',
+                               diretor='$diretor', data_estreia='$data_estreia', distribuidora='$distribuidora', trailer='$trailer' WHERE id = '$id'";
   $sql = mysqli_query($con, $sql);
   if(mysqli_affected_rows($con)){
     $_SESSION['msg'] = "<p style='color:green;'>Registro atualizado com sucesso</p>";
@@ -52,6 +57,29 @@ if (isset($_POST['editar_filme'])) {
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="../assests/js/app.js"></script>
+    <style>
+      form{
+        height: 980px;
+      }
+      .container{
+    overflow-y: scroll;
+  }
+  .container::-webkit-scrollbar-track{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+	border-radius:0;
+	background-color: #D0D4CE;
+}
+.container::-webkit-scrollbar{
+  width: 10px;
+	background-color: #D0D4CE;
+}
+
+.container::-webkit-scrollbar-thumb{
+	border-radius:15px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #71806B;
+}
+    </style>
             
     <title>Painel Sistema Integrado</title> 
 </head> 
@@ -94,10 +122,6 @@ if (isset($_POST['editar_filme'])) {
           <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_filmes['id']; ?>">
         </div>
         <div class="input-field col s6">
-          <input id="codigo" name="codigo" type="text" class="validate" value="<?php echo $row_filmes['codigo']; ?>">
-          <label for="codigo">Código</label>
-        </div>
-        <div class="input-field col s6">
           <input id="titulo" name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
           <label for="titulo">Título</label>
         </div>
@@ -128,6 +152,32 @@ if (isset($_POST['editar_filme'])) {
       <div class="input-field col s12">
           <textarea id="sinopse" name="sinopse" class="materialize-textarea" value="<?php echo $row_filmes['sinopse']; ?>"></textarea>
           <label for="sinopse">Sinopse</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="elenco" name="elenco" type="text" class="validate" value="<?php echo $row_filmes['elenco']; ?>">
+          <label for="elenco">Elenco</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="diretor" name="diretor" type="text" class="validate" value="<?php echo $row_filmes['diretor']; ?>">
+          <label for="diretor">Diretor</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="data_estreia" name="data_estreia" type="text" class="validate" value="<?php echo $row_filmes['data_estreia']; ?>">
+          <label for="data_estreia">Data de Estreia</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="distribuidora" name="distribuidora" type="text" class="validate" value="<?php echo $row_filmes['distribuidora']; ?>">
+          <label for="distribuidora">Distribuidora</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="trailer" name="trailer" type="text" class="validate" value="<?php echo $row_filmes['trailer']; ?>">
+          <label for="trailer">Trailer</label>
         </div>
       </div>
 

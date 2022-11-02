@@ -76,19 +76,23 @@ session_start();
 
         while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
             echo "ID: " . $row_filme['id']. "<br>";
-            echo "Código: " . $row_filme['codigo']. "<br>";
             echo "Titulo: " . $row_filme['titulo'] . "<br>";
             echo "Gênero: " . $row_filme['genero'] . "<br>";
             echo "Duração: " . $row_filme['duracao'] . "<br>";
             echo "Classificação: " . $row_filme['classificacao'] . "<br>";
             echo "Sinopse: " . $row_filme['sinopse'] . "<br>";
+            echo "Elenco: " . $row_filme['elenco'] . "<br>";
+            echo "Diretor: " . $row_filme['diretor'] . "<br>";
+            echo "Data de Estreia: " . $row_filme['data_estreia'] . "<br>";
+            echo "Distribuidor: " . $row_filme['distribuidora'] . "<br>";
+            echo "Trailer: " . $row_filme['trailer'] . "<br>";
             echo "<a class='waves-effect waves-light btn' href='../pages/editar_filme.php?id=" . $row_filme['id'] . "'>Editar</a>";
             echo "<a class='waves-effect waves-light btn modal-trigger' href='../pages/excluir.php?id=" . $row_filme['id'] . "'>Excluir</a><hr>";
 
         }
 
         //Paginação
-        $result_pag = "SELECT COUNT(codigo) AS num_result FROM tb_cinema";
+        $result_pag = "SELECT COUNT(titulo) AS num_result FROM tb_cinema";
         $resultado_pag = mysqli_query($con,$result_pag);
         $row_pag = mysqli_fetch_assoc($resultado_pag);
         

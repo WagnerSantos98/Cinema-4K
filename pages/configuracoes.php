@@ -30,7 +30,6 @@ if (isset($_POST['cadastrar_usuario'])) {
 			echo "<script>alert('Woops! E-mail já existe.')</script>";
 		}
 }
-
 ?>
 
 <!DOCTYPE html>

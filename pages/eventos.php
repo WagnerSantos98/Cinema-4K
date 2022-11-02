@@ -4,15 +4,31 @@ session_start();
 
 //Cadastro de Filme
 if(isset($_POST['cadastrar_cinema'])){
-  $codigo = $_POST['codigo'];
   $titulo = $_POST['titulo'];
   $genero = $_POST['genero'];
   $duracao = $_POST['duracao'];
   $classificacao = $_POST['classificacao'];
   $sinopse = $_POST['sinopse'];
-  $sql_cinema = "INSERT INTO tb_cinema(codigo,titulo,genero,duracao,classificacao,sinopse)
-  VALUES ('$codigo', '$titulo', '$genero', '$duracao', '$classificacao', '$sinopse');";
+  $elenco = $_POST['elenco'];
+  $diretor = $_POST['diretor'];
+  $data_estreia = $_POST['data_estreia'];
+  $distribuidora = $_POST['distribuidora'];
+  $trailer = $_POST['trailer'];
+  $sql_cinema = "INSERT INTO tb_cinema(titulo,genero,duracao,classificacao,sinopse,elenco,diretor,data_estreia,distribuidora,trailer)
+  VALUES ('$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$elenco', '$diretor', '$data_estreia', '$distribuidora', '$trailer');";
   $sql_cinemas = mysqli_query($con, $sql_cinema);
+}
+
+
+//Cadastro de Peça de Teatro
+if(isset($_POST['cadastrar_teatro'])){
+  $evento = $_POST['evento'];
+  $artista = $_POST['artista'];
+  $localizacao = $_POST['localizacao'];
+  $classi = $_POST['classi'];
+  $sql_teatro = "INSERT INTO tb_teatro(evento,artista,localizacao,classi)
+  VALUES ('$evento', '$artista', '$localizacao', '$classi');";
+  $sql_teatros = mysqli_query($con, $sql_teatro);
 }
 
 
@@ -37,6 +53,32 @@ if(isset($_POST['cadastrar_cinema'])){
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
     <script src="../assests/js/app.js"></script>
+
+    <style>
+      form{
+        height: 980px;
+      }
+      .container{
+    overflow-y: scroll;
+  }
+  .container::-webkit-scrollbar-track{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+  right: 150px;
+	border-radius:0;
+	background-color: #D0D4CE;
+}
+.container::-webkit-scrollbar{
+  right: 150px;
+  width: 10px;
+	background-color: #D0D4CE;
+}
+
+.container::-webkit-scrollbar-thumb{
+	border-radius:15px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #71806B;
+}
+    </style>
             
     <title>Painel Sistema Integrado</title> 
 </head> 
@@ -70,7 +112,7 @@ if(isset($_POST['cadastrar_cinema'])){
         
       </header>
 
-     <div class="container">
+     <div class="container" id="cinema">
         <div class="row">
           <div class="col s12">
             <ul class="tabs">
@@ -84,10 +126,6 @@ if(isset($_POST['cadastrar_cinema'])){
       <div class="row">
     <form class="col s12"  method="POST" action="">
       <div class="row">
-      <div class="input-field col s6">
-          <input id="codigo" name="codigo" type="text" class="validate">
-          <label for="codigo">Código</label>
-        </div>
         <div class="input-field col s6">
           <input id="titulo" name="titulo" type="text" class="validate">
           <label for="titulo">Título</label>
@@ -121,6 +159,32 @@ if(isset($_POST['cadastrar_cinema'])){
           <label for="sinopse">Sinopse</label>
         </div>
       </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="elenco" name="elenco" type="text" class="validate">
+          <label for="elenco">Elenco</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="diretor" name="diretor" type="text" class="validate">
+          <label for="diretor">Diretor</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="data_estreia" name="data_estreia" type="text" class="validate">
+          <label for="data_estreia">Data de Estreia</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="distribuidora" name="distribuidora" type="text" class="validate">
+          <label for="distribuidora">Distribuidora</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="trailer" name="trailer" type="text" class="validate">
+          <label for="trailer">Trailer</label>
+        </div>
+      </div>
 
       <button name="cadastrar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
       
@@ -131,7 +195,7 @@ if(isset($_POST['cadastrar_cinema'])){
       <!--Cadastro de Teatro em Cartaz-->
       <div id="teatro" class="col s12">
       <div class="row">
-    <form class="col s12" method="POST" action="../pages/cadastro.php">
+    <form class="col s12" method="POST" action="">
       <div class="row">
         <div class="input-field col s6">
           <input id="evento" name="evento" type="text" class="validate">
