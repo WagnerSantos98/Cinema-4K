@@ -1,6 +1,6 @@
 <?php
 
-include_once('./db/conexao.php');
+include_once('../db/conexao.php');
 session_start();
 
 error_reporting(0);
@@ -43,7 +43,7 @@ if (isset($_POST['cadastrar_usuario'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     
 
-    <!--Icons Materialize and Font Awesome-->
+    <!--Icons Materialize and Material Icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
