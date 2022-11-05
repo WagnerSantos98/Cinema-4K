@@ -1,5 +1,5 @@
 <?php
-include_once('../db/conexao.php');
+include_once('./db/conexao.php');
 session_start();
 
 //Cadastro de Filme
@@ -25,9 +25,11 @@ if(isset($_POST['cadastrar_teatro'])){
   $evento = $_POST['evento'];
   $artista = $_POST['artista'];
   $localizacao = $_POST['localizacao'];
-  $classi = $_POST['classi'];
-  $sql_teatro = "INSERT INTO tb_teatro(evento,artista,localizacao,classi)
-  VALUES ('$evento', '$artista', '$localizacao', '$classi');";
+  $classificacao_etaria = $_POST['classificacao_etaria'];
+  $data_evento = $_POST['data_evento'];
+  $horario_evento = $_POST['horario_evento'];
+  $sql_teatro = "INSERT INTO tb_teatro(evento,artista,localizacao,classificacao_etaria, data_evento, horario_evento)
+  VALUES ('$evento', '$artista', '$localizacao', '$classificacao_etaria', '$data_evento', '$horario_evento');";
   $sql_teatros = mysqli_query($con, $sql_teatro);
 }
 
@@ -57,7 +59,6 @@ if(isset($_POST['cadastrar_teatro'])){
     <style>
       #cinema{
         height: auto;
-        
       }
     </style>
             
@@ -114,8 +115,22 @@ if(isset($_POST['cadastrar_teatro'])){
                       <label for="titulo">Título</label>
                     </div>
                     <div class="input-field col s6">
-                      <input id="genero" name="genero" type="text" class="validate">
-                      <label for="genero">Gênero</label>
+                    <select id="genero" name="genero">
+                        <option value="" disabled selected>Selecione...</option>
+                        <option>Ação</option>
+                        <option>Aventura</option>
+                        <option>Animação</option>
+                        <option>Comédia</option>
+                        <option>Documentário</option>
+                        <option>Drama</option>
+                        <option>Fantasia</option>
+                        <option>Ficção Científica</option>
+                        <option>Romance</option>
+                        <option>Suspense</option>
+                        <option>Terror</option>
+                        <option>Thriller</option>
+                      </select>
+                    <label>Classificação Indicativa</label>
                     </div>
                   </div>
                   <div class="row">
@@ -130,10 +145,10 @@ if(isset($_POST['cadastrar_teatro'])){
                         <option>+10</option>
                         <option>+12</option>
                         <option>+14</option>
-                        <option>+16</option>
+                        <option id="">+16</option>
                         <option>+18</option>
                       </select>
-                    <label>Classificação</label>
+                    <label>Classificação Indicativa</label>
                     </div>
                   </div>
                   <div class="row">
@@ -164,7 +179,7 @@ if(isset($_POST['cadastrar_teatro'])){
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="trailer" name="trailer" type="text" class="validate">
+                      <input id="trailer" name="trailer" type="text" placeholder="URL" class="validate">
                       <label for="trailer">Trailer</label>
                     </div>
                   </div>
