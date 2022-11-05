@@ -55,7 +55,10 @@ if(isset($_POST['cadastrar_teatro'])){
     
 
     <style>
-      
+      #cinema{
+        height: auto;
+        
+      }
     </style>
             
     <title>Painel Sistema Integrado</title> 
@@ -85,120 +88,269 @@ if(isset($_POST['cadastrar_teatro'])){
         <li><a href="./configuracoes.php">Configurações</a></li>
     </ul>
 
-     <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <ul class="tabs">
-              <li class="tab col s3"><a href="#cinema">Cinema</a></li>
-              <li class="tab col s3"><a href="#teatro">Teatro</a></li>
-              <li class="tab col s3"><a href="#show">Show</a></li>
-            </ul>
-          </div>
-      <!--Cadastro de Filme em Cartaz-->
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#cinema">Cinema</a></li>
+            <li class="tab col s3"><a href="#teatro">Teatro</a></li>
+            <li class="tab col s3"><a href="#show">Show</a></li>
+          </ul>
+        </div>
+
+      <!--Cadatro de Filmes-->
       <div id="cinema" class="col s12">
-      <div class="row">
-    <form class="col s12"  method="POST" action="">
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="titulo" name="titulo" type="text" class="validate">
-          <label for="titulo">Título</label>
+
+        <div class="container pt-10">
+          <div class="row card">
+            <div id="test1" class="col s12">
+              <h3 class='header'>Cinema</h3>
+              
+              <div class="row">
+                <form class="col s12"  method="POST" action="">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="titulo" name="titulo" type="text" class="validate">
+                      <label for="titulo">Título</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="genero" name="genero" type="text" class="validate">
+                      <label for="genero">Gênero</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="duracao"  name="duracao" type="text" class="duracao">
+                      <label for="duracao">Duração</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <select id="classificacao" name="classificacao">
+                        <option value="" disabled selected>Selecione...</option>
+                        <option>Livre</option>
+                        <option>+10</option>
+                        <option>+12</option>
+                        <option>+14</option>
+                        <option>+16</option>
+                        <option>+18</option>
+                      </select>
+                    <label>Classificação</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="input-field col s12">
+                      <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
+                      <label for="sinopse">Sinopse</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="elenco" name="elenco" type="text" class="validate">
+                      <label for="elenco">Elenco</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="diretor" name="diretor" type="text" class="validate">
+                      <label for="diretor">Diretor</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="data_estreia" name="data_estreia" type="text" class="validate">
+                      <label for="data_estreia">Data de Estreia</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="distribuidora" name="distribuidora" type="text" class="validate">
+                      <label for="distribuidora">Distribuidora</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="trailer" name="trailer" type="text" class="validate">
+                      <label for="trailer">Trailer</label>
+                    </div>
+                  </div>
+
+                  <button name="cadastrar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
+                  
+                </form>
+              </div>
+                
+            </div>
+          
+          </div>
         </div>
-        <div class="input-field col s6">
-          <input id="genero" name="genero" type="text" class="validate">
-          <label for="genero">Gênero</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="duracao"  name="duracao" type="text" class="duracao">
-          <label for="duracao">Duração</label>
-        </div>
-        <div class="input-field col s6">
-          <select id="classificacao" name="classificacao">
-            <option value="" disabled selected>Selecione...</option>
-            <option>Livre</option>
-            <option>+10</option>
-            <option>+12</option>
-            <option>+14</option>
-            <option>+16</option>
-            <option>+18</option>
-          </select>
-        <label>Classificação</label>
-        </div>
-      </div>
-      <div class="row">
-      <div class="input-field col s12">
-          <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
-          <label for="sinopse">Sinopse</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="elenco" name="elenco" type="text" class="validate">
-          <label for="elenco">Elenco</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="diretor" name="diretor" type="text" class="validate">
-          <label for="diretor">Diretor</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="data_estreia" name="data_estreia" type="text" class="validate">
-          <label for="data_estreia">Data de Estreia</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="distribuidora" name="distribuidora" type="text" class="validate">
-          <label for="distribuidora">Distribuidora</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="trailer" name="trailer" type="text" class="validate">
-          <label for="trailer">Trailer</label>
-        </div>
+
       </div>
 
-      <button name="cadastrar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
-      
-    </form>
-  </div>
-        
-      </div>
-      <!--Cadastro de Teatro em Cartaz-->
+      <!--Cadastro peça de teatro-->
       <div id="teatro" class="col s12">
-      <div class="row">
-    <form class="col s12" method="POST" action="">
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="evento" name="evento" type="text" class="validate">
-          <label for="evento">Evento</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="artista" name="artista" type="text" class="validate">
-          <label for="artista">Artista</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="localizacao" name="localizacao" type="text" class="validate">
-          <label for="localizacao">Local</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="classi" name="classi" type="text" class="validate">
-          <label for="classi">Classificação</label>
-        </div>
-      </div>
-      
+        
+      <div class="container pt-10">
+          <div class="row card">
+            <div id="test1" class="col s12">
+              <h3 class='header'>Cinema</h3>
+              
+              <div class="row">
+                <form class="col s12"  method="POST" action="">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="titulo" name="titulo" type="text" class="validate">
+                      <label for="titulo">Título</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="genero" name="genero" type="text" class="validate">
+                      <label for="genero">Gênero</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="duracao"  name="duracao" type="text" class="duracao">
+                      <label for="duracao">Duração</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <select id="classificacao" name="classificacao">
+                        <option value="" disabled selected>Selecione...</option>
+                        <option>Livre</option>
+                        <option>+10</option>
+                        <option>+12</option>
+                        <option>+14</option>
+                        <option>+16</option>
+                        <option>+18</option>
+                      </select>
+                    <label>Classificação</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="input-field col s12">
+                      <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
+                      <label for="sinopse">Sinopse</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="elenco" name="elenco" type="text" class="validate">
+                      <label for="elenco">Elenco</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="diretor" name="diretor" type="text" class="validate">
+                      <label for="diretor">Diretor</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="data_estreia" name="data_estreia" type="text" class="validate">
+                      <label for="data_estreia">Data de Estreia</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="distribuidora" name="distribuidora" type="text" class="validate">
+                      <label for="distribuidora">Distribuidora</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="trailer" name="trailer" type="text" class="validate">
+                      <label for="trailer">Trailer</label>
+                    </div>
+                  </div>
 
-      <button name="cadastrar_teatro" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
-      
-    </form>
-  </div>
+                  <button name="cadastrar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
+                  
+                </form>
+              </div>
+                
+            </div>
+          
+          </div>
+        </div>
+
       </div>
-      <div id="show" class="col s12">Test 3</div>
+
+      <div id="show" class="col s12">
+      
+      <div class="container pt-10">
+          <div class="row card">
+            <div id="test1" class="col s12">
+              <h3 class='header'>Cinema</h3>
+              
+              <div class="row">
+                <form class="col s12"  method="POST" action="">
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="titulo" name="titulo" type="text" class="validate">
+                      <label for="titulo">Título</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="genero" name="genero" type="text" class="validate">
+                      <label for="genero">Gênero</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="duracao"  name="duracao" type="text" class="duracao">
+                      <label for="duracao">Duração</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <select id="classificacao" name="classificacao">
+                        <option value="" disabled selected>Selecione...</option>
+                        <option>Livre</option>
+                        <option>+10</option>
+                        <option>+12</option>
+                        <option>+14</option>
+                        <option>+16</option>
+                        <option>+18</option>
+                      </select>
+                    <label>Classificação</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="input-field col s12">
+                      <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
+                      <label for="sinopse">Sinopse</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="elenco" name="elenco" type="text" class="validate">
+                      <label for="elenco">Elenco</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="diretor" name="diretor" type="text" class="validate">
+                      <label for="diretor">Diretor</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="data_estreia" name="data_estreia" type="text" class="validate">
+                      <label for="data_estreia">Data de Estreia</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="distribuidora" name="distribuidora" type="text" class="validate">
+                      <label for="distribuidora">Distribuidora</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="trailer" name="trailer" type="text" class="validate">
+                      <label for="trailer">Trailer</label>
+                    </div>
+                  </div>
+
+                  <button name="cadastrar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
+                  
+                </form>
+              </div>
+                
+            </div>
+          
+          </div>
+        </div>
+
+      </div>
+
       </div>
     </div>
+  <!--Final do container-->
+    
+      
 
     <script>
       //Animação Tabs
