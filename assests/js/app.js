@@ -73,7 +73,4 @@ function recalculateTotal(sc) {
 	return total;
 }
 
-
-
-
   

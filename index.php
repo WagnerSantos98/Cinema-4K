@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,49 +10,51 @@ session_start();
     
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="assests/css/style.css">
+    
 
     <!--Icons Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="assests/js/app.js"></script>
-            
+    
+    
+                
     <title>Painel Sistema Integrado</title> 
 </head>
 <body>
     <!--Navbar-->   
-    <header class="main-header">
-        <label for="btn-nav" class="btn-nav"><i class="fa fa-bars"></i></label>
-        <input type="checkbox" id="btn-nav">
-        
-        
+    <nav class="red" style="padding: 0px 10px;">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo" >Sistema Inegrado</a>
 
-        <!--Logout--->  
-        <a class="navbar-brand" href="pages/logout.php" style="margin-left: 98%; color: #fff;" ><i class="fa-solid fa-right-from-bracket"></i></a>
-        
-        <nav>
-          <ul class="navigation">
-            <li>
-                <a href="../index.php">Home</a>   
-            </li>
-            <li>
-                <a href="pages/eventos.php">Eventos</a> 
-            </li>
-            <li>
-                <a href="pages/cartaz.php">Cartaz/Em Breve</a>
-            </li>
-            <li>
-                <a href="pages/configuracoes.php">Configurações</a>
-            </li>
-            
-          </ul>
-        </nav>
-        
-      </header>
+            <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
-      
+            <ul class="right hide-on-med-and-down">
+                <li><a href="index.php">Home</a></li>
+                <li><a href="pages/eventos.php">Eventos</a></li>
+                <li><a href="pages/cartaz.php">Cartaz/Em Breve</a></li>
+                <li><a href="pages/configuracoes.php">Configurações</a></li>
+                <li><a href="pages/logout.php"><i class="material-icons">exit_to_app</i></a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <ul class="sidenav" id="mobile-nav">
+        <li><a href="index.php">Home</a></li>
+        <li><a href="pages/cadastro.php">Eventos</a></li>
+        <li><a href="pages/cartaz.php">Cartaz/Em Breve</a></li>
+        <li><a href="pages/configuracoes.php">Configurações</a></li>
+    </ul>
+
+          
+    
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
+
+</script>
 </body>
 </html>
