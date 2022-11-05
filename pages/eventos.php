@@ -1,5 +1,5 @@
 <?php
-include_once('./db/conexao.php');
+include_once('../db/conexao.php');
 session_start();
 
 //Cadastro de Filme
@@ -24,12 +24,12 @@ if(isset($_POST['cadastrar_cinema'])){
 if(isset($_POST['cadastrar_teatro'])){
   $evento = $_POST['evento'];
   $artista = $_POST['artista'];
-  $localizacao = $_POST['localizacao'];
   $classificacao_etaria = $_POST['classificacao_etaria'];
+  $localizacao = $_POST['localizacao'];
   $data_evento = $_POST['data_evento'];
   $horario_evento = $_POST['horario_evento'];
-  $sql_teatro = "INSERT INTO tb_teatro(evento,artista,localizacao,classificacao_etaria, data_evento, horario_evento)
-  VALUES ('$evento', '$artista', '$localizacao', '$classificacao_etaria', '$data_evento', '$horario_evento');";
+  $sql_teatro = "INSERT INTO tb_teatro(evento,artista,classificacao_etaria,localizacao, data_evento, horario_evento)
+  VALUES ('$evento', '$artista', '$classificacao_etaria', '$localizacao', '$data_evento', '$horario_evento');";
   $sql_teatros = mysqli_query($con, $sql_teatro);
 }
 
@@ -151,38 +151,7 @@ if(isset($_POST['cadastrar_teatro'])){
                     <label>Classificação Indicativa</label>
                     </div>
                   </div>
-                  <div class="row">
-                  <div class="input-field col s12">
-                      <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
-                      <label for="sinopse">Sinopse</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="elenco" name="elenco" type="text" class="validate">
-                      <label for="elenco">Elenco</label>
-                    </div>
-                    <div class="input-field col s6">
-                      <input id="diretor" name="diretor" type="text" class="validate">
-                      <label for="diretor">Diretor</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="data_estreia" name="data_estreia" type="text" class="validate">
-                      <label for="data_estreia">Data de Estreia</label>
-                    </div>
-                    <div class="input-field col s6">
-                      <input id="distribuidora" name="distribuidora" type="text" class="validate">
-                      <label for="distribuidora">Distribuidora</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="trailer" name="trailer" type="text" placeholder="URL" class="validate">
-                      <label for="trailer">Trailer</label>
-                    </div>
-                  </div>
+                 
 
                   <button name="cadastrar_cinema" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
                   
@@ -208,30 +177,40 @@ if(isset($_POST['cadastrar_teatro'])){
                 <form class="col s12"  method="POST" action="">
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="titulo" name="titulo" type="text" class="validate">
-                      <label for="titulo">Título</label>
+                      <input id="evento" name="evento" type="text" class="validate">
+                      <label for="evento">Evento</label>
                     </div>
                     <div class="input-field col s6">
-                      <input id="genero" name="genero" type="text" class="validate">
-                      <label for="genero">Gênero</label>
+                      <input id="artista" name="artista" type="text" class="validate">
+                      <label for="artista">Artista</label>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="input-field col s6">
-                      <input id="duracao"  name="duracao" type="text" class="duracao">
-                      <label for="duracao">Duração</label>
-                    </div>
-                    <div class="input-field col s6">
-                      <select id="classificacao" name="classificacao">
+                  <div class="input-field col s6">
+                      <select id="classificacao_etaria" name="classificacao_etaria">
                         <option value="" disabled selected>Selecione...</option>
                         <option>Livre</option>
                         <option>+10</option>
                         <option>+12</option>
                         <option>+14</option>
-                        <option>+16</option>
+                        <option id="">+16</option>
                         <option>+18</option>
                       </select>
-                    <label>Classificação</label>
+                    <label>Classificação Indicativa</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="localizacao"  name="localizacao" type="text" class="validate">
+                      <label for="localizacao">Localização</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <input id="data_evento"  name="data_evento" type="text" class="validate">
+                      <label for="data_evento">Data da peça</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <input id="horario_evento"  name="horario_evento" type="text" class="validate">
+                      <label for="horario_evento">Horário da peça</label>
                     </div>
                   </div>
                   <div class="row">
