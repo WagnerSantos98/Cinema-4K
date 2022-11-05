@@ -98,7 +98,7 @@ if(isset($_POST['cadastrar_teatro'])){
           </ul>
         </div>
 
-      <!--Cadatro de Filmes-->
+      <!--Cadatro de filmes-->
       <div id="cinema" class="col s12">
 
         <div class="container pt-10">
@@ -187,7 +187,7 @@ if(isset($_POST['cadastrar_teatro'])){
       <div class="container pt-10">
           <div class="row card">
             <div id="test1" class="col s12">
-              <h3 class='header'>Cinema</h3>
+              <h3 class='header'>Teatro</h3>
               
               <div class="row">
                 <form class="col s12"  method="POST" action="">
@@ -264,12 +264,13 @@ if(isset($_POST['cadastrar_teatro'])){
 
       </div>
 
+      <!--Cadastro peça de shows-->
       <div id="show" class="col s12">
       
       <div class="container pt-10">
           <div class="row card">
             <div id="test1" class="col s12">
-              <h3 class='header'>Cinema</h3>
+              <h3 class='header'>Show</h3>
               
               <div class="row">
                 <form class="col s12"  method="POST" action="">
@@ -353,6 +354,12 @@ if(isset($_POST['cadastrar_teatro'])){
       
 
     <script>
+//Menu
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
+
       //Animação Tabs
     document.addEventListener("DOMContentLoaded", function(){
 	    const tab = document.querySelector('.tabs');
