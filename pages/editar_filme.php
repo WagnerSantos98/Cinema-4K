@@ -85,75 +85,84 @@ if (isset($_POST['editar_filme'])) {
         <li><a href="./configuracoes.php">Configurações</a></li>
     </ul>
 
-    <div class="container">
-    <div class="row">
-    <form class="col s12" method="POST" action="">
-    
-    <div class="row">
-    <div class="input-field col s6">
-          <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_filmes['id']; ?>">
-        </div>
-        <div class="input-field col s6">
-          <input id="titulo" name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
-          <label for="titulo">Título</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="genero" name="genero" type="text" class="validate" value="<?php echo $row_filmes['genero']; ?>">
-          <label for="genero">Gênero</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="duracao"  name="duracao" type="text" class="duracao" value="<?php echo $row_filmes['duracao']; ?>">
-          <label for="duracao">Duração</label>
-        </div>
-        <div class="input-field col s6">
-          <select id="classificacao" name="classificacao" value="<?php echo $row_filmes['classificacao']; ?>">
-            <option disabled selected>Selecione...</option>
-            <option>Livre</option>
-            <option>+10</option>
-            <option>+12</option>
-            <option>+14</option>
-            <option>+16</option>
-            <option>+18</option>
-          </select>
-        <label>Classificação</label>
-        </div>
-      </div>
-      <div class="row">
-      <div class="input-field col s12">
-          <textarea id="sinopse" name="sinopse" class="materialize-textarea" value="<?php echo $row_filmes['sinopse']; ?>"></textarea>
-          <label for="sinopse">Sinopse</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="elenco" name="elenco" type="text" class="validate" value="<?php echo $row_filmes['elenco']; ?>">
-          <label for="elenco">Elenco</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="diretor" name="diretor" type="text" class="validate" value="<?php echo $row_filmes['diretor']; ?>">
-          <label for="diretor">Diretor</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="data_estreia" name="data_estreia" type="text" class="validate" value="<?php echo $row_filmes['data_estreia']; ?>">
-          <label for="data_estreia">Data de Estreia</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="distribuidora" name="distribuidora" type="text" class="validate" value="<?php echo $row_filmes['distribuidora']; ?>">
-          <label for="distribuidora">Distribuidora</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="trailer" name="trailer" type="text" class="validate" value="<?php echo $row_filmes['trailer']; ?>">
-          <label for="trailer">Trailer</label>
-        </div>
-      </div>
+    <div class="container pt-10">
+      <div class="row card">
+        <div id="test1" class="col s12">
+          <h3 class='header'>Editar Filme</h3>
+          <div class="container">
+            <div class="row">
+            <form class="col s12" method="POST" action="">
+            
+            <div class="row">
+            <div class="input-field col s6">
+                  <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_filmes['id']; ?>">
+                </div>
+                <div class="input-field col s6">
+                  <input id="titulo" name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
+                  <label for="titulo">Título</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="genero" name="genero" type="text" class="validate" value="<?php echo $row_filmes['genero']; ?>">
+                  <label for="genero">Gênero</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="duracao"  name="duracao" type="text" class="duracao" value="<?php echo $row_filmes['duracao']; ?>">
+                  <label for="duracao">Duração</label>
+                </div>
+                <div class="input-field col s6">
+                  <select id="classificacao" name="classificacao" value="<?php echo $row_filmes['classificacao']; ?>">
+                    <option disabled selected>Selecione...</option>
+                    <option>Livre</option>
+                    <option>+10</option>
+                    <option>+12</option>
+                    <option>+14</option>
+                    <option>+16</option>
+                    <option>+18</option>
+                  </select>
+                <label>Classificação</label>
+                </div>
+              </div>
+              <div class="row">
+              <div class="input-field col s12">
+                  <textarea id="sinopse" name="sinopse" class="materialize-textarea" value="<?php echo $row_filmes['sinopse']; ?>"></textarea>
+                  <label for="sinopse">Sinopse</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="elenco" name="elenco" type="text" class="validate" value="<?php echo $row_filmes['elenco']; ?>">
+                  <label for="elenco">Elenco</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="diretor" name="diretor" type="text" class="validate" value="<?php echo $row_filmes['diretor']; ?>">
+                  <label for="diretor">Diretor</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="data_estreia" name="data_estreia" type="text" class="validate" value="<?php echo $row_filmes['data_estreia']; ?>">
+                  <label for="data_estreia">Data de Estreia</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="distribuidora" name="distribuidora" type="text" class="validate" value="<?php echo $row_filmes['distribuidora']; ?>">
+                  <label for="distribuidora">Distribuidora</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="trailer" name="trailer" type="text" class="validate" value="<?php echo $row_filmes['trailer']; ?>">
+                  <label for="trailer">Trailer</label>
+                </div>
+              </div>
 
-      <button name="editar_filme" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Atualizar</button>
+              <button name="editar_filme" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Atualizar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
