@@ -78,6 +78,7 @@ if (isset($_POST['cadastrar_usuario'])) {
         <li><a href="./cadastro.php">Eventos</a></li>
         <li><a href="./cartaz.php">Cartaz/Em Breve</a></li>
         <li><a href="./configuracoes.php">Configurações</a></li>
+        <li><a href="logout.php"><i class="material-icons">exit_to_app</i></a></li>
     </ul>
 
       <!--Tabs Materialize-->

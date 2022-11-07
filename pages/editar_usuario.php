@@ -55,7 +55,7 @@ if (isset($_POST['atualizar_usuario'])) {
     <!--Navbar-->   
     <nav class="red" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="#" class="brand-logo">Sistema Inegrado</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
@@ -74,6 +74,7 @@ if (isset($_POST['atualizar_usuario'])) {
         <li><a href="cadastro.php">Eventos</a></li>
         <li><a href="cartaz.php">Cartaz/Em Breve</a></li>
         <li><a href="configuracoes.php">Configurações</a></li>
+        <li><a href="logout.php"><i class="material-icons">exit_to_app</i></a></li>
     </ul>
 
     <div class="container">
