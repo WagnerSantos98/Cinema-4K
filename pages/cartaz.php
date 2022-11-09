@@ -39,6 +39,7 @@ session_start();
                 <li><a href="./logout.php"><i class="material-icons">exit_to_app</i></a></li>
             </ul>
         </div>
+        hsfkjsdfhsdf
     </nav>
 
     <ul class="sidenav" id="mobile-nav">
