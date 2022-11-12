@@ -17,108 +17,38 @@ session_start();
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <title>Home Page</title>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
-
-    body{
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-    .block{
-        height: 1200px;
-        background-color: #eee;
-        margin-bottom: 20px;
-        padding: 60px 0;
-        text-align: center;
-    }
-    .navbar{
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #eee;
-        text-align: center;
-        position: fixed;
-        width: 100%;
-        top: 0px;
-        z-index: 90;
-    }
-    .navbar li{
-        display: inline-block;
-        padding: 15px;
-    }
-    .navbar li a{
-        color: #eee;
-        text-decoration: none;
-    }
-    .navbar li a.active{
-        color: tomato;
-    }
-    .navbar li #login{
-        color: black;  
-    }
-    .navbar a{
-        display: inline-block;
-        padding: 15px;
-    }
-
-    .container .exibicao{
-        border-radius: 8px;
-        border: 3px solid #333;
-        
-    }
-    /*Back to top button*/
-    #button{
-        display: inline-block;
-        background-color: rgba(0, 0, 0, 0.7);
-        width: 50px;
-        height: 50px;
-        text-align: center;
-        border-radius: 4px;
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        transition: background-color .3s,
-            opacity .5s, visibility .5s;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1000;
-    }
-    #button img{
-        position: absolute;
-        top: 50%;
-        right: 15px;
-        width: 20px;
-        transform: translateY(-50%);
-    }
-   
-    #button:hover{
-        cursor: pointer;
-        background-color: #333;
-    }
-    #button:active{
-        background-color: #555;
-    }
-    #button.show{
-        opacity: 1;
-        visibility: visible;
-    }
-</style>
 </head>
 
 <body>
-    <ul class="navbar">
+    <!--Navbar-->   
+    <nav class="red" style="padding: 0px 10px;">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+
+            <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#" data-scroll="home">Home</a></li>
+                <li><a href="#" data-scroll="cinema">Cinema</a></li>
+                <li><a href="#" data-scroll="show">Show</a></li>
+                <li><a href="#" data-scroll="teatro">Teatro</a></li>
+                <li><a href="../pages/login.php"><i class="material-icons">exit_to_app</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-nav">
         <li><a href="#" data-scroll="home">Home</a></li>
         <li><a href="#" data-scroll="cinema">Cinema</a></li>
         <li><a href="#" data-scroll="show">Show</a></li>
         <li><a href="#" data-scroll="teatro">Teatro</a></li>
-        <li><a href="#" id="login" data-scroll="login">Login</a></li>
+        <li><a href="../pages/login.php"><i class="material-icons">exit_to_app</i></a></li>
     </ul>
+
     <div id="home" class="block">
         <h2>Home</h2>
     </div>
+
     <div id="cinema" class="block">
         <h2>Cinema</h2><br>
     <!--Container Cinema-->
