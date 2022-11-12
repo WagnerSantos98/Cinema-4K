@@ -146,14 +146,11 @@ $link_completo = $link.$link_banco.$link_final;
                     $resultado_cartaz = mysqli_query($con,$result_cartaz);
 
                     while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
-                        echo "ID: " . $row_filme['id']. "<br>";
                         echo "Título: " . $row_filme['titulo'] . "<br>";
                         echo "Gênero: " . $row_filme['genero'] . "<br>";
                         echo "Duração: " . $row_filme['duracao'] . "<br>";
                         echo "Classificação: " . $row_filme['classificacao'] . "<br>";
-                        echo "Sinopse: " . $row_filme['sinopse'] . "<br>";
-                        echo "Trailer: " . $row_filme['trailer'] . "<br>";
-                        echo "<a class='waves-effect waves-light btn modal-trigger' href='../pages/detalhes.php?id=" . $row_filme['id'] . "'>Editar</a><br><br><hr>";
+                        echo "<a class='waves-effect waves-light btn' href='../pages/detalhes.php?id=" . $row_filme['id'] . "'>Detalhes</a><br><br><hr>";
                     }
                     ?>
                     
