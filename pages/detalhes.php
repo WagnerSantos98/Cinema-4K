@@ -133,7 +133,7 @@ $link_completo = $link.$link_banco.$link_final;
     <div class="container pt-10">
       <div class="row card">
         <div id="test1" class="col s12">
-          <h3 class='header'>Editar Filme</h3>
+          <h3 class='header'>Datalhes do Filme</h3>
           <div class="container">
             <div class="row">
             <form class="col s12" method="POST" action="">
@@ -268,8 +268,7 @@ $link_completo = $link.$link_banco.$link_final;
         $('html, body').animate({scrollTop:0},'500');
     });
 
-    function rodar()
-    { 
+    function detalhesFilmes(){ 
         var titulo = document.getElementById('titulo').value; 
         document.getElementById('title').innerHTML = titulo;
         var genero = document.getElementById('genero').value; 
@@ -288,10 +287,9 @@ $link_completo = $link.$link_banco.$link_final;
         var data_estreia = document.getElementById('data_estreia').value; 
         document.getElementById('estreia').innerHTML = data_estreia;
         var distribuidora = document.getElementById('distribuidora').value; 
-        document.getElementById('distribuidora_filme').innerHTML = distribuidora;
-        
+        document.getElementById('distribuidora_filme').innerHTML = distribuidora;   
     } 
-    window.onload = rodar();
+    window.onload = detalhesFilmes();
 
 
 </script>
