@@ -124,81 +124,94 @@ $link_completo = $link.$link_banco.$link_final;
         <li><a href="#" data-scroll="teatro">Teatro</a></li>
         <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
     </ul>
-    <div id="home" class="block">
-        <h2>Home</h2>
-    </div>
-    <div id="cinema" class="block">
-        <h2>Cinema</h2><br>
-    <!--Container Cinema-->
-    <div class="container">
-        <div class="exibicao"> 
-            <div class="row">
-                <div class="col s12">
-                    <ul class="tabs">
-                        <li class="tab col s3"><a class="active" href="#cartaz">Em Cartaz</a></li>
-                        <li class="tab col s3"><a href="#breve">Em Breve</a></li>
-                        
-                    </ul>
-                </div>
-            <div id="cartaz" class="col s12">
-            <?php
-                    $result_cartaz =  "SELECT * FROM tb_cinema";
-                    $resultado_cartaz = mysqli_query($con,$result_cartaz);
-
-                    while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
-                        echo "ID: " . $row_filme['id']. "<br>";
-                        echo "Título: " . $row_filme['titulo'] . "<br>";
-                        echo "Gênero: " . $row_filme['genero'] . "<br>";
-                        echo "Duração: " . $row_filme['duracao'] . "<br>";
-                        echo "Classificação: " . $row_filme['classificacao'] . "<br>";
-                        echo "Sinopse: " . $row_filme['sinopse'] . "<br>";
-                        echo "Trailer: " . $row_filme['trailer'] . "<br>";
-                        echo "<a class='waves-effect waves-light btn modal-trigger' href='../pages/detalhes.php?id=" . $row_filme['id'] . "'>Editar</a><br><br><hr>";
-                    }
-                    ?>
-                    
-            </div>
-            <div id="breve" class="col s12">
-                
-            </div>
-            </div>   
-            
-        </div>
-    </div>
-
-    </div>
-    <div id="show" class="block">
-        <h2>Show</h2>
-    </div>
-    <div id="teatro" class="block">
-        <h2>Teatro</h2>
-    </div>
+   
     
 
     <!--Back to top button-->
     <a id="button"><img src="../assests/img/chevron-up-solid.svg"></a>
 
-    <!--Modal Cinema-->
-    <div id="modal1" class="modal">
-    <div class="modal-content">
-    <div class="input-field col s6">
-                  <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_filmes['id']; ?>">
-                </div>
-                <div class="row">
+    <div class="container pt-10">
+      <div class="row card">
+        <div id="test1" class="col s12">
+          <h3 class='header'>Editar Filme</h3>
+          <div class="container">
+            <div class="row">
+            <form class="col s12" method="POST" action="">
+            
+            <div class="row">
                 <div class="input-field col s6">
-                  <input id="trailer" name="trailer" type="text" class="validate" value="<?php echo $row_filmes['trailer']; ?>">
-                  <label for="trailer">Trailer</label>
+                  <input id="titulo" hidden name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
+                  <label>Título</label>
+                  <p id="title" style="color: black;"></p>
+                </div>
+                <div class="input-field col s6">
+                  <input id="genero" hidden name="genero" type="text" class="validate" value="<?php echo $row_filmes['genero']; ?>">
+                  <label>Gênero</label>
+                  <p id="gener"></p>
                 </div>
               </div>
-    
-    <div class="video-container">
-        <iframe width="560" height="315" src="<?php echo $link_completo;?>" frameborder="0" allowfullscreen></iframe>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="duracao" hidden  name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>">
+                  <label>Duração</label>
+                  <p id="timer"></p>
+                </div>
+                <div class="input-field col s6">
+                <input id="classificacao" hidden  name="classificacao" type="text" class="validate" value="<?php echo $row_filmes['classificacao']; ?>">
+                <label for="classificacao">Classificação Indicativa</label>
+                <p id="classificacao_indicativa"></p>
+                </div>
+              </div>
+              <div class="row">
+              <div class="input-field col s6">
+                  <input id="sinopse" hidden name="sinopse" type="text" class="validate" value="<?php echo $row_filmes['sinopse']; ?>">
+                  <label for="sinopse">Sinope</label>
+                  <p id="sinopse_filme"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="elenco" hidden name="elenco" type="text" class="validate" value="<?php echo $row_filmes['elenco']; ?>" disabled>
+                  <label for="elenco">Elenco</label>
+                  <p id="elenco_filme"></p>
+                </div>
+                <div class="input-field col s6">
+                  <input id="diretor" hidden name="diretor" type="text" class="validate" value="<?php echo $row_filmes['diretor']; ?>">
+                  <label for="diretor">Diretor</label>
+                  <p id="diretor_filme"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="data_estreia" hidden name="data_estreia" type="text" class="validate" value="<?php echo $row_filmes['data_estreia']; ?>">
+                  <label for="data_estreia">Data de Estreia</label>
+                  <p id="estreia"></p>
+                </div>
+                <div class="input-field col s6">
+                  <input id="distribuidora" hidden name="distribuidora" type="text" class="validate" value="<?php echo $row_filmes['distribuidora']; ?>">
+                  <label for="distribuidora">Distribuidora</label>
+                  <p id="distribuidora_filme"></p>
+                </div>
+              </div>
+              <label for="trailer">Trailer</label>
+              <div class="row">
+                <div class="input-field col s6">
+                    <div class="video-container">
+                     <iframe width="560" height="315" src="<?php echo $link_completo;?>" frameborder="0" allowfullscreen></iframe>
+-                    </div>
+                </div>
+              </div>
+
+              <button name="comprar_ingresso" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Comprar</button>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
+
+                  
+  
 
 <script>
     //Menu
@@ -255,20 +268,31 @@ $link_completo = $link.$link_banco.$link_final;
         $('html, body').animate({scrollTop:0},'500');
     });
 
-    //Animation Tabs
-    document.addEventListener("DOMContentLoaded", function(){
-	    const tab = document.querySelector('.tabs');
-	    M.Tabs.init(tab, {
-	  swipeable: true,
-	  duration: 300
-	});
-})
+    function rodar()
+    { 
+        var titulo = document.getElementById('titulo').value; 
+        document.getElementById('title').innerHTML = titulo;
+        var genero = document.getElementById('genero').value; 
+        document.getElementById('gener').innerHTML = genero;
+        var duracao = document.getElementById('duracao').value; 
+        document.getElementById('timer').innerHTML = duracao;
+        var classificacao = document.getElementById('classificacao').value; 
+        document.getElementById('classificacao_indicativa').innerHTML = classificacao;
 
-//Modal
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-  });
+        var sinopse = document.getElementById('sinopse').value; 
+        document.getElementById('sinopse_filme').innerHTML = sinopse;
+        var elenco = document.getElementById('elenco').value; 
+        document.getElementById('elenco_filme').innerHTML = elenco;
+        var diretor = document.getElementById('diretor').value; 
+        document.getElementById('diretor_filme').innerHTML = diretor;
+        var data_estreia = document.getElementById('data_estreia').value; 
+        document.getElementById('estreia').innerHTML = data_estreia;
+        var distribuidora = document.getElementById('distribuidora').value; 
+        document.getElementById('distribuidora_filme').innerHTML = distribuidora;
+        
+    } 
+    window.onload = rodar();
+
 
 </script>
 </body>
