@@ -164,7 +164,7 @@ $link_completo = $link.$link_banco.$link_final;
                   <input id="elenco" hidden name="elenco" type="text" class="validate" value="<?php echo $row_filmes['elenco']; ?>" disabled>
                   <p>Elenco: <span  id="elenco_filme"></span></p><br>
                   <input id="sinopse" hidden name="sinopse" type="text" class="validate" value="<?php echo $row_filmes['sinopse']; ?>">
-                  <p>Sinopse: <span  id="sinopse_filme"></span></p>
+                  <p>Sinopse: <span  id="sinopse_filme"></span></p><br>
                   <input id="distribuidora" hidden name="distribuidora" type="text" class="validate" value="<?php echo $row_filmes['distribuidora']; ?>">
                   <p>Distribuidora: <span  id="distribuidora_filme"></span></p>
                   
@@ -180,7 +180,7 @@ $link_completo = $link.$link_banco.$link_final;
                 </div>
               </div>
 
-              <button name="comprar_ingresso" class="waves-effect waves-light btn" type="submit" style="float: right; margin-top: -350px; font-weight: bold;"><i class="fa fa-send"></i> Comprar</button>
+              <button name="comprar_ingresso" class="waves-effect waves-light btn" type="submit" style="float: right; margin-top: -280px; font-weight: bold;"><i class="fa fa-send"></i> Comprar</button>
             </div>
 
           </div>
