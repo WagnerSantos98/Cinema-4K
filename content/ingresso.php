@@ -8,15 +8,17 @@ $result_filme = "SELECT * FROM tb_cinema WHERE id = '$id_filme'";
 $resultado_filme = mysqli_query($con, $result_filme);
 $row_filmes = mysqli_fetch_assoc($resultado_filme);
     
-//Link youtube
-$link = 'http://youtube.com/embed/';
-
-//Link do banco
-$link_banco = $row_filmes['trailer'];
-$link_final = '?rel=0';
- 
-//Link Completo
-$link_completo = $link.$link_banco.$link_final;
+//Venda 
+if(isset($_POST['realizar_venda'])){
+    $titulo = $_POST['titulo'];
+    $duracao = $_POST['duracao'];
+    $poltronas = $_POST['poltronas'];
+    $qtde = $_POST['qtde'];
+    $total = $_POST['total'];
+    $sql_ingresso = "INSERT INTO tb_ingressos_cinema(titulo,duracao,poltronas,qtde,total)
+    VALUES ('$titulo', '$duracao', '$poltronas', '$qtde', '$total');";
+    $sql_ingressoss = mysqli_query($con, $sql_ingresso);
+  }
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +29,7 @@ $link_completo = $link.$link_banco.$link_final;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../assests/css/seat-charts.css">
 
     <!--Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -35,6 +38,8 @@ $link_completo = $link.$link_banco.$link_final;
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../assests/js/jquery.seat-charts.js"></script>
+    <script type="text/javascript" src="../assests/js/jquery.seat-charts.min.js"></script>
     <title>Home Page</title>
 <style>
     *{
@@ -108,89 +113,120 @@ $link_completo = $link.$link_banco.$link_final;
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
             <ul class="right hide-on-med-and-down">
-                <li><a href="#" data-scroll="home">Home</a></li>
-                <li><a href="#" data-scroll="cinema">Cinema</a></li>
-                <li><a href="#" data-scroll="show">Show</a></li>
-                <li><a href="#" data-scroll="teatro">Teatro</a></li>
                 <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile-nav">
-        <li><a href="#" data-scroll="home">Home</a></li>
-        <li><a href="#" data-scroll="cinema">Cinema</a></li>
-        <li><a href="#" data-scroll="show">Show</a></li>
-        <li><a href="#" data-scroll="teatro">Teatro</a></li>
         <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
     </ul>
-    <div id="home" class="block">
-        <h2>Home</h2>
-    </div>
-    <div id="cinema" class="block">
-        <h2>Cinema</h2><br>
-    <!--Container Cinema-->
-    <div class="container">
-        <div class="exibicao"> 
-            <div class="row">
-            <div id="cartaz" class="col s12">
-            <?php
-                    $result_cartaz =  "SELECT * FROM tb_cinema";
-                    $resultado_cartaz = mysqli_query($con,$result_cartaz);
-
-                    while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
-                        echo  "<img height='198' width='156' src='../upload/". $row_filme['arquivo'] ."'><br>";
-                        echo "" . $row_filme['titulo'] . "<br>";
-                        echo "" . $row_filme['data_estreia'] . "<br>";
-                        echo "<a class='waves-effect waves-light btn' href='../pages/detalhes.php?id=" . $row_filme['id'] . "'>Detalhes</a>";
-                        echo "<a class='waves-effect waves-light btn' href='../content/ingresso.php?id=" . $row_filme['id'] . "'>Comprar</a><br><br><hr>";
-                    }
-                    ?>
-                    
-            </div>
-            <div id="breve" class="col s12">
+    
+     <!-- Page content-->
+     <div class="container-fluid">
                 
+                <div class="demo">
+                    <div id="seat-map">
+                     <div class="front">TELA</div>					
+                 </div>
+                 
+                 <div class="booking-details">
+                     <p>Filme: <span id="title"></span><input id="titulo" hidden name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>"></p>
+                     <p>Duração: <span id="timer"></span><input id="duracao" hidden name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>"></p>
+                     <p>Poltronas: </p>
+                     <ul id="selected-seats" name="poltronas"></ul>
+                     <p>Ingressos: <span id="counter" name="qtde">0</span></p>
+                     <p>Total: <b>R$<span id="total" name="total">0</span></b></p>
+                             
+                     <button type="submit" class="checkout-button btn" name="realizar_venda">COMPRAR</button>
+                             
+                     <div id="legend"></div>
+                 </div>
+                 <div style="clear:both"></div>
             </div>
-            </div>   
+
+            </div>
+
+
             
-        </div>
-    </div>
+            <script type="text/javascript" src="../assests/js/jquery.seat-charts.js"></script> 
 
-    </div>
-    <div id="show" class="block">
-        <h2>Show</h2>
-    </div>
-    <div id="teatro" class="block">
-        <h2>Teatro</h2>
-    </div>
-    
+    <script>
+        var price = 10; //price
+$(document).ready(function() {
+	var $cart = $('#selected-seats'), //Sitting Area
+	$counter = $('#counter'), //Votes
+	$total = $('#total'); //Total money
+	
+	var sc = $('#seat-map').seatCharts({
+		map: [  //Seating chart
+			'aaaaaaaaaa',
+            'aaaaaaaaaa',
+            '__________',
+            'aaaaaaaa__',
+            'aaaaaaaaaa',
+			'aaaaaaaaaa',
+			'aaaaaaaaaa',
+			'aaaaaaaaaa',
+			'aaaaaaaaaa',
+            'aa__aa__aa'
+		],
+		naming : {
+			top : false,
+			getLabel : function (character, row, column) {
+				return column;
+			}
+		},
+		legend : { //Definition legend
+			node : $('#legend'),
+			items : [
+				[ 'a', 'available',   'LI' ],
+				[ 'a', 'unavailable', 'OC']
+			]					
+		},
+		click: function () { //Click event
+			if (this.status() == 'available') { //optional seat
+				$('<li>F'+(this.settings.row+1)+' A'+this.settings.label+'</li>')
+					.attr('id', 'cart-item-'+this.settings.id)
+					.data('seatId', this.settings.id)
+					.appendTo($cart);
 
-    <!--Back to top button-->
-    <a id="button"><img src="../assests/img/chevron-up-solid.svg"></a>
+				$counter.text(sc.find('selected').length+1);
+				$total.text(recalculateTotal(sc)+price);
+							
+				return 'selected';
+			} else if (this.status() == 'selected') { //Checked
+					//Update Number
+					$counter.text(sc.find('selected').length-1);
+					//update totalnum
+					$total.text(recalculateTotal(sc)-price);
+						
+					//Delete reservation
+					$('#cart-item-'+this.settings.id).remove();
+					//optional
+					return 'available';
+			} else if (this.status() == 'unavailable') { //sold
+				return 'unavailable';
+			} else {
+				return this.style();
+			}
+		}
+	});
+	//sold seat
+	
+	sc.get([]).status('unavailable');
+		
+});
+//sum total money
+function recalculateTotal(sc) {
+	var total = 0;
+	sc.find('selected').each(function () {
+		total += price;
+	});
+			
+	return total;
+}
 
-    <!--Modal Cinema-->
-    <div id="modal1" class="modal">
-    <div class="modal-content">
-    <div class="input-field col s6">
-                  <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_filmes['id']; ?>">
-                </div>
-                <div class="row">
-                <div class="input-field col s6">
-                  <input id="trailer" name="trailer" type="text" class="validate" value="<?php echo $row_filmes['trailer']; ?>">
-                  <label for="trailer">Trailer</label>
-                </div>
-              </div>
-    
-    <div class="video-container">
-        <iframe width="560" height="315" src="<?php echo $link_completo;?>" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-
-<script>
     //Menu
     document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
@@ -245,20 +281,13 @@ $link_completo = $link.$link_banco.$link_final;
         $('html, body').animate({scrollTop:0},'500');
     });
 
-    //Animation Tabs
-    document.addEventListener("DOMContentLoaded", function(){
-	    const tab = document.querySelector('.tabs');
-	    M.Tabs.init(tab, {
-	  swipeable: true,
-	  duration: 300
-	});
-})
-
-//Modal
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-  });
+    function detalhesFilmes(){ 
+        var titulo = document.getElementById('titulo').value; 
+        document.getElementById('title').innerHTML = titulo;
+        var duracao = document.getElementById('duracao').value; 
+        document.getElementById('timer').innerHTML = duracao;  
+    } 
+    window.onload = detalhesFilmes();
 
 </script>
 </body>
