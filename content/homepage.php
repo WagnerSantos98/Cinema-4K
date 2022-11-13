@@ -101,7 +101,7 @@ $link_completo = $link.$link_banco.$link_final;
 
 <body>
     <!--Navbar-->   
-    <nav class="red" style="padding: 0px 10px;">
+    <nav class="blue" style="padding: 0px 10px;">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo" >Sistema Inegrado</a>
 
