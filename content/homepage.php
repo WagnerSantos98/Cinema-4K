@@ -63,7 +63,7 @@ $link_completo = $link.$link_banco.$link_final;
     /*Back to top button*/
     #button{
         display: inline-block;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(33, 150, 243, 0.7);
         width: 50px;
         height: 50px;
         text-align: center;
@@ -87,10 +87,10 @@ $link_completo = $link.$link_banco.$link_final;
    
     #button:hover{
         cursor: pointer;
-        background-color: #333;
+        background-color: #2196f3;
     }
     #button:active{
-        background-color: #555;
+        background-color: #0e599e;
     }
     #button.show{
         opacity: 1;

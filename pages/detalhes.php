@@ -63,7 +63,7 @@ $link_completo = $link.$link_banco.$link_final;
     /*Back to top button*/
     #button{
         display: inline-block;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(33, 150, 243, 0.7);
         width: 50px;
         height: 50px;
         text-align: center;
@@ -87,21 +87,27 @@ $link_completo = $link.$link_banco.$link_final;
    
     #button:hover{
         cursor: pointer;
-        background-color: #333;
+        background-color: #2196f3;
     }
     #button:active{
-        background-color: #555;
+        background-color: #0e599e;
     }
     #button.show{
         opacity: 1;
         visibility: visible;
+    }
+    p{
+      font-weight: bold;
+    }
+    span{
+      font-weight: 300;
     }
 </style>
 </head>
 
 <body>
     <!--Navbar-->   
-    <nav class="red" style="padding: 0px 10px;">
+    <nav class="blue" style="padding: 0px 10px;">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo" >Sistema Inegrado</a>
 
@@ -140,60 +146,32 @@ $link_completo = $link.$link_banco.$link_final;
             
             <div class="row">
                 <div class="input-field col s6">
+                  <img height='198' width='156' class="validate" src="../upload/<?php echo $row_filmes['arquivo']; ?>">
                   <input id="titulo" hidden name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
-                  <label>Título</label>
-                  <p id="title" style="color: black;"></p>
+                  <p>Título: <span  id="title"></span></p><br>
+                  <input id="data_estreia" hidden name="data_estreia" type="text" class="validate" value="<?php echo $row_filmes['data_estreia']; ?>">
+                  <p>Data de Estreia: <span  id="estreia"></span></p>
                 </div>
                 <div class="input-field col s6">
                   <input id="genero" hidden name="genero" type="text" class="validate" value="<?php echo $row_filmes['genero']; ?>">
-                  <label>Gênero</label>
-                  <p id="gener"></p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s6">
+                  <p>Genero: <span  id="gener"></span></p>
                   <input id="duracao" hidden  name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>">
-                  <label>Duração</label>
-                  <p id="timer"></p>
-                </div>
-                <div class="input-field col s6">
-                <input id="classificacao" hidden  name="classificacao" type="text" class="validate" value="<?php echo $row_filmes['classificacao']; ?>">
-                <label for="classificacao">Classificação Indicativa</label>
-                <p id="classificacao_indicativa"></p>
-                </div>
-              </div>
-              <div class="row">
-              <div class="input-field col s6">
-                  <input id="sinopse" hidden name="sinopse" type="text" class="validate" value="<?php echo $row_filmes['sinopse']; ?>">
-                  <label for="sinopse">Sinope</label>
-                  <p id="sinopse_filme"></p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="elenco" hidden name="elenco" type="text" class="validate" value="<?php echo $row_filmes['elenco']; ?>" disabled>
-                  <label for="elenco">Elenco</label>
-                  <p id="elenco_filme"></p>
-                </div>
-                <div class="input-field col s6">
+                  <p>Duração: <span  id="timer"></span></p>
+                  <input id="classificacao" hidden  name="classificacao" type="text" class="validate" value="<?php echo $row_filmes['classificacao']; ?>">
+                  <p>Classificação Indicativa: <span  id="classificacao_indicativa"></span></p>
                   <input id="diretor" hidden name="diretor" type="text" class="validate" value="<?php echo $row_filmes['diretor']; ?>">
-                  <label for="diretor">Diretor</label>
-                  <p id="diretor_filme"></p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="data_estreia" hidden name="data_estreia" type="text" class="validate" value="<?php echo $row_filmes['data_estreia']; ?>">
-                  <label for="data_estreia">Data de Estreia</label>
-                  <p id="estreia"></p>
-                </div>
-                <div class="input-field col s6">
+                  <p>Direção: <span  id="diretor_filme"></span></p>
+                  <input id="elenco" hidden name="elenco" type="text" class="validate" value="<?php echo $row_filmes['elenco']; ?>" disabled>
+                  <p>Elenco: <span  id="elenco_filme"></span></p><br>
+                  <input id="sinopse" hidden name="sinopse" type="text" class="validate" value="<?php echo $row_filmes['sinopse']; ?>">
+                  <p>Sinopse: <span  id="sinopse_filme"></span></p>
                   <input id="distribuidora" hidden name="distribuidora" type="text" class="validate" value="<?php echo $row_filmes['distribuidora']; ?>">
-                  <label for="distribuidora">Distribuidora</label>
-                  <p id="distribuidora_filme"></p>
+                  <p>Distribuidora: <span  id="distribuidora_filme"></span></p>
+                  
                 </div>
               </div>
-              <label for="trailer">Trailer</label>
+              </div>
+              <p>Trailer</p>
               <div class="row">
                 <div class="input-field col s6">
                     <div class="video-container">
@@ -202,7 +180,7 @@ $link_completo = $link.$link_banco.$link_final;
                 </div>
               </div>
 
-              <button name="comprar_ingresso" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Comprar</button>
+              <button name="comprar_ingresso" class="waves-effect waves-light btn" type="submit" style="float: right; margin-top: -350px; font-weight: bold;"><i class="fa fa-send"></i> Comprar</button>
             </div>
 
           </div>
