@@ -120,7 +120,6 @@ if(isset($_POST['realizar_venda'])){
   box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.18);
 }
 
-
 .card {
   border-radius: 15px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.15);
@@ -158,6 +157,7 @@ if(isset($_POST['realizar_venda'])){
                       <div class="step-title waves-effect waves-dark">Ingressos</div>
                       <div class="step-content">
                         <div class="row">
+                        <img height='198' width='156' class="validate" src="../upload/<?php echo $row_filmes['arquivo']; ?>">
                         <p>Filme: <span id="title"></span><input id="titulo" hidden name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>"></p>
                         <p>Duração: <span id="timer"></span><input id="duracao" hidden name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>"></p>
                         <p>Data: <span>13/11/2022 - 19:00</span></p>
@@ -260,7 +260,9 @@ if(isset($_POST['realizar_venda'])){
                               var titulo = document.getElementById('titulo').value; 
                               document.getElementById('title').innerHTML = titulo;
                               var duracao = document.getElementById('duracao').value; 
-                              document.getElementById('timer').innerHTML = duracao;  
+                              document.getElementById('timer').innerHTML = duracao;
+                              var arquivo = document.getElementById('arquivo').value; 
+                              document.getElementById('arq').innerHTML = arquivo;    
                           } 
                           window.onload = detalhesFilmes();
                           
