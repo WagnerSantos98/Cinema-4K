@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--JS Jquery Seats-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../assests/css/seat-charts.css">
+
+    <!--Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../assests/js/jquery.seat-charts.js"></script>
+    <script type="text/javascript" src="../assests/js/jquery.seat-charts.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <!--Poltronas-->
+                            <div class="container-fluid">        
+                                <div class="demo">
+                                    <div id="seat-map">
+                                    <div class="front">TELA</div>					
+                                </div>
+                                
+                                <div class="booking-details">
+                                    <p>Filme: <span id="title"></span><input id="titulo" hidden name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>"></p>
+                                    <p>Duração: <span id="timer"></span><input id="duracao" hidden name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>"></p>
+                                    <p>Poltronas: </p>
+                                    <ul id="selected-seats" name="poltronas"></ul>
+                                    <p>Ingressos: <span id="counter" name="qtde">0</span></p>
+                                    <p>Total: <b>R$<span id="total" name="total">0</span></b></p>
+                                                                                        
+                                    <div id="legend"></div>
+                                </div>
+                                <div style="clear:both"></div>
+                                </div>
+
+                            </div>
+
+                            <script>
+                              var price = 10; //price
+                      $(document).ready(function() {
+                        var $cart = $('#selected-seats'), //Sitting Area
+                        $counter = $('#counter'), //Votes
+                        $total = $('#total'); //Total money
+                        
+                        var sc = $('#seat-map').seatCharts({
+                          map: [  //Seating chart
+                            'aaaaaaaaaa',
+                                  'aaaaaaaaaa',
+                                  '__________',
+                                  'aaaaaaaa__',
+                                  'aaaaaaaaaa',
+                            'aaaaaaaaaa',
+                            'aaaaaaaaaa',
+                            'aaaaaaaaaa',
+                            'aaaaaaaaaa',
+                                  'aa__aa__aa'
+                          ],
+                          naming : {
+                            top : false,
+                            getLabel : function (character, row, column) {
+                              return column;
+                            }
+                          },
+                          legend : { //Definition legend
+                            node : $('#legend'),
+                            items : [
+                              [ 'a', 'available',   'LI' ],
+                              [ 'a', 'unavailable', 'OC']
+                            ]					
+                          },
+                          click: function () { //Click event
+                            if (this.status() == 'available') { //optional seat
+                              $('<li>F'+(this.settings.row+1)+' A'+this.settings.label+'</li>')
+                                .attr('id', 'cart-item-'+this.settings.id)
+                                .data('seatId', this.settings.id)
+                                .appendTo($cart);
+                      
+                              $counter.text(sc.find('selected').length+1);
+                              $total.text(recalculateTotal(sc)+price);
+                                    
+                              return 'selected';
+                            } else if (this.status() == 'selected') { //Checked
+                                //Update Number
+                                $counter.text(sc.find('selected').length-1);
+                                //update totalnum
+                                $total.text(recalculateTotal(sc)-price);
+                                  
+                                //Delete reservation
+                                $('#cart-item-'+this.settings.id).remove();
+                                //optional
+                                return 'available';
+                            } else if (this.status() == 'unavailable') { //sold
+                              return 'unavailable';
+                            } else {
+                              return this.style();
+                            }
+                          }
+                        });
+                        //sold seat
+                        
+                        sc.get(['selec']).status('unavailable');
+                          
+                      });
+                      //sum total money
+                      function recalculateTotal(sc) {
+                        var total = 0;
+                        sc.find('selected').each(function () {
+                          total += price;
+                        });
+                            
+                        return total;
+                      }
+                      
+                          //Menu
+                          document.addEventListener('DOMContentLoaded', function() {
+                          var elems = document.querySelectorAll('.sidenav');
+                          var instances = M.Sidenav.init(elems);
+                        });
+                      
+                          $("body").css("paddingTop", $(".nav-wrapper").innerHeight());
+                      
+                          $(function(){
+                              $(".nav-wrapper li a").click(function(e){
+                                  "use strict";
+                                  e.preventDefault();
+                                  $("html, body").animate(
+                                      {
+                                          scrollTop: $("#" + $(this).data("scroll")).offset().top + 1,
+                                      },
+                                      1000
+                                  );
+                              });
+                      
+                                  $(this)
+                                  .addClass("active")
+                                  .parent()
+                                  .siblings()
+                                  .find("a")
+                                  .removeClass("active");
+                      
+                                  $(window).scroll(function(){
+                                  $(".block").each(function(){
+                                      if($(window).scrollTop() >= $(this).offset().top){
+                                          var blockId = $(this).attr("id");
+                                          $(".nav-wrapper a").removeClass("active");
+                                          $('.nav-wrapper li a[data-scroll="' + blockId + '"]').addClass("active");
+                                      }
+                                  });
+                              });
+                          });
+                      
+                          //Back to top button
+                          var btn = $('#button');
+                      
+                          $(window).scroll(function(){
+                              if($(window).scrollTop() > 300){
+                                  btn.addClass('show');
+                              }else{
+                                  btn.removeClass('show');
+                              }
+                          });
+                      
+                          btn.on('click', function(e){
+                              e.preventDefault();
+                              $('html, body').animate({scrollTop:0},'500');
+                          });
+                      
+                          function detalhesFilmes(){ 
+                              var titulo = document.getElementById('titulo').value; 
+                              document.getElementById('title').innerHTML = titulo;
+                              var duracao = document.getElementById('duracao').value; 
+                              document.getElementById('timer').innerHTML = duracao;  
+                          } 
+                          window.onload = detalhesFilmes();
+                      
+                      </script>
+</body>
+</html>
