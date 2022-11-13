@@ -3,6 +3,8 @@ include_once('../db/conexao.php');
 session_start();
 
 
+
+
 //Retorna o campos com valores do banco de dados
 $id_filme = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $result_filme = "SELECT * FROM tb_cinema WHERE id = '$id_filme'";

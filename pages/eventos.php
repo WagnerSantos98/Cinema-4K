@@ -14,8 +14,15 @@ if(isset($_POST['cadastrar_cinema'])){
   $data_estreia = $_POST['data_estreia'];
   $distribuidora = $_POST['distribuidora'];
   $trailer = $_POST['trailer'];
-  $sql_cinema = "INSERT INTO tb_cinema(titulo,genero,duracao,classificacao,sinopse,elenco,diretor,data_estreia,distribuidora,trailer)
-  VALUES ('$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$elenco', '$diretor', '$data_estreia', '$distribuidora', '$trailer');";
+
+  $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
+  $novo_nome = time() . $extensao;
+  $diretorio = "../upload/";
+
+  move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome);
+
+  $sql_cinema = "INSERT INTO tb_cinema(titulo,genero,duracao,classificacao,sinopse,elenco,diretor,data_estreia,distribuidora,trailer,arquivo)
+  VALUES ('$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$elenco', '$diretor', '$data_estreia', '$distribuidora', '$trailer','$novo_nome');";
   $sql_cinemas = mysqli_query($con, $sql_cinema);
 }
 
@@ -110,7 +117,7 @@ if(isset($_POST['cadastrar_show'])){
               <h3 class='header'>Cinema</h3>
               
               <div class="row">
-                <form class="col s12"  method="POST" action="">
+                <form class="col s12"  method="POST" action="" enctype="multipart/form-data">
                   <div class="row">
                     <div class="input-field col s6">
                       <input id="titulo" name="titulo" type="text" class="validate">
@@ -183,6 +190,17 @@ if(isset($_POST['cadastrar_show'])){
                     <div class="input-field col s6">
                       <input id="trailer" name="trailer" type="text" placeholder="URL" class="validate">
                       <label for="trailer">Trailer</label>
+                    </div>
+                    <div class="input-field col s6">
+                      <div class="file-field input-field">
+                        <div class="btn">
+                          <span>File</span>
+                          <input type="file" name="arquivo">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input name="arquivo" class="file-path validate" type="text" placeholder="Insira o Poster do Filme">
+                        </div>
+                      </div>
                     </div>
                   </div>
 
