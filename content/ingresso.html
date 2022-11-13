@@ -40,6 +40,9 @@ if(isset($_POST['realizar_venda'])){
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript" src="../assests/js/jquery.seat-charts.js"></script>
     <script type="text/javascript" src="../assests/js/jquery.seat-charts.min.js"></script>
+
+    <!-- jQueryValidation Plugin -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
     <title>Home Page</title>
 <style>
     *{
@@ -121,112 +124,29 @@ if(isset($_POST['realizar_venda'])){
     <ul class="sidenav" id="mobile-nav">
         <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
     </ul>
+
+    <form action="" class="container">
+        <ul class="stepper parallel hotizontal">
+            <li class="step active">
+                <div class="step-title waves-effect waves-dark">Ingressos</div>
+                <div class="step-content">
+                    <div class="row">
+                        <div class="form-field col s12">
+                            <!--Cmapos que irá utilizar-->
+                            <p>Teste</p>
+                            <span>Teste</span>
+                            <p>
+                                <input type="text" name="" id="" class="filled-in">
+                                <label for="">Teste</label>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </form>
     
-     <!-- Page content-->
-     <div class="container-fluid">
-                
-                <div class="demo">
-                    <div id="seat-map">
-                     <div class="front">TELA</div>					
-                 </div>
-                 
-                 <div class="booking-details">
-                     <p>Filme: <span id="title"></span><input id="titulo" hidden name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>"></p>
-                     <p>Duração: <span id="timer"></span><input id="duracao" hidden name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>"></p>
-                     <p>Poltronas: </p>
-                     <ul id="selected-seats" name="poltronas"></ul>
-                     <p>Ingressos: <span id="counter" name="qtde">0</span></p>
-                     <p>Total: <b>R$<span id="total" name="total">0</span></b></p>
-                             
-                     <button type="submit" class="checkout-button btn" name="realizar_venda">COMPRAR</button>
-                             
-                     <div id="legend"></div>
-                 </div>
-                 <div style="clear:both"></div>
-            </div>
-
-            </div>
-
-
-            
-            <script type="text/javascript" src="../assests/js/jquery.seat-charts.js"></script> 
-
-    <script>
-        var price = 10; //price
-$(document).ready(function() {
-	var $cart = $('#selected-seats'), //Sitting Area
-	$counter = $('#counter'), //Votes
-	$total = $('#total'); //Total money
-	
-	var sc = $('#seat-map').seatCharts({
-		map: [  //Seating chart
-			'aaaaaaaaaa',
-            'aaaaaaaaaa',
-            '__________',
-            'aaaaaaaa__',
-            'aaaaaaaaaa',
-			'aaaaaaaaaa',
-			'aaaaaaaaaa',
-			'aaaaaaaaaa',
-			'aaaaaaaaaa',
-            'aa__aa__aa'
-		],
-		naming : {
-			top : false,
-			getLabel : function (character, row, column) {
-				return column;
-			}
-		},
-		legend : { //Definition legend
-			node : $('#legend'),
-			items : [
-				[ 'a', 'available',   'LI' ],
-				[ 'a', 'unavailable', 'OC']
-			]					
-		},
-		click: function () { //Click event
-			if (this.status() == 'available') { //optional seat
-				$('<li>F'+(this.settings.row+1)+' A'+this.settings.label+'</li>')
-					.attr('id', 'cart-item-'+this.settings.id)
-					.data('seatId', this.settings.id)
-					.appendTo($cart);
-
-				$counter.text(sc.find('selected').length+1);
-				$total.text(recalculateTotal(sc)+price);
-							
-				return 'selected';
-			} else if (this.status() == 'selected') { //Checked
-					//Update Number
-					$counter.text(sc.find('selected').length-1);
-					//update totalnum
-					$total.text(recalculateTotal(sc)-price);
-						
-					//Delete reservation
-					$('#cart-item-'+this.settings.id).remove();
-					//optional
-					return 'available';
-			} else if (this.status() == 'unavailable') { //sold
-				return 'unavailable';
-			} else {
-				return this.style();
-			}
-		}
-	});
-	//sold seat
-	
-	sc.get([]).status('unavailable');
-		
-});
-//sum total money
-function recalculateTotal(sc) {
-	var total = 0;
-	sc.find('selected').each(function () {
-		total += price;
-	});
-			
-	return total;
-}
-
+<script>
     //Menu
     document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
