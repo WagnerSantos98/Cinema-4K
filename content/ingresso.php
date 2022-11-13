@@ -170,7 +170,7 @@ if(isset($_POST['realizar_venda'])){
                         </p>
                         <p>
                           <label>
-                            <input class="with-gap" name="group3" type="radio" checked />
+                            <input class="with-gap" name="group3" type="radio"/>
                             <span>Meia R$5,00</span>
                           </label>
                         </p>
