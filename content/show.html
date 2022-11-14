@@ -34,10 +34,13 @@
         padding: 0;
         width: 42px;
         height: 42px;
-        float: left;
        }
-       .material-icons{
-        color: #fff;   
+       .btn-strepper-cart{
+        border-radius: 3px;
+        padding: 0;
+        width: 150px;
+        height: 42px;
+        align-items: center;
        }
        
     </style>
@@ -56,7 +59,7 @@
               <form class="col s12" method="POST" action="">
               <div class="row">
                 <div class="input-field col s12">
-                    <div class="input-field col s9">
+                    <div class="input-field col s6">
                         <p>INTEIRA</p>
                         <span id="ing_inteira">R$ 100,00</span>  
                     </div>
@@ -70,11 +73,14 @@
                     <div class="input-field col s1">
                         <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
                     </div>
+                    <div class="input-field col s1">
+                        <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
+                    </div>
                 </div>
               </div><hr id="hr">
               <div class="row">
                 <div class="input-field col s12">
-                    <div class="input-field col s9">
+                    <div class="input-field col s6">
                         <p>MEIA ENTRADA</p>
                         <span id="ing_meia">R$ 50,00</span>  
                     </div>
@@ -97,7 +103,7 @@
   
                 
               </div>
-  
+              <span style="float: right;">R$ 150,00</span>
             </div>
           </div>
         </div>
