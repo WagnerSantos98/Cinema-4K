@@ -111,6 +111,16 @@ $link_completo = $link.$link_banco.$link_final;
         height: 42px;
         float: left;
        }
+       .btn-strepper-cart{
+        border-radius: 3px;
+        padding: 0;
+        width: 150px;
+        height: 42px;
+        align-items: center;
+       }
+       h3{
+        text-align: justify;
+       }
 </style>
 </head>
 
@@ -186,7 +196,7 @@ $link_completo = $link.$link_banco.$link_final;
               <form class="col s12" method="POST" action="">
               <div class="row">
                 <div class="input-field col s12">
-                    <div class="input-field col s9">
+                    <div class="input-field col s6">
                         <p>INTEIRA</p>
                         <span id="ing_inteira">R$ 100,00</span>  
                     </div>
@@ -200,11 +210,14 @@ $link_completo = $link.$link_banco.$link_final;
                     <div class="input-field col s1">
                         <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
                     </div>
+                    <div class="input-field col s1">
+                        <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
+                    </div>
                 </div>
               </div><hr id="hr">
               <div class="row">
                 <div class="input-field col s12">
-                    <div class="input-field col s9">
+                    <div class="input-field col s6">
                         <p>MEIA ENTRADA</p>
                         <span id="ing_meia">R$ 50,00</span>  
                     </div>
@@ -227,7 +240,7 @@ $link_completo = $link.$link_banco.$link_final;
   
                 
               </div>
-  
+              <span style="float: right;">R$ 150,00</span>
             </div>
           </div>
         </div>
@@ -245,7 +258,7 @@ $link_completo = $link.$link_banco.$link_final;
                   <form class="col s12" method="POST" action="">
                   <div class="row">
                     <div class="input-field col s12">
-                        <div class="input-field col s9">
+                        <div class="input-field col s6">
                             <p>INTEIRA</p>
                             <span id="ing_inteira">R$ 100,00</span>  
                         </div>
@@ -259,11 +272,14 @@ $link_completo = $link.$link_banco.$link_final;
                         <div class="input-field col s1">
                             <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
                         </div>
+                        <div class="input-field col s1">
+                            <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
+                        </div>
                     </div>
                   </div><hr id="hr">
                   <div class="row">
                     <div class="input-field col s12">
-                        <div class="input-field col s9">
+                        <div class="input-field col s6">
                             <p>MEIA ENTRADA</p>
                             <span id="ing_meia">R$ 50,00</span>  
                         </div>
@@ -303,7 +319,7 @@ $link_completo = $link.$link_banco.$link_final;
                   <form class="col s12" method="POST" action="">
                   <div class="row">
                     <div class="input-field col s12">
-                        <div class="input-field col s9">
+                        <div class="input-field col s6">
                             <p>INTEIRA</p>
                             <span id="ing_inteira">R$ 100,00</span>  
                         </div>
@@ -317,11 +333,14 @@ $link_completo = $link.$link_banco.$link_final;
                         <div class="input-field col s1">
                             <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
                         </div>
+                        <div class="input-field col s1">
+                            <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
+                        </div>
                     </div>
                   </div><hr id="hr">
                   <div class="row">
                     <div class="input-field col s12">
-                        <div class="input-field col s9">
+                        <div class="input-field col s6">
                             <p>MEIA ENTRADA</p>
                             <span id="ing_meia">R$ 50,00</span>  
                         </div>
