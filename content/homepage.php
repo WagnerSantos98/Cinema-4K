@@ -49,7 +49,7 @@ $link_completo = $link.$link_banco.$link_final;
         margin-top: -65px;
     }
     .block{
-        height: 3000px;
+        height: auto;
         background-color: #eee;
         margin-bottom: 20px;
         padding: 60px 0;
