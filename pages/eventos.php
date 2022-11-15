@@ -14,6 +14,7 @@ if(isset($_POST['cadastrar_cinema'])){
   $data_estreia = $_POST['data_estreia'];
   $distribuidora = $_POST['distribuidora'];
   $trailer = $_POST['trailer'];
+  $sala = $_POST['sala'];
 
   $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
   $novo_nome = time() . $extensao;
@@ -21,8 +22,8 @@ if(isset($_POST['cadastrar_cinema'])){
 
   move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome);
 
-  $sql_cinema = "INSERT INTO tb_cinema(titulo,genero,duracao,classificacao,sinopse,elenco,diretor,data_estreia,distribuidora,trailer,arquivo)
-  VALUES ('$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$elenco', '$diretor', '$data_estreia', '$distribuidora', '$trailer','$novo_nome');";
+  $sql_cinema = "INSERT INTO tb_cinema(titulo,genero,duracao,classificacao,sinopse,elenco,diretor,data_estreia,distribuidora,trailer,sala,arquivo)
+  VALUES ('$titulo', '$genero', '$duracao', '$classificacao', '$sinopse', '$elenco', '$diretor', '$data_estreia', '$distribuidora', '$trailer', '$sala', '$novo_nome');";
   $sql_cinemas = mysqli_query($con, $sql_cinema);
 }
 
@@ -69,6 +70,9 @@ if(isset($_POST['cadastrar_show'])){
       #cinema{
         height: auto;
       }
+      #card_cinema{
+        height: 3000px;
+      }
     </style>
             
     <title>Painel Sistema Integrado</title> 
@@ -112,7 +116,7 @@ if(isset($_POST['cadastrar_show'])){
       <div id="cinema" class="col s12">
 
         <div class="container pt-10">
-          <div class="row card">
+          <div class="row card" id="card_cinema">
             <div id="test1" class="col s12">
               <h3 class='header'>Cinema</h3>
               
@@ -125,7 +129,7 @@ if(isset($_POST['cadastrar_show'])){
                     </div>
                     <div class="input-field col s6">
                     <select id="genero" name="genero">
-                        <option value="" disabled selected>Selecione...</option>
+                        <option value="" disabled>Selecione...</option>
                         <option>Ação</option>
                         <option>Aventura</option>
                         <option>Animação</option>
@@ -149,7 +153,7 @@ if(isset($_POST['cadastrar_show'])){
                     </div>
                     <div class="input-field col s6">
                       <select id="classificacao" name="classificacao">
-                        <option value="" disabled selected>Selecione...</option>
+                        <option value="" disabled>Selecione...</option>
                         <option>Livre</option>
                         <option>+10</option>
                         <option>+12</option>
@@ -190,6 +194,14 @@ if(isset($_POST['cadastrar_show'])){
                     <div class="input-field col s6">
                       <input id="trailer" name="trailer" type="text" placeholder="URL" class="validate">
                       <label for="trailer">Trailer</label>
+                    </div>
+                    <div class="input-field col s6">
+                    <select id="sala" name="sala">
+                        <option value="" disabled>Selecione...</option>
+                        <option>Sala 01</option>
+                        <option>Sala 02</option>
+                    </select>
+                    <label>Sala</label>
                     </div>
                     <div class="input-field col s6">
                       <div class="file-field input-field">
