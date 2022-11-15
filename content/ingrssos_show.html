@@ -30,7 +30,7 @@
             position: fixed;
             height: 345px;
             width: 290px;
-            margin-left: 50%;
+            margin-left: 45%;
             margin-top: -487px;
         }
         #card1{
@@ -41,7 +41,7 @@
             position: fixed;
             height: 145px;
             width: 290px;
-            margin-left: 50%;
+            margin-left: 45%;
             margin-top: -120px;
         } 
         #down{
@@ -51,6 +51,7 @@
             font-size: 14px;
             color: #000;
             text-decoration: underline #2196f3;
+            cursor: pointer;
         }   
      </style>
     <title>Document</title>
@@ -78,9 +79,13 @@
                     <span id="ing_inteira">[promotor]</span>
                 </div>
                 <div class="input-field col s12">
-                    <a href="" id="mostrar">Mostrar detalhes <i class="material-icons" id="down">arrow_drop_down</i></a>
-                </div>
+                    <div>Conteudo</div>
 
+                    <a type="button" id="mostrar" onclick="Mudarestado('minhaDiv')">Mostrar detalhes <i class="material-icons" id="down">arrow_drop_down</i></a>
+                </div>
+                <div class="input-field col s12"  id="minhaDiv" style="display:none">
+                    <p>[setor, tipo int ou meia] <span>R$ 50,00</span></p>
+                </div>
                 </div>
                 
   
@@ -160,5 +165,16 @@
           </div>
         </div>
     <!--Formas de Pagamento-->
+
+    <script>
+    function Mudarestado(el) {
+        var display = document.getElementById(el).style.display;
+            if (display == "none"){
+                document.getElementById(el).style.display = 'block';
+            }else{
+                document.getElementById(el).style.display = 'none';
+            }
+}
+    </script>
 </body>
 </html>
