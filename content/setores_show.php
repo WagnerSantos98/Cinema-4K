@@ -48,8 +48,25 @@
 </head>
 
 <body>
-    <!--Setor A-->
-    <div class="container pt-10">
+    <!--Navbar-->   
+    <nav class="blue" style="padding: 0px 10px;">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+
+            <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-nav">
+        <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
+    </ul>
+
+     <!--Setor A-->
+     <div class="container pt-10">
         <div class="row card">
           <div id="test1" class="col s12">
             <h3 class='header'>Setor A</h3>
@@ -74,7 +91,7 @@
                         <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
                     </div>
                     <div class="input-field col s1">
-                        <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
+                        <a class="btn btn-strepper-cart green" href="../content/ingrssos_show.php"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
                     </div>
                 </div>
               </div><hr id="hr">
@@ -231,6 +248,7 @@
               </div>
             </div>
         <!--Final Camarote-->
+
 
 <script>
     //Setor A

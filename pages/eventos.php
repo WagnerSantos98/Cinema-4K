@@ -42,6 +42,22 @@ if(isset($_POST['cadastrar_teatro'])){
 }
 
 if(isset($_POST['cadastrar_show'])){
+  $atracao = $_POST['atracao'];
+  $data = $_POST['data'];
+  $local = $_POST['local'];
+  $endereco = $_POST['endereco'];
+  $horario = $_POST['horario'];
+  $classificacao_atracao = $_POST['classificacao_atracao'];
+
+  $extensao = strtolower(substr($_FILES['file_atracao']['name'], -4));
+  $novo_nome = time() . $extensao;
+  $diretorio = "../upload_show/";
+
+  move_uploaded_file($_FILES['file_atracao']['tmp_name'], $diretorio.$novo_nome);
+
+  $sql_show = "INSERT INTO tb_show(atracao,data,local,endereco,horario,classificacao_atracao,file_atracao)
+  VALUES ('$atracao', '$data', '$local', '$endereco', '$horario', '$classificacao_atracao', '$novo_nome');";
+  $sql_shows = mysqli_query($con, $sql_show);;
 
 }
 
@@ -129,7 +145,7 @@ if(isset($_POST['cadastrar_show'])){
                     </div>
                     <div class="input-field col s6">
                     <select id="genero" name="genero">
-                        <option value="" disabled>Selecione...</option>
+                        <option value="" disabled selected>Selecione...</option>
                         <option>Ação</option>
                         <option>Aventura</option>
                         <option>Animação</option>
@@ -153,7 +169,7 @@ if(isset($_POST['cadastrar_show'])){
                     </div>
                     <div class="input-field col s6">
                       <select id="classificacao" name="classificacao">
-                        <option value="" disabled>Selecione...</option>
+                        <option value="" disabled selected>Selecione...</option>
                         <option>Livre</option>
                         <option>+10</option>
                         <option>+12</option>
@@ -197,7 +213,7 @@ if(isset($_POST['cadastrar_show'])){
                     </div>
                     <div class="input-field col s6">
                     <select id="sala" name="sala">
-                        <option value="" disabled>Selecione...</option>
+                        <option value="" disabled selected>Selecione...</option>
                         <option>Sala 01</option>
                         <option>Sala 02</option>
                     </select>
@@ -210,7 +226,7 @@ if(isset($_POST['cadastrar_show'])){
                           <input type="file" name="arquivo">
                         </div>
                         <div class="file-path-wrapper">
-                          <input name="arquivo" class="file-path validate" type="text" placeholder="Insira o Poster do Filme">
+                          <input name="arquivo" class="file-path validate" type="text" placeholder="Insira o Poster do Show">
                         </div>
                       </div>
                     </div>
@@ -277,6 +293,7 @@ if(isset($_POST['cadastrar_show'])){
                       <input id="horario_evento"  name="horario_evento" type="text" class="validate">
                       <label for="horario_evento">Horário da peça</label>
                     </div>
+                    
                   </div>
 
                   <button name="cadastrar_teatro" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
@@ -300,68 +317,59 @@ if(isset($_POST['cadastrar_show'])){
               <h3 class='header'>Show</h3>
               
               <div class="row">
-                <form class="col s12"  method="POST" action="">
+                <form class="col s12"  method="POST" action="" enctype="multipart/form-data">
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="titulo" name="titulo" type="text" class="validate">
-                      <label for="titulo">Título</label>
+                      <input id="atracao" name="atracao" type="text" class="validate">
+                      <label for="atracao">Atração</label>
                     </div>
                     <div class="input-field col s6">
-                      <input id="genero" name="genero" type="text" class="validate">
-                      <label for="genero">Gênero</label>
+                      <input id="data" name="data" type="text" class="validate">
+                      <label for="data">Data</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s6">
-                      <input id="duracao"  name="duracao" type="text" class="duracao">
-                      <label for="duracao">Duração</label>
+                      <input id="local"  name="local" type="text" class="validate">
+                      <label for="local">Local</label>
                     </div>
                     <div class="input-field col s6">
-                      <select id="classificacao" name="classificacao">
+                    <input id="endereco"  name="endereco" type="text" class="validate">
+                      <label for="endereco">Endereço</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="input-field col s6">
+                      <input id="horario"  name="horario" type="text" class="validate">
+                      <label for="horario">Horário</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s6">
+                    <select id="classificacao_atracao" name="classificacao_atracao">
                         <option value="" disabled selected>Selecione...</option>
                         <option>Livre</option>
                         <option>+10</option>
                         <option>+12</option>
                         <option>+14</option>
-                        <option>+16</option>
+                        <option id="">+16</option>
                         <option>+18</option>
                       </select>
-                    <label>Classificação</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                  <div class="input-field col s12">
-                      <textarea id="sinopse" name="sinopse" class="materialize-textarea"></textarea>
-                      <label for="sinopse">Sinopse</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="elenco" name="elenco" type="text" class="validate">
-                      <label for="elenco">Elenco</label>
+                    <label>Classificação Indicativa</label>
                     </div>
                     <div class="input-field col s6">
-                      <input id="diretor" name="diretor" type="text" class="validate">
-                      <label for="diretor">Diretor</label>
+                      <div class="file-field input-field">
+                        <div class="btn">
+                          <span>File</span>
+                          <input type="file" name="file_atracao">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input name="file_atracao" class="file-path validate" type="text" placeholder="Insira o Poster do Filme">
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="data_estreia" name="data_estreia" type="text" class="validate">
-                      <label for="data_estreia">Data de Estreia</label>
-                    </div>
-                    <div class="input-field col s6">
-                      <input id="distribuidora" name="distribuidora" type="text" class="validate">
-                      <label for="distribuidora">Distribuidora</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="trailer" name="trailer" type="text" class="validate">
-                      <label for="trailer">Trailer</label>
-                    </div>
-                  </div>
-
+                  
                   <button name="cadastrar_show" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
                   
                 </form>

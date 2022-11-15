@@ -1,3 +1,14 @@
+<?php
+include_once('../db/conexao.php');
+session_start();
+
+//Retorna o campos com valores do banco de dados
+$id_eventos = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_eventos = "SELECT * FROM tb_show WHERE id = '$id_eventos'";
+$resultado_eventos = mysqli_query($con, $result_eventos);
+$row_eventos = mysqli_fetch_assoc($resultado_eventos);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -57,6 +68,23 @@
     <title>Document</title>
 </head>
 <body>
+  <!--Navbar-->   
+  <nav class="blue" style="padding: 0px 10px;">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+
+            <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-nav">
+        <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
+    </ul>
+
      <!--Carrinho-->
     <div class="container pt-10">
         <div class="row card" id="card1">
@@ -68,7 +96,7 @@
               <form class="col s12" method="POST" action="">
               <div class="row">
                 <div class="input-field col s12">
-                    <img height="22" width="27.86" src="" alt="">
+                <img height='198' width='156' class="validate" src="../upload_show/<?php echo $row_eventos['file_atracao']; ?>">
                 </div>
               </div>
               <div class="row">

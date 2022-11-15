@@ -7,6 +7,12 @@ $id_filme = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $result_filme = "SELECT * FROM tb_cinema WHERE id = '$id_filme'";
 $resultado_filme = mysqli_query($con, $result_filme);
 $row_filmes = mysqli_fetch_assoc($resultado_filme);
+
+//Retorna o campos com valores do banco de dados
+$id_show = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_show = "SELECT * FROM tb_show WHERE id = '$id_show'";
+$resultado_show = mysqli_query($con, $result_show);
+$row_shows = mysqli_fetch_assoc($resultado_show);
     
 //Link youtube
 $link = 'http://youtube.com/embed/';
@@ -186,190 +192,32 @@ $link_completo = $link.$link_banco.$link_final;
 
     <div id="show" class="block">
         <h2>Show</h2><br>
-       <!--Setor A-->
-    <div class="container pt-10">
-        <div class="row card">
-          <div id="test1" class="col s12">
-            <h3 class='header'>Setor A</h3>
-            <div class="container">
-              <div class="row">
-                
-              <form class="col s12" method="POST" action="">
-              <div class="row">
-                <div class="input-field col s12">
-                    <div class="input-field col s6">
-                        <p>INTEIRA</p>
-                        <span id="ing_inteira">R$ 100,00</span>  
-                    </div>
-                    
-                    <div class="input-field col s1">
-                        <a class="btn inteira btn-strepper-left grey" id="sub_inteira"><i class="material-icons">remove</i></a> 
-                    </div>
-                    <div class="input-field col s1">
-                        <input disabled class="validate" type="text" value="0" id="ticket_inteira" tabindex="-1"> 
-                    </div>
-                    <div class="input-field col s1">
-                        <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="input-field col s1">
-                        <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
-                    </div>
-                </div>
-              </div><hr id="hr">
-              <div class="row">
-                <div class="input-field col s12">
-                    <div class="input-field col s6">
-                        <p>MEIA ENTRADA</p>
-                        <span id="ing_meia">R$ 50,00</span>  
-                    </div>
-                    
-                    <div class="input-field col s1">
-                        <a class="btn meia btn-strepper-left grey" id="sub_meia"><i class="material-icons">remove</i></a> 
-                    </div>
-                    <div class="input-field col s1">
-                        <input disabled class="validate" type="text" value="0" id="ticket_meia" tabindex="-1"> 
-                    </div>
-                    <div class="input-field col s1">
-                        <a class="btn meia btn-strepper-right blue"  id="add_meia"><i class="material-icons">add</i></a>
-                    </div>
-                </div>
-              </div>
-              
+         <!--Container Cinema-->
+    <div class="container">
+        <div class="exibicao"> 
+            <div class="row">
+            <div id="cartaz" class="col s12">
+            <?php
+                    $result_shows =  "SELECT * FROM tb_show";
+                    $resultado_shows = mysqli_query($con,$result_shows);
 
-                </div>
-                
-  
-                
-              </div>
-              <span style="float: right;">R$ 150,00</span>
+                    while($row_show = mysqli_fetch_assoc($resultado_shows)){
+                        echo  "<img height='198' width='156' src='../upload_show/". $row_show['file_atracao'] ."'><br>";
+                        echo "" . $row_show['atracao'] . "<br>";
+                        echo "" . $row_show['data'] . "<br>";
+                        echo "" . $row_show['local'] . "<br>";
+                        echo "<a class='waves-effect waves-light btn' href='../content/setores_show.php?id=" . $row_show['id'] . "'>Comprar</a><br><br><hr>";
+                    }
+                    ?>
+                    
             </div>
-          </div>
+            <div id="breve" class="col s12">
+                
+            </div>
+            </div>   
+            
         </div>
-    <!--Setor A-->
-    
-
-        <!--Setor B-->
-        <div class="container pt-10">
-            <div class="row card">
-              <div id="test1" class="col s12">
-                <h3 class='header'>Setor B</h3>
-                <div class="container">
-                  <div class="row">
-                    
-                  <form class="col s12" method="POST" action="">
-                  <div class="row">
-                    <div class="input-field col s12">
-                        <div class="input-field col s6">
-                            <p>INTEIRA</p>
-                            <span id="ing_inteira">R$ 100,00</span>  
-                        </div>
-                        
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-left grey" id="sub_inteira"><i class="material-icons">remove</i></a> 
-                        </div>
-                        <div class="input-field col s1">
-                            <input disabled class="validate" type="text" value="0" id="ticket_inteira" tabindex="-1"> 
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
-                        </div>
-                    </div>
-                  </div><hr id="hr">
-                  <div class="row">
-                    <div class="input-field col s12">
-                        <div class="input-field col s6">
-                            <p>MEIA ENTRADA</p>
-                            <span id="ing_meia">R$ 50,00</span>  
-                        </div>
-                        
-                        <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-left grey" id="sub_meia"><i class="material-icons">remove</i></a> 
-                        </div>
-                        <div class="input-field col s1">
-                            <input disabled class="validate" type="text" value="0" id="ticket_meia" tabindex="-1"> 
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-right blue"  id="add_meia"><i class="material-icons">add</i></a>
-                        </div>
-                    </div>
-                  </div>
-                  
-    
-                    </div>
-                    
-      
-                    
-                  </div>
-      
-                </div>
-              </div>
-            </div>
-        <!--Final Setor B-->
-
-        <!--Camarote-->
-        <div class="container pt-10">
-            <div class="row card">
-              <div id="test1" class="col s12">
-                <h3 class='header'>Camarote</h3>
-                <div class="container">
-                  <div class="row">
-                    
-                  <form class="col s12" method="POST" action="">
-                  <div class="row">
-                    <div class="input-field col s12">
-                        <div class="input-field col s6">
-                            <p>INTEIRA</p>
-                            <span id="ing_inteira">R$ 100,00</span>  
-                        </div>
-                        
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-left grey" id="sub_inteira"><i class="material-icons">remove</i></a> 
-                        </div>
-                        <div class="input-field col s1">
-                            <input disabled class="validate" type="text" value="0" id="ticket_inteira" tabindex="-1"> 
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
-                        </div>
-                    </div>
-                  </div><hr id="hr">
-                  <div class="row">
-                    <div class="input-field col s12">
-                        <div class="input-field col s6">
-                            <p>MEIA ENTRADA</p>
-                            <span id="ing_meia">R$ 50,00</span>  
-                        </div>
-                        
-                        <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-left grey" id="sub_meia"><i class="material-icons">remove</i></a> 
-                        </div>
-                        <div class="input-field col s1">
-                            <input disabled class="validate" type="text" value="0" id="ticket_meia" tabindex="-1"> 
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-right blue"  id="add_meia"><i class="material-icons">add</i></a>
-                        </div>
-                    </div>
-                  </div>
-                  
-    
-                    </div>
-                    
-      
-                    
-                  </div>
-      
-                </div>
-              </div>
-            </div>
-        <!--Final Camarote-->
-
+    </div>            
     </div>
 
     <div id="teatro" class="block">
