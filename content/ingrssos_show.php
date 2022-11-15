@@ -42,10 +42,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_eventos);
             height: 345px;
             width: 290px;
             margin-left: 45%;
-            margin-top: -487px;
+            margin-top: -530px;
         }
         #card1{
-            height: 472px;
+            height:auto;
             width: 560px;
         }  
         #card2{
@@ -53,7 +53,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_eventos);
             height: 145px;
             width: 290px;
             margin-left: 45%;
-            margin-top: -120px;
+            margin-top: -170px;
         } 
         #down{
             color: #2196f3;
@@ -101,7 +101,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_eventos);
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                    <p>1 x [nome_atração] <span>R$ 50,00</span></p>
+                    <p>Atração: <span id="title"><input id="titulo" hidden name="titulo" type="text" class="validate" value="<?php echo $row_eventos['atracao']; ?>"></span></p>
                     <span id="ing_inteira">[local]</span> 
                     <span id="ing_inteira">[data e horário]</span>
                     <span id="ing_inteira">[promotor]</span>
@@ -202,6 +202,16 @@ $row_eventos = mysqli_fetch_assoc($resultado_eventos);
             }else{
                 document.getElementById(el).style.display = 'none';
             }
+    //Detalhes sobre a atração
+    function detalhesShows(){ 
+                              var atracao = document.getElementById('atracao').value; 
+                              document.getElementById('title').innerHTML = atracao;
+                              var duracao = document.getElementById('duracao').value; 
+                              document.getElementById('timer').innerHTML = duracao;
+                              var arquivo = document.getElementById('arquivo').value; 
+                              document.getElementById('arq').innerHTML = arquivo;    
+                          } 
+                          window.onload = detalhesShows();
 }
     </script>
 </body>
