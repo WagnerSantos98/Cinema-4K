@@ -78,20 +78,20 @@
                 <div class="input-field col s12">
                     <div class="input-field col s6">
                         <p>INTEIRA</p>
-                        <span id="ing_inteira">R$ 100,00</span>  
+                        <span id="ing_setora_inteira">R$ 100,00</span>  
                     </div>
                     
                     <div class="input-field col s1">
-                        <a class="btn inteira btn-strepper-left grey" id="sub_inteira"><i class="material-icons">remove</i></a> 
+                        <a class="btn setora_inteira btn-strepper-left grey" id="sub_setora_inteira"><i class="material-icons">remove</i></a> 
                     </div>
                     <div class="input-field col s1">
-                        <input disabled class="validate" type="text" value="0" id="ticket_inteira" tabindex="-1"> 
+                        <input disabled class="validate" type="text" value="0" id="ticket_setora_inteira" tabindex="-1"> 
                     </div>
                     <div class="input-field col s1">
-                        <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
+                        <a class="btn setora_inteira btn-strepper-right blue"  id="add_setora_inteira"><i class="material-icons">add</i></a>
                     </div>
                     <div class="input-field col s1">
-                        <a class="btn btn-strepper-cart green" href="../content/ingrssos_show.php"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
+                        <a class="btn btn-strepper-cart green" href="../content/ingrssos_show.php"  id="add_setora_inteira"><i class="material-icons">shopping_cart</i></a>
                     </div>
                 </div>
               </div><hr id="hr">
@@ -99,17 +99,17 @@
                 <div class="input-field col s12">
                     <div class="input-field col s6">
                         <p>MEIA ENTRADA</p>
-                        <span id="ing_meia">R$ 50,00</span>  
+                        <span id="ing_setora_meia">R$ 50,00</span>  
                     </div>
                     
                     <div class="input-field col s1">
-                        <a class="btn meia btn-strepper-left grey" id="sub_meia"><i class="material-icons">remove</i></a> 
+                        <a class="btn setora_meia btn-strepper-left grey" id="sub_setora_meia"><i class="material-icons">remove</i></a> 
                     </div>
                     <div class="input-field col s1">
-                        <input disabled class="validate" type="text" value="0" id="ticket_meia" tabindex="-1"> 
+                        <input disabled class="validate" type="text" value="0" id="ticket_setora_meia" tabindex="-1"> 
                     </div>
                     <div class="input-field col s1">
-                        <a class="btn meia btn-strepper-right blue"  id="add_meia"><i class="material-icons">add</i></a>
+                        <a class="btn setora_meia btn-strepper-right blue"  id="add_setora"><i class="material-icons">add</i></a>
                     </div>
                 </div>
               </div>
@@ -144,16 +144,16 @@
                         </div>
                         
                         <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-left grey" id="sub_inteira"><i class="material-icons">remove</i></a> 
+                            <a class="btn setorb btn-strepper-left grey" id="sub_setorb"><i class="material-icons">remove</i></a> 
                         </div>
                         <div class="input-field col s1">
-                            <input disabled class="validate" type="text" value="0" id="ticket_inteira" tabindex="-1"> 
+                            <input disabled class="validate" type="text" value="0" id="ticket_setorb" tabindex="-1"> 
                         </div>
                         <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
+                            <a class="btn setorb btn-strepper-right blue"  id="add_setorb"><i class="material-icons">add</i></a>
                         </div>
                         <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
+                            <a class="btn setorb btn-strepper-cart green"  id="add_setorb"><i class="material-icons">shopping_cart</i></a>
                         </div>
                     </div>
                   </div><hr id="hr">
@@ -161,17 +161,17 @@
                     <div class="input-field col s12">
                         <div class="input-field col s6">
                             <p>MEIA ENTRADA</p>
-                            <span id="ing_meia">R$ 50,00</span>  
+                            <span id="ing_setorb">R$ 50,00</span>  
                         </div>
                         
                         <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-left grey" id="sub_meia"><i class="material-icons">remove</i></a> 
+                            <a class="btn setorb btn-strepper-left grey" id="sub_setorb"><i class="material-icons">remove</i></a> 
                         </div>
                         <div class="input-field col s1">
-                            <input disabled class="validate" type="text" value="0" id="ticket_meia" tabindex="-1"> 
+                            <input disabled class="validate" type="text" value="0" id="ticket_setorb" tabindex="-1"> 
                         </div>
                         <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-right blue"  id="add_meia"><i class="material-icons">add</i></a>
+                            <a class="btn setorb btn-strepper-right blue"  id="add_setorb"><i class="material-icons">add</i></a>
                         </div>
                     </div>
                   </div>
@@ -201,20 +201,20 @@
                     <div class="input-field col s12">
                         <div class="input-field col s6">
                             <p>INTEIRA</p>
-                            <span id="ing_inteira">R$ 100,00</span>  
+                            <span id="ing_camarote">R$ 100,00</span>  
                         </div>
                         
                         <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-left grey" id="sub_inteira"><i class="material-icons">remove</i></a> 
+                            <a class="btn camarote btn-strepper-left grey" id="sub_camarote"><i class="material-icons">remove</i></a> 
                         </div>
                         <div class="input-field col s1">
-                            <input disabled class="validate" type="text" value="0" id="ticket_inteira" tabindex="-1"> 
+                            <input disabled class="validate" type="text" value="0" id="ticket_camarote" tabindex="-1"> 
                         </div>
                         <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
+                            <a class="btn camarote btn-strepper-right blue"  id="add_camarote"><i class="material-icons">add</i></a>
                         </div>
                         <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
+                            <a class="btn camarote btn-strepper-cart green"  id="add_camarote"><i class="material-icons">shopping_cart</i></a>
                         </div>
                     </div>
                   </div><hr id="hr">
@@ -222,17 +222,17 @@
                     <div class="input-field col s12">
                         <div class="input-field col s6">
                             <p>MEIA ENTRADA</p>
-                            <span id="ing_meia">R$ 50,00</span>  
+                            <span id="ing_camarote">R$ 50,00</span>  
                         </div>
                         
                         <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-left grey" id="sub_meia"><i class="material-icons">remove</i></a> 
+                            <a class="btn camarote btn-strepper-left grey" id="sub_camarote"><i class="material-icons">remove</i></a> 
                         </div>
                         <div class="input-field col s1">
-                            <input disabled class="validate" type="text" value="0" id="ticket_meia" tabindex="-1"> 
+                            <input disabled class="validate" type="text" value="0" id="ticket_camarote" tabindex="-1"> 
                         </div>
                         <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-right blue"  id="add_meia"><i class="material-icons">add</i></a>
+                            <a class="btn camarote btn-strepper-right blue"  id="add_camarote"><i class="material-icons">add</i></a>
                         </div>
                     </div>
                   </div>
@@ -252,12 +252,12 @@
 
 <script>
     //Setor A
-    $(".inteira").on("click tap", function(){
+    $(".setora_inteira").on("click tap", function(){
 
         var $button = $(this);
-        var oldValue = $('#ticket_inteira').val();
+        var oldValue = $('#ticket_setora_inteira').val();
 
-        if($button.attr("id") == "add_inteira"){
+        if($button.attr("id") == "add_setora_inteira"){
             var newVal = parseFloat(oldValue) + 1;
         } else{
             if(oldValue > 0){
@@ -267,27 +267,27 @@
             }
         };
 
-        $("#ticket_inteira").val(newVal);
-        document.getElementById('ticket_inteira').innerHTML = newVal;
+        $("#ticket_setora_inteira").val(newVal);
+        document.getElementById('ticket_setora_inteira').innerHTML = newVal;
     });
 
-    $("#sub_inteira").on("click tap", function(){
-        if($('#ticket_inteira').val() === '0'){
+    $("#sub_setora_inteira").on("click tap", function(){
+        if($('#ticket_setora_inteira').val() === '0'){
             $(this).attr("disabled", true);
         }
     });
 
-    $("#add_inteira").on("click tap", function(){
-        $("#sub_inteira").removeAttr("disabled");
+    $("#add_setora_inteira").on("click tap", function(){
+        $("#sub_setora_inteira").removeAttr("disabled");
     });
 
-
-    $(".meia").on("click tap", function(){
+    //Setor A - Meia
+    $(".setora_inteira").on("click tap", function(){
 
 var $button = $(this);
-var oldValue = $('#ticket_meia').val();
+var oldValue = $('#ticket_setora_inteira').val();
 
-if($button.attr("id") == "add_meia"){
+if($button.attr("id") == "add_setora_inteira"){
     var newVal = parseFloat(oldValue) + 1;
 } else{
     if(oldValue > 0){
@@ -297,19 +297,23 @@ if($button.attr("id") == "add_meia"){
     }
 };
 
-$("#ticket_meia").val(newVal);
-document.getElementById('ticket_meia').innerHTML = newVal;
+$("#ticket_setora_inteira").val(newVal);
+document.getElementById('ticket_setora_inteira').innerHTML = newVal;
 });
 
-$("#sub_meia").on("click tap", function(){
-if($('#ticket_meia').val() === '0'){
+$("#sub_setora_inteira").on("click tap", function(){
+if($('#ticket_setora_inteira').val() === '0'){
     $(this).attr("disabled", true);
 }
 });
 
-$("#add_meia").on("click tap", function(){
-$("#sub_meia").removeAttr("disabled");
+$("#add_setora_inteira").on("click tap", function(){
+$("#sub_setora_inteira").removeAttr("disabled");
 });
+    
+
+
+    
 
 //Setor B
 
