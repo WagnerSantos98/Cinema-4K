@@ -1,3 +1,14 @@
+<?php
+include_once('../db/conexao.php');
+session_start();
+
+//Retorna o campos com valores do banco de dados
+$id_evento = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_evento = "SELECT * FROM tb_show WHERE id = '$id_evento'";
+$resultado_evento = mysqli_query($con, $result_evento);
+$row_eventos = mysqli_fetch_assoc($resultado_evento);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -118,9 +129,13 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                    <p>Atração: <span id="title"><input id="titulo" hidden name="titulo" type="text" class="validate" value="<?php echo $row_eventos['atracao']; ?>"></span></p>
-                    <span id="ing_inteira">[local]</span> 
-                    <span id="ing_inteira">[data e horário]</span>
+                    <input id="atracao" hidden name="atracao" type="text" class="validate" value="<?php echo $row_eventos['atracao']; ?>">
+                    <p>Título: <span  id="title"></span></p>
+                    <input id="endereco" hidden name="endereco" type="text" class="validate" value="<?php echo $row_eventos['endereco']; ?>">
+                    <p>Local: <span  id="location"></span></p>
+                    <input id="data" hidden name="data" type="text" class="validate" value="<?php echo $row_eventos['data']; ?>">
+                    <input id="horario" hidden name="horario" type="text" class="validate" value="<?php echo $row_eventos['horario']; ?>">
+                    <p>Data e Horário: <span  id="data_atracao"></span> | <span  id="hora"></span></p>
                     <span id="ing_inteira">[promotor]</span>
                 </div>
                 <div class="input-field col s12">
@@ -153,9 +168,10 @@
               <div class="row">
                 <div class="input-field col s12">
                     <div class="input-field col s12">
-                        <p>1 x [nome_atração] <span>R$ 50,00</span></p>
+                        <input id="atracao" hidden name="atracao" type="text" class="validate" value="<?php echo $row_eventos['atracao']; ?>">
+                        <p>Título: <span  id="title_resumo"></span></p>
                         <span id="ing_inteira">[local]</span> 
-                        <span id="ing_inteira">[data e horário]</span>  
+                        <p>Data e Horário: <span  id="data_atracao"></span> | <span  id="hora"></span></p>
                     </div>
                     <div class="input-field col s12">
                         <p>Total <span>R$ 50,00</span></p>
@@ -404,17 +420,25 @@
             }else{
                 document.getElementById(el).style.display = 'none';
             }
-    //Detalhes sobre a atração
-    function detalhesShows(){ 
+}
+
+//Detalhes sobre a atração
+function detalhesShows(){ 
                               var atracao = document.getElementById('atracao').value; 
                               document.getElementById('title').innerHTML = atracao;
-                              var duracao = document.getElementById('duracao').value; 
-                              document.getElementById('timer').innerHTML = duracao;
+                              var endereco = document.getElementById('endereco').value; 
+                              document.getElementById('location').innerHTML = endereco;
+                              var data = document.getElementById('data').value; 
+                              document.getElementById('data_atracao').innerHTML = data;
+                              var horario = document.getElementById('horario').value; 
+                              document.getElementById('hora').innerHTML = horario;
                               var arquivo = document.getElementById('arquivo').value; 
-                              document.getElementById('arq').innerHTML = arquivo;    
+                              document.getElementById('arq').innerHTML = arquivo; 
+                              
+                              var atracao = document.getElementById('atracao').value; 
+                              document.getElementById('title_resumo').innerHTML = atracao;
                           } 
                           window.onload = detalhesShows();
-}
 
     //Setor A
     $(".inteira").on("click tap", function(){
