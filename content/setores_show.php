@@ -168,12 +168,9 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
               <div class="row">
                 <div class="input-field col s12">
                     <div class="input-field col s12">
-                        <input id="atracao" hidden name="atracao" type="text" class="validate" value="<?php echo $row_eventos['atracao']; ?>">
-                        <p>Título: <span  id="title_resumo"></span></p>
-                        <span id="ing_inteira">[local]</span>
-                        <input id="data_resume" hidden name="data_resume" type="text" class="validate" value="<?php echo $row_eventos['data']; ?>">
-                        <input id="horario_resume" hidden name="horario_resume" type="text" class="validate" value="<?php echo $row_eventos['horario']; ?>">
-                        <p>Data e Horário: <span  id="data_resumo"></span> | <span  id="hora_resumo"></span></p>
+                        <p>1 x [nome_atração] <span>R$ 50,00</span></p>
+                        <span id="ing_inteira">[local]</span> 
+                        <span id="ing_inteira">[data e horário]</span>  
                     </div>
                     <div class="input-field col s12">
                         <p>Total <span>R$ 50,00</span></p>
@@ -435,12 +432,7 @@ function detalhesShows(){
                               var horario = document.getElementById('horario').value; 
                               document.getElementById('hora').innerHTML = horario;
                               var arquivo = document.getElementById('arquivo').value; 
-                              document.getElementById('arq').innerHTML = arquivo; 
-                              
-                              var data_resume = document.getElementById('data_resume').value; 
-                              document.getElementById('data_resumo').innerHTML = data_resume;
-                              var horario_resume = document.getElementById('horario_resume').value; 
-                              document.getElementById('hora_resumo').innerHTML = horario_resume;
+                              document.getElementById('arq').innerHTML = arquivo;    
                           } 
                           window.onload = detalhesShows();
 
