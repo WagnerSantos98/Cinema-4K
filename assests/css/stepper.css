@@ -1,0 +1,43 @@
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Fira Sans", "Noto Sans", sans-serif;
+   box-sizing: border-box;
+}
+
+
+/* The important part */
+
+[type='number'] {
+    -moz-appearance: textfield;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.stepper-container {
+    height: 2em;
+    display: inline-block;
+    border: 1px solid #999;
+}
+    
+.stepper {
+    vertical-align: top;
+    width: 3em;
+    height: 100%;
+    font-size: 1.2em;
+    text-align: center;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+    
+.stepper-button {
+    width: 1.3em;
+    height: 1.2em;
+    line-height: 0.2em;
+    font-size: 1.5em;
+    padding: 0.2em;
+    background: transparent;
+    border: none;
+}

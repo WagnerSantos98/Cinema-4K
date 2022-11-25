@@ -23,8 +23,9 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="../assests/js/teste.js"></script>
     
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
     <title>Sistema Inegrado</title>
 
     <style>
@@ -34,29 +35,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
         justify-content: center;
         text-align: center;
        }
-       .btn-strepper-right{
-        border-radius: 3px;
-        padding: 0;
-        width: 42px;
-        height: 42px;
-        margin-left: -20px;
-       }
-       .btn-strepper-left{
-        border-radius: 3px;
-        padding: 0;
-        width: 42px;
-        height: 42px;
-        margin-left: -15px;
-       }
-       .btn-strepper-cart{
-        border-radius: 3px;
-        padding: 0;
-        width: 42px;
-        height: 42px;
-        align-items: center;
-        margin-left: 15px;
-       }
-
+       
        .btn-sold{
            margin-top: 40px;
            height: 42px;
@@ -90,7 +69,72 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
             text-decoration: underline #2196f3;
             cursor: pointer;
         }   
-       
+
+
+        .quantityOne{
+        width: 400px;
+        height: 400px;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 50px;
+        box-sizing: border-box;
+    }
+    .quantityOutput{
+        font-size: 52px;
+        font-weight: 400;
+        color: #36323b;
+        font-family:'Open Sans', sans-serif;
+        width: 30%;
+        text-align: right;
+        margin-left: 50px;
+    }
+    .spinNumber{
+        display: flex;
+        justify-content: center;
+        width: 70%;
+    }
+    .spinNumber .incrimentButton,.spinNumber .decrimentButton{
+        width: 50px;
+        height: 50px;
+        background: transparent;
+        border: transparent;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 400;
+        color: #36323b;
+        font-family:'Open Sans', sans-serif;
+        margin: 0 15px;
+        line-height: 50px;
+        background: transparent;
+        cursor: pointer;
+        transition: .4s all ease-in-out;
+    }
+    .spinNumber .incrimentButton:hover,.spinNumber .decrimentButton:hover{
+        background: #00a1a1;
+    }
+    .spinNumber input{
+        width: 48px;
+        height: 48px;
+        background: transparent;
+        border: 1px transparent;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 400;
+        color: #36323b;
+        font-family:'Open Sans', sans-serif;
+        line-height: 48px;
+        background: #c6f5f53b;
+
+
+    }
+    input:focus{
+        outline: none;
+    }
+    .regularPrice{
+        display: none;
+    }
     </style>
 
 </head>
@@ -136,15 +180,40 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                     <input id="data" hidden name="data" type="text" class="validate" value="<?php echo $row_eventos['data']; ?>">
                     <input id="horario" hidden name="horario" type="text" class="validate" value="<?php echo $row_eventos['horario']; ?>">
                     <p>Data e Horário: <span  id="data_atracao"></span> | <span  id="hora"></span></p>
-                    <span id="ing_inteira">[promotor]</span>
                 </div>
                 <div class="input-field col s12">
-                    <div>Conteudo</div>
+                    <div>Ingressos</div>
 
                     <a type="button" id="mostrar" onclick="Mudarestado('minhaDiv')">Mostrar detalhes <i class="material-icons" id="down">arrow_drop_down</i></a>
                 </div>
                 <div class="input-field col s12"  id="minhaDiv" style="display:none">
-                    <p>[setor, tipo int ou meia] <span>R$ 50,00</span></p>
+                    <!--Setor A-->
+                    <p>Setor A</p>
+                    <p>Inteira 
+                        <span>R$100,00</span>
+                        <div class="quantity">
+                            Quantity:
+                            <button class="minus">-</button>
+                            <em class="q-status">100</em>
+                            <button class="plus">+</button>
+                        </div>
+
+                    </p>
+                    
+                    <p>Meia 
+                        <span>R$50,00</span>
+                       
+                    </p><hr>
+
+                    <!--Setor B-->
+                    <p>Setor B</p>
+                    <p>Inteira <span>R$100,00</span></p>
+                    <p>Meia <span>R$50,00</span></p><hr>
+
+                    <!--Camarote-->
+                    <p>Camarote</p>
+                    <p>Inteira <span>R$100,00</span></p>
+                    <p>Meia <span>R$50,00</span></p>
                 </div>
                 </div>
                 
@@ -154,6 +223,8 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
             </div>
           </div>
         </div>
+
+        
     <!--Carrinho-->
 
     <!--Resumo-->
@@ -196,6 +267,31 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
             </div>
           </div>
         </div>
+
+        <div class="quantityOne">
+        <div class="spinNumber">
+            <div class="decrimentButton">-</div>
+              <input class="spinNumberOutput" type="text" readonly  min="0" max="10" value="1">
+          <div class="incrimentButton">+</div>
+            
+        </div>
+        
+         <div class="regularPrice">150</div>
+         <div class="quantityOutput">0</div>
+    </div>
+
+    <div class="quantityOne">
+        <div class="spinNumber">
+            <div class="decrimentButton decriment">-</div>
+              <input class="spinNumberOutput spinNumberOut" type="text" readonly  min="0" max="10" value="1">
+          <div class="incrimentButton incriment">+</div>
+            
+        </div>
+        
+         <div class="regularPrice price">10</div>
+         <div class="quantityOutput quantity">0</div>
+    </div>
+
     <!--Resumo-->
 
     <!--Formas de Pagamento-->
@@ -226,189 +322,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
         </div>
     <!--Formas de Pagamento-->
 
-     <!--Setor A-->
-     <div class="container pt-10">
-        <div class="row card">
-          <div id="test1" class="col s12">
-            <h3 class='header'>Setor A</h3>
-            <div class="container">
-              <div class="row">
-                
-              <form class="col s12" method="POST" action="">
-              <div class="row">
-                <div class="input-field col s12">
-                    <div class="input-field col s6">
-                        <p>INTEIRA</p>
-                        <span id="ing_inteira">R$ 100,00</span>  
-                    </div>
-                    
-                    <div class="input-field col s1">
-                        <a class="btn inteira btn-strepper-left grey" id="sub_inteira"><i class="material-icons">remove</i></a> 
-                    </div>
-                    <div class="input-field col s3">
-                        <input disabled class="validate" type="text" value="0" id="ticket_inteira" tabindex="-1"> 
-                    </div>
-                    <div class="input-field col s1">
-                        <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
-                    </div>
-                    <div class="input-field col s1">
-                        <a class="btn btn-strepper-cart green" href="../content/ingrssos_show.php"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
-                    </div>
-                </div>
-              </div><hr id="hr">
-              <div class="row">
-                <div class="input-field col s12">
-                    <div class="input-field col s6">
-                        <p>MEIA ENTRADA</p>
-                        <span id="ing_meia">R$ 50,00</span>  
-                    </div>
-                    
-                    <div class="input-field col s1">
-                        <a class="btn meia btn-strepper-left grey" id="sub_meia"><i class="material-icons">remove</i></a> 
-                    </div>
-                    <div class="input-field col s3">
-                        <input disabled class="validate" type="text" value="0" id="ticket_meia" tabindex="-1"> 
-                    </div>
-                    <div class="input-field col s1">
-                        <a class="btn meia btn-strepper-right blue"  id="add_meia"><i class="material-icons">add</i></a>
-                    </div>
-                </div>
-              </div>
-              
-
-                </div>
-                
-  
-                
-              </div>
-              <span style="float: right;">R$ 150,00</span>
-            </div>
-          </div>
-        </div>
-    <!--Setor A-->
+     
     
 
-        <!--Setor B-->
-        <div class="container pt-10">
-            <div class="row card">
-              <div id="test1" class="col s12">
-                <h3 class='header'>Setor B</h3>
-                <div class="container">
-                  <div class="row">
-                    
-                  <form class="col s12" method="POST" action="">
-                  <div class="row">
-                    <div class="input-field col s12">
-                        <div class="input-field col s6">
-                            <p>INTEIRA</p>
-                            <span id="ing_inteira">R$ 100,00</span>  
-                        </div>
-                        
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-left grey" id="sub_inteira"><i class="material-icons">remove</i></a> 
-                        </div>
-                        <div class="input-field col s3">
-                            <input disabled class="validate" type="text" value="0" id="ticket_inteira" tabindex="-1"> 
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
-                        </div>
-                    </div>
-                  </div><hr id="hr">
-                  <div class="row">
-                    <div class="input-field col s12">
-                        <div class="input-field col s6">
-                            <p>MEIA ENTRADA</p>
-                            <span id="ing_meia">R$ 50,00</span>  
-                        </div>
-                        
-                        <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-left grey" id="sub_meia"><i class="material-icons">remove</i></a> 
-                        </div>
-                        <div class="input-field col s3">
-                            <input disabled class="validate" type="text" value="0" id="ticket_meia" tabindex="-1"> 
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-right blue"  id="add_meia"><i class="material-icons">add</i></a>
-                        </div>
-                    </div>
-                  </div>
-                  
-    
-                    </div>
-                    
-      
-                    
-                  </div>
-      
-                </div>
-              </div>
-            </div>
-        <!--Final Setor B-->
-
-        <!--Camarote-->
-        <div class="container pt-10">
-            <div class="row card">
-              <div id="test1" class="col s12">
-                <h3 class='header'>Camarote</h3>
-                <div class="container">
-                  <div class="row">
-                    
-                  <form class="col s12" method="POST" action="">
-                  <div class="row">
-                    <div class="input-field col s12">
-                        <div class="input-field col s6">
-                            <p>INTEIRA</p>
-                            <span id="ing_inteira">R$ 100,00</span>  
-                        </div>
-                        
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-left grey" id="sub_inteira"><i class="material-icons">remove</i></a> 
-                        </div>
-                        <div class="input-field col s3">
-                            <input disabled class="validate" type="text" value="0" id="ticket_inteira" tabindex="-1"> 
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-right blue"  id="add_inteira"><i class="material-icons">add</i></a>
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn inteira btn-strepper-cart green"  id="add_inteira"><i class="material-icons">shopping_cart</i></a>
-                        </div>
-                    </div>
-                  </div><hr id="hr">
-                  <div class="row">
-                    <div class="input-field col s12">
-                        <div class="input-field col s6">
-                            <p>MEIA ENTRADA</p>
-                            <span id="ing_meia">R$ 50,00</span>  
-                        </div>
-                        
-                        <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-left grey" id="sub_meia"><i class="material-icons">remove</i></a> 
-                        </div>
-                        <div class="input-field col s3">
-                            <input disabled class="validate" type="text" value="0" id="ticket_meia" tabindex="-1"> 
-                        </div>
-                        <div class="input-field col s1">
-                            <a class="btn meia btn-strepper-right blue"  id="add_meia"><i class="material-icons">add</i></a>
-                        </div>
-                    </div>
-                  </div>
-                  
-    
-                    </div>
-                    
-      
-                    
-                  </div>
-      
-                </div>
-              </div>
-            </div>
-        <!--Final Camarote-->
+       
 
 
 <script>
@@ -437,66 +354,7 @@ function detalhesShows(){
                           window.onload = detalhesShows();
 
     //Setor A
-    $(".inteira").on("click tap", function(){
-
-        var $button = $(this);
-        var oldValue = $('#ticket_inteira').val();
-
-        if($button.attr("id") == "add_inteira"){
-            var newVal = parseFloat(oldValue) + 1;
-        } else{
-            if(oldValue > 0){
-                var newVal = parseFloat(oldValue) - 1;
-            }else{
-                newVal = 0;
-            }
-        };
-
-        $("#ticket_inteira").val(newVal);
-        document.getElementById('ticket_inteira').innerHTML = newVal;
-    });
-
-    $("#sub_inteira").on("click tap", function(){
-        if($('#ticket_inteira').val() === '0'){
-            $(this).attr("disabled", true);
-        }
-    });
-
-    $("#add_inteira").on("click tap", function(){
-        $("#sub_inteira").removeAttr("disabled");
-    });
-
-
-    $(".meia").on("click tap", function(){
-
-var $button = $(this);
-var oldValue = $('#ticket_meia').val();
-
-if($button.attr("id") == "add_meia"){
-    var newVal = parseFloat(oldValue) + 1;
-} else{
-    if(oldValue > 0){
-        var newVal = parseFloat(oldValue) - 1;
-    }else{
-        newVal = 0;
-    }
-};
-
-$("#ticket_meia").val(newVal);
-document.getElementById('ticket_meia').innerHTML = newVal;
-});
-
-$("#sub_meia").on("click tap", function(){
-if($('#ticket_meia').val() === '0'){
-    $(this).attr("disabled", true);
-}
-});
-
-$("#add_meia").on("click tap", function(){
-$("#sub_meia").removeAttr("disabled");
-});
-
-//Setor B
+    
 
 </script>
 </body>
