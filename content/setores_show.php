@@ -23,8 +23,8 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="../assests/js/teste.js"></script>
-    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
+    <script src="../assests/js/teste.js"></script>  
 
     <title>Sistema Inegrado</title>
 
@@ -68,73 +68,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
             color: #000;
             text-decoration: underline #2196f3;
             cursor: pointer;
-        }   
+        }
 
-
-        .quantityOne{
-        width: 400px;
-        height: 400px;
-
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 50px;
-        box-sizing: border-box;
-    }
-    .quantityOutput{
-        font-size: 52px;
-        font-weight: 400;
-        color: #36323b;
-        font-family:'Open Sans', sans-serif;
-        width: 30%;
-        text-align: right;
-        margin-left: 50px;
-    }
-    .spinNumber{
-        display: flex;
-        justify-content: center;
-        width: 70%;
-    }
-    .spinNumber .incrimentButton,.spinNumber .decrimentButton{
-        width: 50px;
-        height: 50px;
-        background: transparent;
-        border: transparent;
-        text-align: center;
-        font-size: 32px;
-        font-weight: 400;
-        color: #36323b;
-        font-family:'Open Sans', sans-serif;
-        margin: 0 15px;
-        line-height: 50px;
-        background: transparent;
-        cursor: pointer;
-        transition: .4s all ease-in-out;
-    }
-    .spinNumber .incrimentButton:hover,.spinNumber .decrimentButton:hover{
-        background: #00a1a1;
-    }
-    .spinNumber input{
-        width: 48px;
-        height: 48px;
-        background: transparent;
-        border: 1px transparent;
-        text-align: center;
-        font-size: 24px;
-        font-weight: 400;
-        color: #36323b;
-        font-family:'Open Sans', sans-serif;
-        line-height: 48px;
-        background: #c6f5f53b;
-
-
-    }
-    input:focus{
-        outline: none;
-    }
-    .regularPrice{
-        display: none;
-    }
+        
+        
     </style>
 
 </head>
@@ -190,30 +127,100 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                     <!--Setor A-->
                     <p>Setor A</p>
                     <p>Inteira 
-                        <span>R$100,00</span>
-                        <div class="quantity">
-                            Quantity:
-                            <button class="minus">-</button>
-                            <em class="q-status">100</em>
-                            <button class="plus">+</button>
-                        </div>
-
+                        <span>R$100,00
+                            <select id="m4r1InfoMrP" name="m4r1InfoMrP">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </span>
                     </p>
-                    
                     <p>Meia 
-                        <span>R$50,00</span>
-                       
-                    </p><hr>
+                        <span>R$50,00
+                            <select id="m4r1InfoMrS" name="m4r1InfoMrS">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </span>
+                    </p>
+                    <input id="m4r1InfoMrPS" disabled>
+                    <hr>
 
                     <!--Setor B-->
                     <p>Setor B</p>
-                    <p>Inteira <span>R$100,00</span></p>
-                    <p>Meia <span>R$50,00</span></p><hr>
+                    <p>Inteira 
+                        <span>R$100,00
+                            <select id="m4r1InfoMrP" name="m4r1InfoMrP">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </span>
+                    </p>
+                    <p>Meia 
+                        <span>R$50,00
+                        <select id="m4r1InfoMrS" name="m4r1InfoMrS">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                        </select>
+                        </span>
+                    </p>
+                    <input id="m4r1InfoMrPS" disabled>
+                    <hr>
 
                     <!--Camarote-->
                     <p>Camarote</p>
-                    <p>Inteira <span>R$100,00</span></p>
-                    <p>Meia <span>R$50,00</span></p>
+                    <p>Inteira 
+                        <span>R$100,00
+                        <select id="m4r1InfoMrP" name="m4r1InfoMrP">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                        </select>
+                        </span>
+                    </p>
+                    <p>Meia 
+                        <span>R$50,00
+                        <select id="m4r1InfoMrS" name="m4r1InfoMrS">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                        </select>
+                        </span>
+                    </p>
+                    <input id="m4r1InfoMrPS" disabled>
                 </div>
                 </div>
                 
@@ -224,8 +231,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
           </div>
         </div>
 
-        
+       
     <!--Carrinho-->
+
+       
 
     <!--Resumo-->
     <div class="container pt-10">
@@ -267,32 +276,8 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
             </div>
           </div>
         </div>
-
-        <div class="quantityOne">
-        <div class="spinNumber">
-            <div class="decrimentButton">-</div>
-              <input class="spinNumberOutput" type="text" readonly  min="0" max="10" value="1">
-          <div class="incrimentButton">+</div>
-            
-        </div>
-        
-         <div class="regularPrice">150</div>
-         <div class="quantityOutput">0</div>
-    </div>
-
-    <div class="quantityOne">
-        <div class="spinNumber">
-            <div class="decrimentButton decriment">-</div>
-              <input class="spinNumberOutput spinNumberOut" type="text" readonly  min="0" max="10" value="1">
-          <div class="incrimentButton incriment">+</div>
-            
-        </div>
-        
-         <div class="regularPrice price">10</div>
-         <div class="quantityOutput quantity">0</div>
-    </div>
-
-    <!--Resumo-->
+       
+    
 
     <!--Formas de Pagamento-->
     <div class="container pt-10">
@@ -337,25 +322,50 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                 document.getElementById(el).style.display = 'none';
             }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+
+
+    //Setor A
+    var m4r1InfoMrP = document.getElementById("m4r1InfoMrP"),
+  m4r1InfoMrPValue = m4r1InfoMrP.value;
+var m4r1InfoMrS = document.getElementById("m4r1InfoMrS"),
+  m4r1InfoMrSValue = m4r1InfoMrS.value;
+
+m4r1InfoMrP.onchange = () => calculate();
+m4r1InfoMrS.onchange = () => calculate();
+
+function calculate() {
+  m4r1InfoMrPValue = m4r1InfoMrP.value;
+  m4r1InfoMrSValue = m4r1InfoMrS.value;
+
+  var sum = 0;
+  var a = +m4r1InfoMrPValue;
+  var b = +m4r1InfoMrSValue;
+
+  sum = a + b;
+  document.getElementById("m4r1InfoMrPS").value = sum;
+}
+
+calculate()
+
 
 //Detalhes sobre a atração
 function detalhesShows(){ 
-                              var atracao = document.getElementById('atracao').value; 
-                              document.getElementById('title').innerHTML = atracao;
-                              var endereco = document.getElementById('endereco').value; 
-                              document.getElementById('location').innerHTML = endereco;
-                              var data = document.getElementById('data').value; 
-                              document.getElementById('data_atracao').innerHTML = data;
-                              var horario = document.getElementById('horario').value; 
-                              document.getElementById('hora').innerHTML = horario;
-                              var arquivo = document.getElementById('arquivo').value; 
-                              document.getElementById('arq').innerHTML = arquivo;    
-                          } 
-                          window.onload = detalhesShows();
-
-    //Setor A
-    
-
+    var atracao = document.getElementById('atracao').value; 
+    document.getElementById('title').innerHTML = atracao;
+    var endereco = document.getElementById('endereco').value; 
+    document.getElementById('location').innerHTML = endereco;
+    var data = document.getElementById('data').value; 
+    document.getElementById('data_atracao').innerHTML = data;
+    var horario = document.getElementById('horario').value; 
+    document.getElementById('hora').innerHTML = horario;
+    var arquivo = document.getElementById('arquivo').value; 
+    document.getElementById('arq').innerHTML = arquivo;    
+} 
+window.onload = detalhesShows();
 </script>
 </body>
 </html>

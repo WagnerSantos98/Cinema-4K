@@ -1,46 +1,19 @@
-let spinNumberOutput = document.querySelector('.spinNumberOutput')
-let regularPrice = document.querySelector('.regularPrice')
-let quantityOutput = document.querySelector('.quantityOutput')
-let plusButton = document.querySelector('.incrimentButton')
-let minusButton = document.querySelector('.decrimentButton')
+//Detalhes sobre a atração
+function detalhesShows(){ 
+    var atracao = document.getElementById('atracao').value; 
+    document.getElementById('title').innerHTML = atracao;
+    var endereco = document.getElementById('endereco').value; 
+    document.getElementById('location').innerHTML = endereco;
+    var data = document.getElementById('data').value; 
+    document.getElementById('data_atracao').innerHTML = data;
+    var horario = document.getElementById('horario').value; 
+    document.getElementById('hora').innerHTML = horario;
+    var arquivo = document.getElementById('arquivo').value; 
+    document.getElementById('arq').innerHTML = arquivo;    
+} 
+window.onload = detalhesShows();
 
-spinNumberOutput.value = 1;
-quantityOutput.innerHTML = regularPrice.innerHTML * spinNumberOutput.value
-
-plusButton.addEventListener('click', function(){
-    spinNumberOutput.value ++
-    console.log( quantityOutput.innerHTML = regularPrice.innerHTML * spinNumberOutput.value)
-})
-
-minusButton.addEventListener('click', function(){
-
-    if( spinNumberOutput.value > 1){
-     spinNumberOutput.value--
-    console.log( quantityOutput.innerHTML = regularPrice.innerHTML * spinNumberOutput.value)
-
-     }
-})
-
-let spinNumberOut = document.querySelector('.spinNumberOut')
-let price = document.querySelector('.price')
-let quantity = document.querySelector('.quantity')
-let plus = document.querySelector('.incriment')
-let minus = document.querySelector('.decriment')
-
-spinNumberOut.value = 1;
-quantity.innerHTML = price.innerHTML * spinNumberOut.value
-
-plus.addEventListener('click', function(){
-    spinNumberOut.value ++
-    console.log( quantity.innerHTML = price.innerHTML * spinNumberOut.value)
-})
-
-minus.addEventListener('click', function(){
-
-    if( spinNumberOut.value > 1){
-     spinNumberOut.value--
-    console.log( quantity.innerHTML = price.innerHTML * spinNumberOut.value)
-
-     }
-})
-    
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
