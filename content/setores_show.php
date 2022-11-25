@@ -43,7 +43,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
            margin-left: -35px;
         }
         #card{
-            position: fixed;
+            position: absolute;
             height: 345px;
             width: 290px;
             margin-left: 45%;
@@ -54,7 +54,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
             width: 560px;
         }  
         #card2{
-            position: fixed;
+            position: absolute;
             height: 145px;
             width: 290px;
             margin-left: 45%;
@@ -124,10 +124,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                     <a type="button" id="mostrar" onclick="Mudarestado('minhaDiv')">Mostrar detalhes <i class="material-icons" id="down">arrow_drop_down</i></a>
                 </div>
                 <div class="input-field col s12"  id="minhaDiv" style="display:none">
-                    <!--Setor A-->
-                    <p>Setor A</p>
+                    
+                    <p></p>
                     <p>Inteira 
-                        <span>R$100,00
+                        <span id="inteira">R$100,00
                             <select id="m4r1InfoMrP" name="m4r1InfoMrP">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -141,7 +141,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                         </span>
                     </p>
                     <p>Meia 
-                        <span>R$50,00
+                        <span id="meia">R$50,00
                             <select id="m4r1InfoMrS" name="m4r1InfoMrS">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -153,74 +153,8 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                                 <option value="8">8</option>
                             </select>
                         </span>
-                    </p>
-                    <input id="m4r1InfoMrPS" disabled>
-                    <hr>
-
-                    <!--Setor B-->
-                    <p>Setor B</p>
-                    <p>Inteira 
-                        <span>R$100,00
-                            <select id="m4r1InfoMrP" name="m4r1InfoMrP">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
-                        </span>
-                    </p>
-                    <p>Meia 
-                        <span>R$50,00
-                        <select id="m4r1InfoMrS" name="m4r1InfoMrS">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                        </select>
-                        </span>
-                    </p>
-                    <input id="m4r1InfoMrPS" disabled>
-                    <hr>
-
-                    <!--Camarote-->
-                    <p>Camarote</p>
-                    <p>Inteira 
-                        <span>R$100,00
-                        <select id="m4r1InfoMrP" name="m4r1InfoMrP">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                        </select>
-                        </span>
-                    </p>
-                    <p>Meia 
-                        <span>R$50,00
-                        <select id="m4r1InfoMrS" name="m4r1InfoMrS">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                        </select>
-                        </span>
-                    </p>
-                    <input id="m4r1InfoMrPS" disabled>
+                    </p>                
+                    
                 </div>
                 </div>
                 
@@ -248,12 +182,12 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
               <div class="row">
                 <div class="input-field col s12">
                     <div class="input-field col s12">
-                        <p>1 x [nome_atração] <span>R$ 50,00</span></p>
+                        <p><span id="m4r1InfoMrPS" disabled></span></p>
                         <span id="ing_inteira">[local]</span> 
                         <span id="ing_inteira">[data e horário]</span>  
                     </div>
                     <div class="input-field col s12">
-                        <p>Total <span>R$ 50,00</span></p>
+                        <p>Total <span id="total"> </span></p>
                     </div>
                     <div class="input-field col s6">
                         <a class="waves-effect waves-light btn btn-sold green" style="font-weight: bold">CONTINUAR</a>
@@ -340,13 +274,15 @@ m4r1InfoMrS.onchange = () => calculate();
 function calculate() {
   m4r1InfoMrPValue = m4r1InfoMrP.value;
   m4r1InfoMrSValue = m4r1InfoMrS.value;
+  
+
 
   var sum = 0;
   var a = +m4r1InfoMrPValue;
   var b = +m4r1InfoMrSValue;
 
   sum = a + b;
-  document.getElementById("m4r1InfoMrPS").value = sum;
+  document.getElementById("m4r1InfoMrPS").innerHTML = sum;
 }
 
 calculate()
