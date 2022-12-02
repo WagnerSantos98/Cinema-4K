@@ -9,3 +9,9 @@ Para fazer o teste do mesmo abra o navegador Google Chrome e digite: http://loca
 Inserir e testar o banco de dados, fazer a importação do mesmo.
 
 Temporareamente está sendo feito por meio de localhost, mas posteriormente será hospedado para uma melhor usabilidade do sistema.
+
+Para adicionar link do youtube ao trailer do filme, utilize atráves do compartilhar do youtube. 
+Ex:https://youtu.be/VbKPLsXTG38 e ao final do link copie somente o código final do link
+
+Ex: https://youtu.be/VbKPLsXTG38
+Colar somente o código: VbKPLsXTG38
