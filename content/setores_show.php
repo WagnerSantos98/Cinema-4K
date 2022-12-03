@@ -176,10 +176,8 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
               <form class="col s12" method="POST" action="">
               <div class="row">
               <div class="input-field col s12">
-              <input hidden id="inteiro">
-              <p>Inteira: <span id="qtde_inteiro" ></span></p>
-              <input hidden id="meio">
-              <p>Meio: <span id="qtde_meio" ></span></p>
+              <p>Inteira: <input id="inteiro"></p>
+              <p>Meio: <input id="meio"></p>
               </div>
                 <div class="input-field col s12">
                     <div class="input-field col s12">
@@ -289,13 +287,8 @@ function detalhesShows(){
     document.getElementById('inteira').innerHTML = show_inteira;  
     var show_meia = document.getElementById('show_meia').value; 
     document.getElementById('meia').innerHTML = show_meia;
-    var qtd_int = document.getElementById("inteiro").value;
-    document.getElementById('qtde_inteiro').innerHTML = qtd_int; 
-    var qtd_mei = document.getElementById("meio").value;
-    document.getElementById('qtde_meio').innerHTML = qtd_mei; 
     var total_ing = document.getElementById("total").value;
     document.getElementById('total_ingresso').innerHTML = total_ing; 
-    
 } 
 
 window.onload = detalhesShows();
