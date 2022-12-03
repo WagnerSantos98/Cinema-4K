@@ -131,7 +131,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                     <p>Inteira R$<span id="inteira"></span>
                         <input id="show_inteira" hidden name="show_inteira" type="text" class="validate" value="<?php echo $row_eventos['show_inteira']; ?>">
                         <div class="stepper stepper--style-2 js-spinner">
-                          <input  type="number" min="0" max="8" step="1" value="0" class="stepper__input" data-value="<?php echo $row_eventos['show_inteira']; ?>">
+                          <input  type="number" min="0" max="8" step="1" value="0" id="sh_inteiro" class="stepper__input" data-value="<?php echo $row_eventos['show_inteira']; ?>" onkeyup="transferirValor()">
                           <div class="stepper__controls">
                             <button type="button" spinner-button="up">+</button>
                             <button type="button" spinner-button="down">-</button>
@@ -142,7 +142,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                     <p>Meia R$<span id="meia"></span>
                         <input id="show_meia"hidden name="show_meia" type="text" class="validate" value="<?php echo $row_eventos['show_meia']; ?>">
                         <div class="stepper stepper--style-2 js-spinner">
-                          <input type="number" min="0" max="8" step="1" value="0" class="stepper__input" data-value="<?php echo $row_eventos['show_meia']; ?>">
+                          <input type="number" min="0" max="8" step="1" value="0" id="sh_meio" class="stepper__input" data-value="<?php echo $row_eventos['show_meia']; ?>" onkeyup="transferirValor()">
                           <div class="stepper__controls">
                             <button type="button" spinner-button="up">+</button>
                             <button type="button" spinner-button="down">-</button>
@@ -176,8 +176,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
               <form class="col s12" method="POST" action="">
               <div class="row">
               <div class="input-field col s12">
-              <p>Inteira: <span id="inteiro" >X</span></p>
-              <p>Meio: <span id="meio" >X</span></p>
+              <input hidden id="inteiro">
+              <p>Inteira: <span id="qtde_inteiro" ></span></p>
+              <input hidden id="meio">
+              <p>Meio: <span id="qtde_meio" ></span></p>
               </div>
                 <div class="input-field col s12">
                     <div class="input-field col s12">
@@ -268,6 +270,11 @@ for (var i = 0; i < stepp.length; i++) {
   }
 }
 
+function transferirValor(){
+  $('#inteiro').val($('#sh_inteiro').val());
+  $('#meio').val($('#sh_meio').val());
+}
+
 //Detalhes sobre a atração
 function detalhesShows(){ 
     var atracao = document.getElementById('atracao').value; 
@@ -282,8 +289,13 @@ function detalhesShows(){
     document.getElementById('inteira').innerHTML = show_inteira;  
     var show_meia = document.getElementById('show_meia').value; 
     document.getElementById('meia').innerHTML = show_meia;
+    var qtd_int = document.getElementById("inteiro").value;
+    document.getElementById('qtde_inteiro').innerHTML = qtd_int; 
+    var qtd_mei = document.getElementById("meio").value;
+    document.getElementById('qtde_meio').innerHTML = qtd_mei; 
     var total_ing = document.getElementById("total").value;
     document.getElementById('total_ingresso').innerHTML = total_ing; 
+    
 } 
 
 window.onload = detalhesShows();
