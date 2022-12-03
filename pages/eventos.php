@@ -48,6 +48,8 @@ if(isset($_POST['cadastrar_show'])){
   $endereco = $_POST['endereco'];
   $horario = $_POST['horario'];
   $classificacao_atracao = $_POST['classificacao_atracao'];
+  $show_inteira = $_POST['show_inteira'];
+  $show_meia = $_POST['show_meia'];
 
   $extensao = strtolower(substr($_FILES['file_atracao']['name'], -4));
   $novo_nome = time() . $extensao;
@@ -55,8 +57,8 @@ if(isset($_POST['cadastrar_show'])){
 
   move_uploaded_file($_FILES['file_atracao']['tmp_name'], $diretorio.$novo_nome);
 
-  $sql_show = "INSERT INTO tb_show(atracao,data,local,endereco,horario,classificacao_atracao,file_atracao)
-  VALUES ('$atracao', '$data', '$local', '$endereco', '$horario', '$classificacao_atracao', '$novo_nome');";
+  $sql_show = "INSERT INTO tb_show(atracao,data,local,endereco,horario,classificacao_atracao,file_atracao, show_inteira, show_meia)
+  VALUES ('$atracao', '$data', '$local', '$endereco', '$horario', '$classificacao_atracao', '$novo_nome', '$show_inteira', '$show_meia');";
   $sql_shows = mysqli_query($con, $sql_show);;
 
 }
@@ -367,6 +369,16 @@ if(isset($_POST['cadastrar_show'])){
                           <input name="file_atracao" class="file-path validate" type="text" placeholder="Insira o Poster do Filme">
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="input-field col s6">
+                      <input id="show_inteira"  name="show_inteira" type="number" class="validate">
+                      <label for="show_inteira">Valor Inteira</label>
+                    </div>
+                  <div class="input-field col s6">
+                      <input id="show_meia"  name="show_meia" type="number" class="validate">
+                      <label for="show_meia">Valor Meia</label>
                     </div>
                   </div>
                   
