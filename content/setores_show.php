@@ -128,10 +128,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                 <div class="input-field col s12"  id="minhaDiv" style="display:none">
                     
                     <p></p>
-                    <p>Inteira <span id="inteira">R$100,00</span>
-                        <input id="show_inteira" disabled name="show_inteira" type="text" class="validate" value="<?php echo $row_eventos['show_inteira']; ?>">
+                    <p>Inteira R$<span id="inteira"></span>
+                        <input id="show_inteira" hidden name="show_inteira" type="text" class="validate" value="<?php echo $row_eventos['show_inteira']; ?>">
                         <div class="stepper stepper--style-2 js-spinner">
-                          <input type="number" min="0" max="100" step="1" value="0" class="stepper__input" data-value="10">
+                          <input  type="number" min="0" max="8" step="1" value="0" class="stepper__input" data-value="<?php echo $row_eventos['show_inteira']; ?>">
                           <div class="stepper__controls">
                             <button type="button" spinner-button="up">+</button>
                             <button type="button" spinner-button="down">-</button>
@@ -139,16 +139,15 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                         </div>
 
                     </p>
-                    <p>Meia 
-                        <span id="meia">R$50,00</span>
-                        <input id="show_meia" disabled name="show_meia" type="text" class="validate" value="<?php echo $row_eventos['show_meia']; ?>">
+                    <p>Meia R$<span id="meia"></span>
+                        <input id="show_meia"hidden name="show_meia" type="text" class="validate" value="<?php echo $row_eventos['show_meia']; ?>">
                         <div class="stepper stepper--style-2 js-spinner">
-  <input type="number" min="0" max="100" step="1" value="0" class="stepper__input" data-value="15">
-  <div class="stepper__controls">
-    <button type="button" spinner-button="up">+</button>
-    <button type="button" spinner-button="down">-</button>
-  </div>
-</div>
+                          <input type="number" min="0" max="8" step="1" value="0" class="stepper__input" data-value="<?php echo $row_eventos['show_meia']; ?>">
+                          <div class="stepper__controls">
+                            <button type="button" spinner-button="up">+</button>
+                            <button type="button" spinner-button="down">-</button>
+                          </div>
+                        </div>
                     </p>                
                     
                 </div>
@@ -176,14 +175,13 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                 
               <form class="col s12" method="POST" action="">
               <div class="row">
+              <div class="input-field col s12">
+              <p>Inteira: <span id="inteiro" >X</span></p>
+              <p>Meio: <span id="meio" >X</span></p>
+              </div>
                 <div class="input-field col s12">
                     <div class="input-field col s12">
-                        <p><span id="m4r1InfoMrPS" disabled></span></p>
-                        <span id="ing_inteira">[local]</span> 
-                        <span id="ing_inteira">[data e horário]</span>  
-                    </div>
-                    <div class="input-field col s12">
-                        <p>Total <input id="total"></p>
+                        <p>Total R$<span id="total" ></span></p>
                     </div>
                     <div class="input-field col s6">
                         <a class="waves-effect waves-light btn btn-sold green" style="font-weight: bold">CONTINUAR</a>
@@ -263,9 +261,9 @@ for (var i = 0; i < stepp.length; i++) {
   stepp[i].onchange = function steppChange(evt) {
     var total = 0
     for (var j = 0; j < stepp.length; j++) {
-      total += parseInt(stepp[j].getAttribute('data-value') * stepp[j].value);
+      total += parseFloat(stepp[j].getAttribute('data-value') * stepp[j].value);
     }
-        document.getElementById("total").value =  total;
+        document.getElementById("total").innerText = total;
 
   }
 }
@@ -280,9 +278,14 @@ function detalhesShows(){
     document.getElementById('data_atracao').innerHTML = data;
     var horario = document.getElementById('horario').value; 
     document.getElementById('hora').innerHTML = horario;
-    var arquivo = document.getElementById('arquivo').value; 
-    document.getElementById('arq').innerHTML = arquivo;    
+    var show_inteira = document.getElementById('show_inteira').value; 
+    document.getElementById('inteira').innerHTML = show_inteira;  
+    var show_meia = document.getElementById('show_meia').value; 
+    document.getElementById('meia').innerHTML = show_meia;
+    var total_ing = document.getElementById("total").value;
+    document.getElementById('total_ingresso').innerHTML = total_ing; 
 } 
+
 window.onload = detalhesShows();
 
 
