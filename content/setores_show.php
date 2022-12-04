@@ -31,6 +31,9 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
     <title>Sistema Integrado</title>
 
     <style>
+      body{
+        background: #767676;
+      }
        
        input{
         align-items: center;
@@ -39,17 +42,17 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
        }
        
        .btn-sold{
-           margin-top: 40px;
+           margin-top: -60px;
            height: 42px;
            width: 255px;
            margin-left: -35px;
         }
         #card{
             position: absolute;
-            height: 345px;
+            height: 390px;
             width: 290px;
-            margin-left: 45%;
-            margin-top: -530px;
+            margin-left: 40%;
+            margin-top: -883px;
         }
         #card1{
             height:auto;
@@ -59,8 +62,8 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
             position: absolute;
             height: 145px;
             width: 290px;
-            margin-left: 45%;
-            margin-top: -170px;
+            margin-left: 40%;
+            margin-top: -465px;
         } 
         #down{
             color: #2196f3;
@@ -71,7 +74,13 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
             text-decoration: underline #2196f3;
             cursor: pointer;
         }
-
+        #inteiro,
+        #meio{
+          margin-left: 60px;
+          margin-inline-end: 10px;
+          outline: none;
+        }
+        
         
         
     </style>
@@ -123,17 +132,17 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                 <div class="input-field col s12">
                     <div>Ingressos</div>
 
-                    <a type="button" id="mostrar" onclick="Mudarestado('minhaDiv')">Mostrar detalhes <i class="material-icons" id="down">arrow_drop_down</i></a>
+                    
                 </div>
-                <div class="input-field col s12"  id="minhaDiv" style="display:none">
+                <div class="input-field col s12"  id="minhaDiv">
                     
                     <p></p>
                     <p>Inteira R$<span id="inteira"></span>
                         <input id="show_inteira" hidden name="show_inteira" type="text" class="validate" value="<?php echo $row_eventos['show_inteira']; ?>">
                         <div class="stepper stepper--style-2 js-spinner">
-                          <input  type="number" min="0" max="8" step="1" value="0" id="sh_inteiro" class="stepper__input" data-value="<?php echo $row_eventos['show_inteira']; ?>" onkeyup="transferirValor()">
+                          <input  type="number" min="0" max="8" step="1" value="0" id="sh_inteiro" class="stepper__input" data-value="<?php echo $row_eventos['show_inteira']; ?>" onclick="transferirValor()">
                           <div class="stepper__controls">
-                            <button type="button" spinner-button="up">+</button>
+                            <button type="button"  spinner-button="up">+</button>
                             <button type="button" spinner-button="down">-</button>
                           </div>
                         </div>
@@ -142,7 +151,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                     <p>Meia R$<span id="meia"></span>
                         <input id="show_meia"hidden name="show_meia" type="text" class="validate" value="<?php echo $row_eventos['show_meia']; ?>">
                         <div class="stepper stepper--style-2 js-spinner">
-                          <input type="number" min="0" max="8" step="1" value="0" id="sh_meio" class="stepper__input" data-value="<?php echo $row_eventos['show_meia']; ?>" onkeyup="transferirValor()">
+                          <input type="number" min="0" max="8" step="1" value="0" id="sh_meio" class="stepper__input" data-value="<?php echo $row_eventos['show_meia']; ?>" onclick="transferirValor()">
                           <div class="stepper__controls">
                             <button type="button" spinner-button="up">+</button>
                             <button type="button" spinner-button="down">-</button>
@@ -175,9 +184,9 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                 
               <form class="col s12" method="POST" action="">
               <div class="row">
-              <div class="input-field col s12">
-              <p>Inteira: <input id="inteiro"></p>
-              <p>Meio: <input id="meio"></p>
+              <div class="input-field col s3">
+              <p id="qtde_int">Inteira: <input id="inteiro" disabled></p>
+              <p id="qtd_mei">Meio: <input id="meio" disabled></p>
               </div>
                 <div class="input-field col s12">
                     <div class="input-field col s12">
@@ -242,18 +251,11 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
 
 
 <script>
-    function Mudarestado(el) {
-        var display = document.getElementById(el).style.display;
-            if (display == "none"){
-                document.getElementById(el).style.display = 'block';
-            }else{
-                document.getElementById(el).style.display = 'none';
-            }
-}
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems);
   });
+
 
   var stepp = document.getElementsByClassName('stepper__input');
 
