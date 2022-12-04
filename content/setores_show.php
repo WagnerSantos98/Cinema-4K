@@ -48,10 +48,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
         }
         #card{
             position: absolute;
-            height: 390px;
+            height: 250px;
             width: 290px;
             margin-left: 40%;
-            margin-top: -883px;
+            margin-top: -998px;
         }
         #card1{
             height:auto;
@@ -59,10 +59,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
         }  
         #card2{
             position: absolute;
-            height: 145px;
+            height: auto;
             width: 290px;
             margin-left: 40%;
-            margin-top: -465px;
+            margin-top: -740px;
         } 
         #down{
             color: #2196f3;
@@ -191,28 +191,9 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
               <div class="input-field col s3">
               <p id="qtde_int">Inteira: <input id="inteiro" disabled></p>
               <p id="qtd_mei">Meio: <input id="meio" disabled></p>
-              </div>
-                <div class="input-field col s12">
-                    <div class="input-field col s12">
-                        <p>Total R$<span id="total" ></span></p>
-                    </div>
-                    <div class="input-field col s6">
-                        <a class="waves-effect waves-light btn modal-trigger btn-sold green" href="#modal1">CONTINUAR</a>
-                    </div>
+              </div>              
+              </div>         
                 </div>
-                
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                   
-                </div>
-              </div>
-              
-
-                </div>
-                
-  
-                
               </div>
             </div>
           </div>
@@ -231,14 +212,35 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
               <form class="col s12" method="POST" action="">
               <div class="row">
                 <div class="input-field col s12">
-                    <div class="input-field col s12">
-                        <img height="22" width="44.72" src="../assests/img/logo_visa.svg">
-                        <img height="22" width="27.86" src="../assests/img/logo_mastercard.svg">
-                        <img height="22" width="81.39" src="../assests/img/logo_diners.png"><br><br>
-                        <img height="22" width="22" src="../assests/img/logo_amex.svg">
-                        <img height="22" width="36.66" src="../assests/img/logo_elo.png">
-                        <img height="22" width="81.92" src="../assests/img/logo_paypal.svg">
-                    </div>
+                <p>
+                  <label>
+                    <input name="group1" type="radio" disabled/>
+                    <span><i class="fa-brands fa-pix" style="color:#2ebdae"></i> PIX</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input name="group1" type="radio" checked />
+                    <span><i class="fas fa-sack-dollar"></i> Dinheiro</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input name="group1" type="radio" disabled/>
+                    <span><i class="fas fa-barcode"></i> Boleto Bancário</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input name="group1" type="radio" disabled/>
+                    <span><i class="far fa-credit-card"></i> Cartão de Crédito</span>
+                  </label>
+                </p>
+                <p>Total R$<span id="total" ></span></p>
+                <span>Informe o valor:</span>
+                <p><input class="validate" id="valor" ></p><br><br>
+
+                <a class="waves-effect waves-light btn btn-sold green">CONTINUAR</a>
                 </div>
                 
             </div>     
@@ -248,47 +250,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
         </div>
     <!--Formas de Pagamento-->
 
-    <!--Pagamento-->
-    <!-- Modal -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Pagamento</h4>
-      <div class="row">
-    <div class="col s12 m7">
-      <div class="card">
-        <div class="card-content">
-          <h4>Forma de Pagamento</h4>
-          <p>
-            <label>
-              <input name="group1" type="radio" checked />
-              <span><i class="fa-brands fa-pix" style="color:#2ebdae"></i> PIX</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input name="group1" type="radio" />
-              <span><i class="fas fa-barcode"></i> Boleto Bancário</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input name="group1" type="radio" />
-              <span><i class="far fa-credit-card"></i> Cartão de Crédito</span>
-            </label>
-          </p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Finalizar</a>
-    </div>
-  </div>
+    
      
     
 
