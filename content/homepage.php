@@ -173,6 +173,7 @@ $link_completo = $link.$link_banco.$link_final;
                         echo  "<img height='198' width='156' src='../upload/". $row_filme['arquivo'] ."'><br>";
                         echo "" . $row_filme['titulo'] . "<br>";
                         echo "" . $row_filme['data_estreia'] . "<br>";
+                        echo "" . $row_filme['classificacao'] . "<br>";
                         echo "" . $row_filme['sala'] . "<br>";
                         echo "<a class='waves-effect waves-light btn' href='../pages/detalhes.php?id=" . $row_filme['id'] . "'>Detalhes</a>";
                         echo "<a class='waves-effect waves-light btn' href='../content/ingresso.php?id=" . $row_filme['id'] . "'>Comprar</a><br><br><hr>";
