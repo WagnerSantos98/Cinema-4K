@@ -8,6 +8,19 @@ $result_evento = "SELECT * FROM tb_show WHERE id = '$id_evento'";
 $resultado_evento = mysqli_query($con, $result_evento);
 $row_eventos = mysqli_fetch_assoc($resultado_evento);
 
+//Registrar Compra de Ingresso
+if(isset($_POST['finalizar_compra'])){
+  $atracao = $_POST['atracao'];
+  $inteiro = $_POST['inteiro'];
+  $meio = $_POST['meio'];
+  $dinheiro = $_POST['dinheiro'];
+  $total = $_POST['total'];
+  
+
+  $sql_ingresso = "INSERT INTO tb_ingressos_show(atracao,inteiro,meio,dinheiro,total)
+  VALUES ('$atracao','$inteiro', '$meio', '$dinheiro', '$total');";
+  $sql_ingressos = mysqli_query($con, $sql_ingresso);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -41,9 +54,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
        }
        
        .btn-sold{
-           margin-top: -60px;
+          position: absolute;
+           margin-top: -10px;
            height: 42px;
-           width: 255px;
+           width: 280px;
            margin-left: -35px;
         }
         #card{
@@ -59,7 +73,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
         }  
         #card2{
             position: absolute;
-            height: auto;
+            height: 430px;
             width: 290px;
             margin-left: 40%;
             margin-top: -740px;
@@ -189,8 +203,8 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
               <form class="col s12" method="POST" action="">
               <div class="row">
               <div class="input-field col s3">
-              <p id="qtde_int">Inteira: <input id="inteiro" disabled></p>
-              <p id="qtd_mei">Meio: <input id="meio" disabled></p>
+              <p id="qtde_int">Inteira: <input id="inteiro" name="inteiro" disabled></p>
+              <p id="qtd_mei">Meio: <input id="meio" name="meio" disabled></p>
               </div>              
               </div>         
                 </div>
@@ -214,33 +228,32 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                 <div class="input-field col s12">
                 <p>
                   <label>
-                    <input name="group1" type="radio" disabled/>
+                    <input name="pix" type="radio" disabled/>
                     <span><i class="fa-brands fa-pix" style="color:#2ebdae"></i> PIX</span>
                   </label>
                 </p>
                 <p>
                   <label>
-                    <input name="group1" type="radio" checked />
+                    <input name="dinheiro" type="radio" checked />
                     <span><i class="fas fa-sack-dollar"></i> Dinheiro</span>
                   </label>
                 </p>
                 <p>
                   <label>
-                    <input name="group1" type="radio" disabled/>
+                    <input name="boleto" type="radio" disabled/>
                     <span><i class="fas fa-barcode"></i> Boleto Bancário</span>
                   </label>
                 </p>
                 <p>
                   <label>
-                    <input name="group1" type="radio" disabled/>
+                    <input name="cartao" type="radio" disabled/>
                     <span><i class="far fa-credit-card"></i> Cartão de Crédito</span>
                   </label>
                 </p>
-                <p>Total R$<span id="total" ></span></p>
-                <span>Informe o valor:</span>
-                <p><input class="validate" id="valor" ></p><br><br>
-
-                <a class="waves-effect waves-light btn btn-sold green">CONTINUAR</a>
+                <p>Total R$ <span id="total" name="total" onblur="calcularValor()"></span></p>
+                <p><input class="validate" id="valor" placeholder="Informe o valor" onkeyup="calcularValor()"></p>
+                <p>Troco R$ <span id="resultado"></span><br><br>
+                <a class="waves-effect waves-light btn btn-sold green" name="finalizar_compra">Finalizar</a>
                 </div>
                 
             </div>     
@@ -284,6 +297,13 @@ for (var i = 0; i < stepp.length; i++) {
 function transferirValor(){
   $('#inteiro').val($('#sh_inteiro').val());
   $('#meio').val($('#sh_meio').val());
+}
+
+function calcularValor(){
+  var total = parseFloat(document.getElementById("total").innerText, 10);
+  var valor = parseFloat(document.getElementById("valor").value, 10);
+
+    document.getElementById("resultado").innerText = valor - total;
 }
 
 //Detalhes sobre a atração
