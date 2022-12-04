@@ -110,15 +110,7 @@
                           }
                         });
                         //sold seat
-                        function soldTicket(){
-                          if(this.status() =='selected'){
-                            sc.get(['id', 'cart-item-'+this.settings.id]).status('unavailable');
-                            return 'unavailable';
-                          }
-                          sc.get([row, column]).status('unavailable');
-                        
-                        }
-                        //sc.get(['1_2', '4_1', '7_1', '7_2']).status('unavailable');
+                        sc.get(['1_2', '4_1', '7_1', '7_2']).status('unavailable');
                           
                       });
                       //sum total money
