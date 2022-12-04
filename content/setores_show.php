@@ -10,15 +10,15 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
 
 //Registrar Compra de Ingresso
 if(isset($_POST['finalizar_compra'])){
-  $atracao = $_POST['atracao'];
+  $evento = $_POST['evento'];
   $inteiro = $_POST['inteiro'];
   $meio = $_POST['meio'];
   $dinheiro = $_POST['dinheiro'];
   $total = $_POST['total'];
   
 
-  $sql_ingresso = "INSERT INTO tb_ingressos_show(atracao,inteiro,meio,dinheiro,total)
-  VALUES ('$atracao','$inteiro', '$meio', '$dinheiro', '$total');";
+  $sql_ingresso = "INSERT INTO tb_ingressos_show(evento,inteiro,meio,dinheiro,total)
+  VALUES ('$evento','$inteiro', '$meio', '$dinheiro', '$total');";
   $sql_ingressos = mysqli_query($con, $sql_ingresso);
 }
 ?>
@@ -43,9 +43,7 @@ if(isset($_POST['finalizar_compra'])){
     <title>Sistema Integrado</title>
 
     <style>
-      body{
-        background: #767676;
-      }
+     
        
        input{
         align-items: center;
@@ -135,7 +133,7 @@ if(isset($_POST['finalizar_compra'])){
               <div class="row">
                 <div class="input-field col s12">
                     <input id="atracao" hidden name="atracao" type="text" class="validate" value="<?php echo $row_eventos['atracao']; ?>">
-                    <p>Título: <span  id="title"></span></p>
+                    <p>Título: <span name="evento"  id="title"></span></p>
                     <input id="endereco" hidden name="endereco" type="text" class="validate" value="<?php echo $row_eventos['endereco']; ?>">
                     <p>Local: <span  id="location"></span></p>
                     <input id="data" hidden name="data" type="text" class="validate" value="<?php echo $row_eventos['data']; ?>">
