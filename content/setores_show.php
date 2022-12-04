@@ -20,13 +20,12 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
 
     <!--Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
     <script src="../assests/js/teste.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://unpkg.com/stepper.js@1.0.3/dest/stepper.min.js"></script>
 
     <title>Sistema Integrado</title>
 
@@ -79,10 +78,10 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
           margin-left: 60px;
           margin-inline-end: 10px;
           outline: none;
+        }   
+        h6{
+          font-weight: bold;
         }
-        
-        
-        
     </style>
 
 </head>
@@ -109,7 +108,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
     <div class="container pt-10">
         <div class="row card" id="card1">
           <div id="test1" class="col s12">
-            <h6 class='header'>Carrinho</h6>
+            <h2 class='header'>Carrinho</h2>
             <div class="container">
               <div class="row">
                 
@@ -130,33 +129,38 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                     <p>Data e Horário: <span  id="data_atracao"></span> | <span  id="hora"></span></p>
                 </div>
                 <div class="input-field col s12">
-                    <div>Ingressos</div>
-
-                    
+                    <h6>Ingeressos</h6>                  
                 </div>
-                <div class="input-field col s12"  id="minhaDiv">
-                    
-                    <p></p>
+                <div class="input-field col s6">
                     <p>Inteira R$<span id="inteira"></span>
-                        <input id="show_inteira" hidden name="show_inteira" type="text" class="validate" value="<?php echo $row_eventos['show_inteira']; ?>">
-                        <div class="stepper stepper--style-2 js-spinner">
-                          <input  type="number" min="0" max="8" step="1" value="0" id="sh_inteiro" class="stepper__input" data-value="<?php echo $row_eventos['show_inteira']; ?>" onclick="transferirValor()">
-                          <div class="stepper__controls">
-                            <button type="button"  spinner-button="up">+</button>
-                            <button type="button" spinner-button="down">-</button>
-                          </div>
-                        </div>
-
+                    <div class="row stepper stepper--style-2 js-spinner">
+                    <input id="show_inteira" hidden name="show_inteira" type="text" class="validate" value="<?php echo $row_eventos['show_inteira']; ?>">
+                      <div class="input-field col s3">
+                        <button type="button" class="btn grey" spinner-button="down">-</button>
+                            </div>
+                            <div class="input-field col s5">
+                            <input  type="number" min="0" max="8" step="1" value="0" id="sh_inteiro" class="stepper__input" data-value="<?php echo $row_eventos['show_inteira']; ?>" onblur="transferirValor()">
+                            </div>
+                            <div class="input-field col s3">
+                            <button type="button" class="btn light-blue lighten-2" spinner-button="up">+</button>
+                      </div>
+                    </div>
                     </p>
+
                     <p>Meia R$<span id="meia"></span>
                         <input id="show_meia"hidden name="show_meia" type="text" class="validate" value="<?php echo $row_eventos['show_meia']; ?>">
-                        <div class="stepper stepper--style-2 js-spinner">
-                          <input type="number" min="0" max="8" step="1" value="0" id="sh_meio" class="stepper__input" data-value="<?php echo $row_eventos['show_meia']; ?>" onclick="transferirValor()">
-                          <div class="stepper__controls">
-                            <button type="button" spinner-button="up">+</button>
-                            <button type="button" spinner-button="down">-</button>
-                          </div>
-                        </div>
+                        <div class="row stepper stepper--style-2 js-spinner">
+                    <input id="show_inteira" hidden name="show_inteira" type="text" class="validate" value="<?php echo $row_eventos['show_meia']; ?>">
+                      <div class="input-field col s3">
+                        <button type="button" class="btn grey" spinner-button="down">-</button>
+                            </div>
+                            <div class="input-field col s5">
+                            <input  type="number" min="0" max="8" step="1" value="0" id="sh_meio" class="stepper__input" data-value="<?php echo $row_eventos['show_meia']; ?>" onblur="transferirValor()">
+                            </div>
+                            <div class="input-field col s3">
+                            <button type="button" class="btn light-blue lighten-2" spinner-button="up">+</button>
+                      </div>
+                    </div>
                     </p>                
                     
                 </div>
@@ -193,7 +197,7 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
                         <p>Total R$<span id="total" ></span></p>
                     </div>
                     <div class="input-field col s6">
-                        <a class="waves-effect waves-light btn btn-sold green" style="font-weight: bold">CONTINUAR</a>
+                        <a class="waves-effect waves-light btn modal-trigger btn-sold green" href="#modal1">CONTINUAR</a>
                     </div>
                 </div>
                 
@@ -244,18 +248,63 @@ $row_eventos = mysqli_fetch_assoc($resultado_evento);
         </div>
     <!--Formas de Pagamento-->
 
+    <!--Pagamento-->
+    <!-- Modal -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Pagamento</h4>
+      <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-content">
+          <h4>Forma de Pagamento</h4>
+          <p>
+            <label>
+              <input name="group1" type="radio" checked />
+              <span><i class="fa-brands fa-pix" style="color:#2ebdae"></i> PIX</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input name="group1" type="radio" />
+              <span><i class="fas fa-barcode"></i> Boleto Bancário</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input name="group1" type="radio" />
+              <span><i class="far fa-credit-card"></i> Cartão de Crédito</span>
+            </label>
+          </p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Finalizar</a>
+    </div>
+  </div>
      
     
 
        
 
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/stepper.js@1.0.3/dest/stepper.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
     var instances = M.FormSelect.init(elems);
   });
-
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
 
   var stepp = document.getElementsByClassName('stepper__input');
 
