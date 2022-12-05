@@ -142,7 +142,7 @@ $link_completo = $link.$link_banco.$link_final;
                 <li><a href="#" data-scroll="cinema">Cinema</a></li>
                 <li><a href="#" data-scroll="show">Show</a></li>
                 <li><a href="#" data-scroll="teatro">Teatro</a></li>
-                <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
+                <li><a href="http://google.com"><i class="material-icons">open_in_new</i></a></li>
             </ul>
         </div>
     </nav>
