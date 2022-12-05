@@ -56,7 +56,6 @@ $link_completo = $link.$link_banco.$link_final;
     }
     .block{
         height: auto;
-        background-color: #eee;
         margin-bottom: 20px;
         padding: 60px 0;
         text-align: center;
