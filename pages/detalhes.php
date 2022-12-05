@@ -180,7 +180,7 @@ $link_completo = $link.$link_banco.$link_final;
                 </div>
               </div>
 
-              <button name="comprar_ingresso" class="waves-effect waves-light btn" type="submit" style="float: right; margin-top: -280px; font-weight: bold;"><i class="fa fa-send"></i> Comprar</button>
+             
             </div>
 
           </div>

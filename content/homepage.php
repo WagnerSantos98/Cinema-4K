@@ -133,7 +133,7 @@ $link_completo = $link.$link_banco.$link_final;
     <!--Navbar-->   
     <nav class="blue" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="#" class="brand-logo" >Sistema Integrado</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
@@ -155,7 +155,28 @@ $link_completo = $link.$link_banco.$link_final;
         <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
     </ul>
     <div id="home" class="block">
-        <h2>Home</h2>
+        <h2>Atrações</h2>
+        <div class="carousel">
+        <?php
+                    $result_cartaz =  "SELECT * FROM tb_cinema";
+                    $resultado_cartaz = mysqli_query($con,$result_cartaz);
+                    
+
+                    while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
+                        echo  "<a class='carousel-item' href='../content/ingresso.php?id=" . $row_filme['id'] . "'><img height='198' width='156' src='../upload/". $row_filme['arquivo'] ."'><br>";
+                        
+                    }
+                    $result_shows =  "SELECT * FROM tb_show";
+                    $resultado_shows = mysqli_query($con,$result_shows);
+
+                    while($row_show = mysqli_fetch_assoc($resultado_shows)){
+                        echo  "<a class='carousel-item' href='../content/setores_show.php?id=" . $row_show['id'] . "'><img height='198' width='156' src='../upload_show/". $row_show['file_atracao'] ."'><br>";
+                    }
+
+
+                    ?>
+    
+  </div>
     </div>
     <div id="cinema" class="block">
         <h2>Cinema</h2><br>
@@ -251,6 +272,11 @@ $link_completo = $link.$link_banco.$link_final;
   </div>
 
 <script>
+    //Carousel
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems);
+  });
     //Menu
     document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
