@@ -33,100 +33,18 @@ $link_completo = $link.$link_banco.$link_final;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="../assests/css/homepage.css">
 
     <!--Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <title>Home Page</title>
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
 
-    body{
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-    .nav-wrapper{
-        margin-top: -65px;
-    }
-    .block{
-        height: auto;
-        margin-bottom: 20px;
-        padding: 60px 0;
-        text-align: center;
-    }
-    
-    /*Back to top button*/
-    #button{
-        display: inline-block;
-        background-color: rgba(33, 150, 243, 0.7);
-        width: 50px;
-        height: 50px;
-        text-align: center;
-        border-radius: 4px;
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        transition: background-color .3s,
-            opacity .5s, visibility .5s;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1000;
-    }
-    #button img{
-        position: absolute;
-        top: 50%;
-        right: 15px;
-        width: 20px;
-        transform: translateY(-50%);
-    }
-   
-    #button:hover{
-        cursor: pointer;
-        background-color: #2196f3;
-    }
-    #button:active{
-        background-color: #0e599e;
-    }
-    #button.show{
-        opacity: 1;
-        visibility: visible;
-    }
-
-    input{
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-       }
-       .btn-strepper-right{
-        border-radius: 3px;
-        padding: 0;
-        width: 42px;
-        height: 42px;
-       }
-       .btn-strepper-left{
-        border-radius: 3px;
-        padding: 0;
-        width: 42px;
-        height: 42px;
-        float: left;
-       }
-       .btn-strepper-cart{
-        border-radius: 3px;
-        padding: 0;
-        width: 150px;
-        height: 42px;
-        align-items: center;
-       }
-       h3{
-        text-align: justify;
-       }
-</style>
 </head>
 
 <body>
@@ -142,7 +60,7 @@ $link_completo = $link.$link_banco.$link_final;
                 <li><a href="#" data-scroll="cinema">Cinema</a></li>
                 <li><a href="#" data-scroll="show">Show</a></li>
                 <li><a href="#" data-scroll="teatro">Teatro</a></li>
-                <li><a href="https://google.com"><i class="material-icons">open_in_new</i></a></li>
+                <li><a type="button" href="https://google.com"><i class="material-icons">open_in_new</i></a></li>
             </ul>
         </div>
     </nav>
@@ -227,6 +145,7 @@ $link_completo = $link.$link_banco.$link_final;
                         echo "" . $row_show['atracao'] . "<br>";
                         echo "" . $row_show['data'] . "<br>";
                         echo "" . $row_show['local'] . "<br>";
+                        echo "" . $row_show['classificacao_atracao'] . "<br>";
                         echo "<a class='waves-effect waves-light btn' href='../content/setores_show.php?id=" . $row_show['id'] . "'>Comprar</a><br><br><hr>";
                     }
                     ?>
@@ -244,6 +163,56 @@ $link_completo = $link.$link_banco.$link_final;
     <div id="teatro" class="block">
         <h2>Teatro</h2>
     </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h6>Sobre</h6>
+                        <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> 
+                        is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. 
+                        We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h3>Categorias</h3>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="http://scanfcode.com/category/c-language/">UI Design</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Quick Links</h6>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="http://scanfcode.com/category/c-language/">UI Design</a>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
+                        <a href="#">LL TICKET</a>
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
     
 
     <!--Back to top button-->
