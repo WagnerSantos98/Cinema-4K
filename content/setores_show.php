@@ -102,7 +102,7 @@ if(isset($_POST['finalizar_compra'])){
     <!--Navbar-->   
     <nav class="blue" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="#" class="brand-logo" >LL TICKET</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 

@@ -133,7 +133,7 @@ $link_completo = $link.$link_banco.$link_final;
     <!--Navbar-->   
     <nav class="blue" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Integrado</a>
+            <a href="#" class="brand-logo" >LL TICKET</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
@@ -142,7 +142,7 @@ $link_completo = $link.$link_banco.$link_final;
                 <li><a href="#" data-scroll="cinema">Cinema</a></li>
                 <li><a href="#" data-scroll="show">Show</a></li>
                 <li><a href="#" data-scroll="teatro">Teatro</a></li>
-                <li><a href="http://google.com"><i class="material-icons">open_in_new</i></a></li>
+                <li><a href="https://google.com"><i class="material-icons">open_in_new</i></a></li>
             </ul>
         </div>
     </nav>

@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: pages/login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,9 +28,9 @@ session_start();
 </head>
 <body>
     <!--Navbar-->   
-    <nav class="red" style="padding: 0px 10px;">
+    <nav class="blue" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="#" class="brand-logo" >Sistema Integrado</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
@@ -47,6 +51,8 @@ session_start();
         <li><a href="pages/configuracoes.php">Configurações</a></li>
         <li><a href="logout.php"><i class="material-icons">exit_to_app</i></a></li>
     </ul>
+
+
 
           
     
