@@ -85,6 +85,7 @@
                             if (this.status() == 'available') { //optional seat
                               $('<li>F'+(this.settings.row+1)+' A'+this.settings.label+'</li>')
                                 .attr('id', 'cart-item-'+this.settings.id)
+                                .attr('value', this.settings.id + "|" + this.settings.data.price)
                                 .data('seatId', this.settings.id)
                                 .appendTo($cart);
                       
@@ -110,7 +111,7 @@
                           }
                         });
                         //sold seat
-                        sc.get(['1_2', '4_1', '7_1', '7_3']).status('unavailable');
+                        //sc.get(['1_2', '4_1', '7_1', '7_3']).status('unavailable');
                           
                       });
                       //sum total money
