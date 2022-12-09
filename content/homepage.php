@@ -25,6 +25,8 @@ $link_final = '?rel=0';
 $link_completo = $link.$link_banco.$link_final;
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -56,11 +58,10 @@ $link_completo = $link.$link_banco.$link_final;
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
             <ul class="right hide-on-med-and-down">
-                <li><a href="#" data-scroll="home">Home</a></li>
-                <li><a href="#" data-scroll="cinema">Cinema</a></li>
-                <li><a href="#" data-scroll="show">Show</a></li>
-                <li><a href="#" data-scroll="teatro">Teatro</a></li>
-                <li><a href="https://google.com"><i class="material-icons">open_in_new</i></a></li>
+                <li><a href="#" id="hom" data-scroll="home">Home</a></li>
+                <li><a href="#" id="cin" data-scroll="cinema">Cinema</a></li>
+                <li><a href="#" id="sho" data-scroll="show">Show</a></li>
+                <li><a href="#" id="tea" data-scroll="teatro">Teatro</a></li>
             </ul>
         </div>
     </nav>
@@ -70,8 +71,13 @@ $link_completo = $link.$link_banco.$link_final;
         <li><a href="#" data-scroll="cinema">Cinema</a></li>
         <li><a href="#" data-scroll="show">Show</a></li>
         <li><a href="#" data-scroll="teatro">Teatro</a></li>
-        <li><a href="../pages/"><i class="material-icons">open_in_new</i></a></li>
+        <li><a href="../pages/login.php"><i class="material-icons">open_in_new</i></a></li>
     </ul>
+    <div class="exit">
+    <a href="../pages/login.php" type="button" ><i class="material-icons">open_in_new</i>  
+    </div>
+    
+
     <div id="home" class="block">
         <h2>Atrações</h2>
         <div class="carousel">
@@ -108,13 +114,13 @@ $link_completo = $link.$link_banco.$link_final;
                     $resultado_cartaz = mysqli_query($con,$result_cartaz);
 
                     while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
-                        echo  "<img height='198' width='156' src='../upload/". $row_filme['arquivo'] ."'><br>";
+                        echo  "<br><img height='198' width='156' src='../upload/". $row_filme['arquivo'] ."'><br><br>";
                         echo "" . $row_filme['titulo'] . "<br>";
                         echo "" . $row_filme['data_estreia'] . "<br>";
                         echo "" . $row_filme['classificacao'] . "<br>";
                         echo "" . $row_filme['sala'] . "<br>";
                         echo "<a class='waves-effect waves-light btn' href='../pages/detalhes.php?id=" . $row_filme['id'] . "'>Detalhes</a>";
-                        echo "<a class='waves-effect waves-light btn' href='../content/ingresso.php?id=" . $row_filme['id'] . "'>Comprar</a><br><br><hr>";
+                        echo "<a style='margin-left: 25px;' class='waves-effect waves-light btn' href='../content/ingresso.php?id=" . $row_filme['id'] . "'>Comprar</a><br><br><hr>";
                     }
                     ?>
                     
@@ -290,83 +296,9 @@ $link_completo = $link.$link_banco.$link_final;
         $('html, body').animate({scrollTop:0},'500');
     });
 
-    //Animation Tabs
-    document.addEventListener("DOMContentLoaded", function(){
-	    const tab = document.querySelector('.tabs');
-	    M.Tabs.init(tab, {
-	  swipeable: true,
-	  duration: 300
-	});
-})
-
-//Modal
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-  });
-
-/*Show - Sendo criado o script para compra de ingressos*/
-//Setor A
-$(".inteira").on("click tap", function(){
-
-var $button = $(this);
-var oldValue = $('#ticket_inteira').val();
-
-if($button.attr("id") == "add_inteira"){
-    var newVal = parseFloat(oldValue) + 1;
-} else{
-    if(oldValue > 0){
-        var newVal = parseFloat(oldValue) - 1;
-    }else{
-        newVal = 0;
-    }
-};
-
-$("#ticket_inteira").val(newVal);
-document.getElementById('ticket_inteira').innerHTML = newVal;
-});
-
-$("#sub_inteira").on("click tap", function(){
-if($('#ticket_inteira').val() === '0'){
-    $(this).attr("disabled", true);
-}
-});
-
-$("#add_inteira").on("click tap", function(){
-$("#sub_inteira").removeAttr("disabled");
-});
 
 
-$(".meia").on("click tap", function(){
 
-var $button = $(this);
-var oldValue = $('#ticket_meia').val();
-
-if($button.attr("id") == "add_meia"){
-var newVal = parseFloat(oldValue) + 1;
-} else{
-if(oldValue > 0){
-var newVal = parseFloat(oldValue) - 1;
-}else{
-newVal = 0;
-}
-};
-
-$("#ticket_meia").val(newVal);
-document.getElementById('ticket_meia').innerHTML = newVal;
-});
-
-$("#sub_meia").on("click tap", function(){
-if($('#ticket_meia').val() === '0'){
-$(this).attr("disabled", true);
-}
-});
-
-$("#add_meia").on("click tap", function(){
-$("#sub_meia").removeAttr("disabled");
-});
-
-//Setor B
 </script>
 </body>
 </html>

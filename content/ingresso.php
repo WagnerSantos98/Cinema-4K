@@ -67,7 +67,7 @@ if(isset($_POST['realizar_venda'])){
 
 <body>
     <!--Navbar-->   
-    <nav class="red" style="padding: 0px 10px;">
+    <nav class="blue" style="padding: 0px 10px;">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo" >LL TICKET</a>
 
@@ -323,8 +323,9 @@ var price = 10; //price
                             }
                           }
                         });
+                        
                         //sold seat
-                       sc.get(['#selected-seats']).status('unavailable');
+                       sc.get(['1_1','1_4']).status('unavailable');
                           
                       });
                       //sum total money

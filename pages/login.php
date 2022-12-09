@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 			<div class="input-group">
 				<button name="submit" class="btn">Login</button>
 			</div>
-			<p class="login-register-text">Esqueceu sua senha? <a href="/pages/recover.html" style="color:#2196f3">Clique aqui</a>.</p>
+			<center><p class="login-register-text">Esqueceu sua senha? <a href="/pages/recover.html" style="color:#fc2830">Clique aqui</a>.</p></center>
 		</form>
 	</div>
 </body>

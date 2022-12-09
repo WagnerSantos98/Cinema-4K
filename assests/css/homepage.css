@@ -6,6 +6,10 @@
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.exit{
+    float: right;
+    padding: 20px;
+}
 .nav-wrapper{
     margin-top: -65px;
 }
@@ -84,6 +88,8 @@ h3{
 h2{
     color: #2196f3;
 }
+
+
 
 /*Footer*/
 .site-footer{
@@ -221,3 +227,5 @@ a:focus,.social-icons a:hover{
         font-weight: 600;
     }
 }
+
+
