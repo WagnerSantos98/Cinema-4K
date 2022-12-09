@@ -10,15 +10,15 @@ if(!empty($id)){
 	$sql = mysqli_query($con, $sql);
 	if(mysqli_affected_rows($con)){
 		$_SESSION['msg'] = "<p style='color:green;'>Filme excluído com sucesso.</p>";
-		header("Location: ../pages/cartaz.php");
+		header("Location: ../pages/editar_filme.php");
 	}else{
 		
 		$_SESSION['msg'] = "<p style='color:red;'>Erro ao excluir o filme.</p>";
-		header("Location: ../pages/cartaz.php");
+		header("Location: ../pages/editar_filme.php");
 	}
 }else{	
 	$_SESSION['msg'] = "<p style='color:red;'>Necessário selecionar um filme.</p>";
-	header("Location: ../pages/cartaz.php");
+	header("Location: ../pages/editar_filme.php");
 }
 
 //Exclusão de Show

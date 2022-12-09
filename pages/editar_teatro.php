@@ -14,18 +14,18 @@ $row_teatros = mysqli_fetch_assoc($resultado_teatro);
 //Alterar os dados dos fteatros
 if (isset($_POST['editar_teatro'])) {
   $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-  $atracao = filter_input(INPUT_POST, 'atracao', FILTER_SANITIZE_STRING);
-  $data = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_STRING);
-  $local = filter_input(INPUT_POST, 'local', FILTER_SANITIZE_STRING);
-  $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
-  $horario = filter_input(INPUT_POST, 'horario', FILTER_SANITIZE_STRING);
+  $evento = filter_input(INPUT_POST, 'evento', FILTER_SANITIZE_STRING);
+  $artista = filter_input(INPUT_POST, 'artista', FILTER_SANITIZE_STRING);
   $classificacao_etaria = filter_input(INPUT_POST, 'classificacao_etaria', FILTER_SANITIZE_STRING);
+  $localizacao = filter_input(INPUT_POST, 'localizacao', FILTER_SANITIZE_STRING);
+  $data_evento = filter_input(INPUT_POST, 'data_evento', FILTER_SANITIZE_STRING);
+  $horario_evento = filter_input(INPUT_POST, 'horario_evento', FILTER_SANITIZE_STRING);
   $teatro_inteira = filter_input(INPUT_POST, 'teatro_inteira', FILTER_SANITIZE_NUMBER_FLOAT);
   $teatro_meia = filter_input(INPUT_POST, 'teatro_meia', FILTER_SANITIZE_NUMBER_FLOAT);
   
 
 
-  $sql = "UPDATE tb_teatro SET atracao='$atracao', data='$data', local='$local', endereco='$endereco', horario='$horario', classificacao_etaria='$classificacao_etaria',
+  $sql = "UPDATE tb_teatro SET evento='$evento', artista='$artista', classificacao_etaria='$classificacao_etaria', localizacao='$localizacao', data_evento='$data_evento', horario_evento='$horario_evento',
                                teatro_inteira='$teatro_inteira', teatro_meia='$teatro_meia' WHERE id = '$id'";
   $sql = mysqli_query($con, $sql);
   if(mysqli_affected_rows($con)){
@@ -65,7 +65,7 @@ if (isset($_POST['editar_teatro'])) {
     <!--Navbar-->   
     <nav class="red" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="#" class="brand-logo" >Sistema Integrado</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
@@ -101,35 +101,21 @@ if (isset($_POST['editar_teatro'])) {
             
             <div class="row">
             <div class="input-field col s6">
-                  <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_shows['id']; ?>">
+                  <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_teatros['id']; ?>">
                 </div>
                 <div class="input-field col s6">
-                  <input id="atracao" name="atracao" type="text" class="validate" value="<?php echo $row_shows['atracao']; ?>">
-                  <label for="atracao">Atração</label>
+                  <input id="evento" name="evento" type="text" class="validate" value="<?php echo $row_teatros['evento']; ?>">
+                  <label for="evento">Evento</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="data" name="data" type="text" class="validate" value="<?php echo $row_shows['data']; ?>">
-                  <label for="data">Data</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="local"  name="local" type="text" class="local" value="<?php echo $row_shows['local']; ?>">
-                  <label for="local">Local</label>
-                </div>
-                <div class="input-field col s12">
-                  <input id="endereco" name="endereco" type="text" class="validate" value="<?php echo $row_shows['endereco']; ?>">
-                  <label for="endereco">Endereço</label>
+                  <input id="artista" name="artista" type="text" class="validate" value="<?php echo $row_teatros['artista']; ?>">
+                  <label for="artista">Artista</label>
                 </div>
               </div>
               <div class="row">
               <div class="input-field col s6">
-                  <input id="horario" name="horario" type="text" class="validate" value="<?php echo $row_shows['horario']; ?>">
-                  <label for="horario">Horário</label>
-              </div>
-              <div class="input-field col s6">
-                  <select id="classificacao_atracao" name="classificacao_atracao" value="<?php echo $row_shows['classificacao_atracao']; ?>">
-                    <option><?php echo $row_shows['classificacao_atracao']; ?></option>
+                  <select id="classificacao_etaria" name="classificacao_etaria" value="<?php echo $row_teatros['classificacao_etaria']; ?>">
+                    <option><?php echo $row_teatros['classificacao_etaria']; ?></option>
                     <option>Livre</option>
                     <option>+10</option>
                     <option>+12</option>
@@ -139,19 +125,33 @@ if (isset($_POST['editar_teatro'])) {
                   </select>
                 <label>Classificação</label>
               </div>
+                <div class="input-field col s12">
+                  <input id="localizacao" name="localizacao" type="text" class="validate" value="<?php echo $row_teatros['localizacao']; ?>">
+                  <label for="localizacao">Endereço</label>
+                </div>
+              </div>
               <div class="row">
               <div class="input-field col s6">
-                  <input id="show_inteira" name="show_inteira" type="text" class="validate" value="<?php echo $row_shows['show_inteira']; ?>">
-                  <label for="show_inteira">Valor ingresso inteira</label>
+                  <input id="data_evento" name="data_evento" type="text" class="validate" value="<?php echo $row_teatros['data_evento']; ?>">
+                  <label for="data_evento">Data</label>
+              </div>
+              <div class="input-field col s6">
+                  <input id="horario_evento" name="horario_evento" type="text" class="validate" value="<?php echo $row_teatros['horario_evento']; ?>">
+                  <label for="horario_evento">Data</label>
+              </div>
+              <div class="row">
+              <div class="input-field col s6">
+                  <input id="teatro_inteira" name="teatro_inteira" type="text" class="validate" value="<?php echo $row_teatros['teatro_inteira']; ?>">
+                  <label for="teatro_inteira">Valor ingresso inteira</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="show_meia" name="show_meia" type="text" class="validate" value="<?php echo $row_shows['show_meia']; ?>">
-                  <label for="show_meia">Valor ingresso meia</label>
+                  <input id="teatro_meia" name="teatro_meia" type="text" class="validate" value="<?php echo $row_teatros['teatro_meia']; ?>">
+                  <label for="teatro_meia">Valor ingresso meia</label>
                 </div>
                 </div>
                 
 
-              <button name="editar_show" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Atualizar</button>
+              <button name="editar_teatro" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Atualizar</button>
             </div>
 
           </div>

@@ -27,7 +27,7 @@ session_start();
     <!--Navbar-->   
     <nav class="red" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="#" class="brand-logo" >Sistema Integrado</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
@@ -83,7 +83,7 @@ session_start();
             echo "" . $row_filme['titulo'] . "<br>";
             echo "" . $row_filme['data_estreia'] . "<br>";
             echo "<a class='waves-effect waves-light btn' href='../pages/editar_filme.php?id=" . $row_filme['id'] . "'>Editar</a>";
-            echo "<a class='waves-effect waves-light btn modal-trigger' href='../pages/excluir.php?id=" . $row_filme['id'] . "'>Excluir</a><hr>";
+            echo "<a class='waves-effect waves-light btn modal-trigger' style='margin-left:15px;' href='../pages/excluir.php?id=" . $row_filme['id'] . "'>Excluir</a><hr>";
 
         }
 

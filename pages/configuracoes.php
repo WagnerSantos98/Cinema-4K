@@ -59,14 +59,16 @@ if (isset($_POST['cadastrar_usuario'])) {
     <!--Navbar-->   
     <nav class="red" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="#" class="brand-logo" >Sistema Integrado</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
             <ul class="right hide-on-med-and-down">
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="./eventos.php">Eventos</a></li>
-                <li><a href="./cartaz.php">Cartaz/Em Breve</a></li>
+                <li><a href="./cartaz.php">Editar Filmes</a></li>
+                <li><a href="./teatro.php">Editar Teatros</a></li>
+                <li><a href="./show.php">Editar Shows</a></li>
                 <li><a href="./configuracoes.php">Configurações</a></li>
                 <li><a href="./logout.php"><i class="material-icons">exit_to_app</i></a></li>
             </ul>
@@ -76,7 +78,9 @@ if (isset($_POST['cadastrar_usuario'])) {
     <ul class="sidenav" id="mobile-nav">
         <li><a href="./index.php">Home</a></li>
         <li><a href="./cadastro.php">Eventos</a></li>
-        <li><a href="./cartaz.php">Cartaz/Em Breve</a></li>
+        <li><a href="./cartaz.php">Editar Filmes</a></li>
+        <li><a href="./teatro.php">Editar Teatros</a></li>
+        <li><a href="./show.php">Editar Shows</a></li>
         <li><a href="./configuracoes.php">Configurações</a></li>
         <li><a href="logout.php"><i class="material-icons">exit_to_app</i></a></li>
     </ul>
@@ -160,7 +164,7 @@ if (isset($_POST['cadastrar_usuario'])) {
             echo "Tipo de Acesso: " . $row_usuario['tipo_acesso'] . "<br>";
             echo "Email: " . $row_usuario['email_user'] . "<br>";
             echo "<a class='waves-effect waves-light btn' href='../pages/editar_usuario.php?id=" . $row_usuario['id'] . "'>Editar</a>";
-            echo "<a class='waves-effect waves-light btn modal-trigger' href='../pages/excluir.php?id=" . $row_usuario['id'] . "'>Excluir</a><hr>";
+            echo "<a class='waves-effect waves-light btn modal-trigger' style='margin-left:15px;' href='../pages/excluir.php?id=" . $row_usuario['id'] . "'>Excluir</a><hr>";
 
         }
 

@@ -118,7 +118,9 @@ if(isset($_POST['cadastrar_show'])){
             <ul class="right hide-on-med-and-down">
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="./eventos.php">Eventos</a></li>
-                <li><a href="./cartaz.php">Cartaz/Em Breve</a></li>
+                <li><a href="./cartaz.php">Editar Filmes</a></li>
+                <li><a href="./teatro.php">Editar Teatros</a></li>
+                <li><a href="./show.php">Editar Shows</a></li>
                 <li><a href="./configuracoes.php">Configurações</a></li>
                 <li><a href="./logout.php"><i class="material-icons">exit_to_app</i></a></li>
             </ul>
@@ -128,7 +130,9 @@ if(isset($_POST['cadastrar_show'])){
     <ul class="sidenav" id="mobile-nav">
         <li><a href="./index.php">Home</a></li>
         <li><a href="./cadastro.php">Eventos</a></li>
-        <li><a href="./cartaz.php">Cartaz/Em Breve</a></li>
+        <li><a href="./cartaz.php">Editar Filmes</a></li>
+        <li><a href="./teatro.php">Editar Teatros</a></li>
+        <li><a href="./show.php">Editar Shows</a></li>
         <li><a href="./configuracoes.php">Configurações</a></li>
     </ul>
 
