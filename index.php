@@ -28,7 +28,7 @@ if (!isset($_SESSION['username'])) {
 </head>
 <body>
     <!--Navbar-->   
-    <nav class="blue" style="padding: 0px 10px;">
+    <nav class="red" style="padding: 0px 10px;">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo" >Sistema Integrado</a>
 

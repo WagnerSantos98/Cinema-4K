@@ -53,7 +53,7 @@ $link_completo = $link.$link_banco.$link_final;
     <!--Navbar-->   
     <nav class="blue" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >LL TICKET</a>
+            <a href="../content/homepage.php" class="brand-logo" >LL TICKET</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
@@ -176,14 +176,19 @@ $link_completo = $link.$link_banco.$link_final;
                     <div class="col-sm-12 col-md-6">
                         <h6>Sobre</h6>
                         <p class="text-justify"> 
-                        [Texto sobre o sistema]</p>
+                        O sistema LL TICKET, foi desenvolvido com a função de centralizar todas as atividades relacionadas
+                    a eventos em um único local. Algumas funcionalidades estão fazes finais e teste sendo melhorado dia após dia,
+                    com projeto futuro para uma versão mobile.</p>
                     </div>
 
                     <div class="col-xs-6 col-md-3">
-                        <h3>Categorias</h3>
+                        <h3>Contato</h3>
                         <ul class="footer-links">
                             <li>
-                                <a href="http://scanfcode.com/category/c-language/">UI Design</a>
+                                <a href="#">(11)99195-8787</a>
+                                <p class="contact">
+                                <a href="mailto:ll@ticket.com.br">ll@ticket.com.br</a>
+                                </p>
                             </li>
                         </ul>
                     </div>
@@ -194,7 +199,8 @@ $link_completo = $link.$link_banco.$link_final;
             <div class="row">
                 <div class="col-md-8 col-sm-6 col-xs-12">
                     <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
-                        <a href="#">LL TICKET</a>
+                        <a href="../content/homepage.php">LL TICKET</a>
+                        <p class="developer">Desenvolvido por 💻 Leonardo Amaro Nascimento & Leonardo da Silva Domingues
                     </p>
                 </div>
 
@@ -214,27 +220,7 @@ $link_completo = $link.$link_banco.$link_final;
     <!--Back to top button-->
     <a id="button"><img src="../assests/img/chevron-up-solid.svg"></a>
 
-    <!--Modal Cinema-->
-    <div id="modal1" class="modal">
-    <div class="modal-content">
-    <div class="input-field col s6">
-                  <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_filmes['id']; ?>">
-                </div>
-                <div class="row">
-                <div class="input-field col s6">
-                  <input id="trailer" name="trailer" type="text" class="validate" value="<?php echo $row_filmes['trailer']; ?>">
-                  <label for="trailer">Trailer</label>
-                </div>
-              </div>
     
-    <div class="video-container">
-        <iframe width="560" height="315" src="<?php echo $link_completo;?>" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
 
 <script>
     //Carousel

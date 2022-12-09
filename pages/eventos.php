@@ -27,7 +27,6 @@ if(isset($_POST['cadastrar_cinema'])){
   $sql_cinemas = mysqli_query($con, $sql_cinema);
 }
 
-
 //Cadastro de Peça de Teatro
 if(isset($_POST['cadastrar_teatro'])){
   $evento = $_POST['evento'];
@@ -36,11 +35,22 @@ if(isset($_POST['cadastrar_teatro'])){
   $localizacao = $_POST['localizacao'];
   $data_evento = $_POST['data_evento'];
   $horario_evento = $_POST['horario_evento'];
-  $sql_teatro = "INSERT INTO tb_teatro(evento,artista,classificacao_etaria,localizacao, data_evento, horario_evento)
-  VALUES ('$evento', '$artista', '$classificacao_etaria', '$localizacao', '$data_evento', '$horario_evento');";
+  $teatro_inteira = $_POST['teatro_inteira'];
+  $teatro_meia = $_POST['teatro_meia'];
+
+  $extensao = strtolower(substr($_FILES['arquivo_peca']['name'],-4));
+  $novo_nome = time() . $extensao;
+  $diretorio = "../upload_teatro/";
+
+  move_uploaded_file($_FILES['arquivo_peca']['tmp_name'], $diretorio.$novo_nome);
+
+ 
+  $sql_teatro = "INSERT INTO tb_teatro(evento,artista,classificacao_etaria,arquivo_peca,localizacao,data_evento,horario_evento,teatro_inteira,teatro_meia)
+  VALUES ('$evento', '$artista', '$classificacao_etaria','$novo_nome' '$localizacao', '$data_evento', '$horario_evento', '$teatro_inteira', '$teatro_meia');";
   $sql_teatros = mysqli_query($con, $sql_teatro);
 }
 
+//Cadastro de Show
 if(isset($_POST['cadastrar_show'])){
   $atracao = $_POST['atracao'];
   $data = $_POST['data'];
@@ -60,8 +70,10 @@ if(isset($_POST['cadastrar_show'])){
   $sql_show = "INSERT INTO tb_show(atracao,data,local,endereco,horario,classificacao_atracao,file_atracao, show_inteira, show_meia)
   VALUES ('$atracao', '$data', '$local', '$endereco', '$horario', '$classificacao_atracao', '$novo_nome', '$show_inteira', '$show_meia');";
   $sql_shows = mysqli_query($con, $sql_show);;
-
 }
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -89,7 +101,7 @@ if(isset($_POST['cadastrar_show'])){
         height: auto;
       }
       #card_cinema{
-        height: 3000px;
+        height: 885px
       }
     </style>
             
@@ -167,7 +179,7 @@ if(isset($_POST['cadastrar_show'])){
                   <div class="row">
                     <div class="input-field col s6">
                       <input id="duracao"  name="duracao" type="text" class="duracao">
-                      <label for="duracao">Duração</label>
+                      <label>Duração</label>
                     </div>
                     <div class="input-field col s6">
                       <select id="classificacao" name="classificacao">
@@ -255,52 +267,76 @@ if(isset($_POST['cadastrar_show'])){
               <h3 class='header'>Teatro</h3>
               
               <div class="row">
-                <form class="col s12"  method="POST" action="">
-                  <div class="row">
+                <form class="col s12"  method="POST" action="" enctype="multipart/form-data">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input id="evento" name="evento" type="text" class="validate">
+                        <label for="evento">Evento</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="artista" name="artista" type="text" class="validate">
+                        <label for="artista">Artista</label>
+                      </div>
+                    </div>
+                    <div class="row">
                     <div class="input-field col s6">
-                      <input id="evento" name="evento" type="text" class="validate">
-                      <label for="evento">Evento</label>
-                    </div>
-                    <div class="input-field col s6">
-                      <input id="artista" name="artista" type="text" class="validate">
-                      <label for="artista">Artista</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                  <div class="input-field col s6">
-                      <select id="classificacao_etaria" name="classificacao_etaria">
-                        <option value="" disabled selected>Selecione...</option>
-                        <option>Livre</option>
-                        <option>+10</option>
-                        <option>+12</option>
-                        <option>+14</option>
-                        <option id="">+16</option>
-                        <option>+18</option>
-                      </select>
-                    <label>Classificação Indicativa</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                  <div class="input-field col s12">
-                      <input id="localizacao"  name="localizacao" type="text" class="validate">
-                      <label for="localizacao">Localização</label>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="input-field col s6">
-                      <input id="data_evento"  name="data_evento" type="text" class="validate">
-                      <label for="data_evento">Data da peça</label>
-                    </div>
-                    <div class="input-field col s6">
-                      <input id="horario_evento"  name="horario_evento" type="text" class="validate">
-                      <label for="horario_evento">Horário da peça</label>
-                    </div>
+                        <select id="classificacao_etaria" name="classificacao_etaria">
+                          <option value="" disabled selected>Selecione...</option>
+                          <option>Livre</option>
+                          <option>+10</option>
+                          <option>+12</option>
+                          <option>+14</option>
+                          <option>+16</option>
+                          <option>+18</option>
+                        </select>
+                      <label>Classificação Indicativa</label>
+                      
+                      </div>
+                      <div class="input-field col s6">
+                        <div class="file-field input-field">
+                          <div class="btn">
+                            <span>File</span>
+                            <input type="file" name="arquivo_peca">
+                          </div>
+                          <div class="file-path-wrapper">
+                            <input name="arquivo_peca" class="file-path validate" type="text" placeholder="Insira o Poster do Filme">
+                          </div>
+                        </div>
+                      </div>
+                      </div>
                     
-                  </div>
+                    <div class="row">
+                    <div class="input-field col s12">
+                        <input id="localizacao"  name="localizacao" type="text" class="validate">
+                        <label for="localizacao">Localização</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <input id="data_evento"  name="data_evento" type="text" class="validate">
+                        <label for="data_evento">Data da peça</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <input id="horario_evento"  name="horario_evento" type="text" class="horario">
+                        <label for="horario_evento">Horário da peça</label>
+                      </div>
+                      
+                    </div>
+                    <div class="row">
+                    <div class="input-field col s6">
+                        <input id="teatro_inteira"  name="teatro_inteira" type="number" class="validate">
+                        <label for="teatro_inteira">Valor Inteira</label>
+                      </div>
+                    <div class="input-field col s6">
+                        <input id="teatro_meia"  name="teatro_meia" type="number" class="validate">
+                        <label for="teatro_meia">Valor Meia</label>
+                      </div>
+                    </div>
 
-                  <button name="cadastrar_teatro" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
-                  
+                    <button name="cadastrar_teatro" class="waves-effect waves-light btn" type="submit"><i class="fa fa-send"></i> Cadastrar</button>
+                    
                 </form>
+                </div>
               </div>
                 
             </div>
@@ -342,8 +378,8 @@ if(isset($_POST['cadastrar_show'])){
                   </div>
                   <div class="row">
                   <div class="input-field col s6">
-                      <input id="horario"  name="horario" type="text" class="validate">
-                      <label for="horario">Horário</label>
+                      <input id="horario"  name="horario" type="text" class="horario">
+                      <label>Horário</label>
                     </div>
                   </div>
                   <div class="row">
@@ -354,7 +390,7 @@ if(isset($_POST['cadastrar_show'])){
                         <option>+10</option>
                         <option>+12</option>
                         <option>+14</option>
-                        <option id="">+16</option>
+                        <option>+16</option>
                         <option>+18</option>
                       </select>
                     <label>Classificação Indicativa</label>
@@ -423,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   $(document).ready(function() {
-  $(".uracao").mask("00:00:00");
+  $(".duracao").mask("00:00:00");
 });
 
 jQuery("input.duracao")
@@ -438,6 +474,25 @@ jQuery("input.duracao")
                 element.mask("99:99:99");  
             } else {  
                 element.mask("99:99:99");  
+            }  
+        });
+
+        $(document).ready(function() {
+  $(".horario").mask("00:00");
+});
+
+jQuery("input.horario")
+        .mask("99:99")
+        .focusout(function (event) {  
+            var target, phone, element;  
+            target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+            phone = target.value.replace(/\D/g, '');
+            element = $(target);  
+            element.unmask();  
+            if(phone.length > 10) {  
+                element.mask("99:99");  
+            } else {  
+                element.mask("99:99");  
             }  
         });
     </script>

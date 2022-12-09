@@ -109,7 +109,7 @@ $link_completo = $link.$link_banco.$link_final;
     <!--Navbar-->   
     <nav class="blue" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="../content/homepage.php" class="brand-logo" >LL TICKET</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
