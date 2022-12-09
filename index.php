@@ -37,7 +37,9 @@ if (!isset($_SESSION['username'])) {
             <ul class="right hide-on-med-and-down">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="pages/eventos.php">Eventos</a></li>
-                <li><a href="pages/cartaz.php">Cartaz/Em Breve</a></li>
+                <li><a href="pages/cartaz.php">Editar Filmes</a></li>
+                <li><a href="pages/teatro.php">Editar Teatros</a></li>
+                <li><a href="pages/show.php">Editar Shows</a></li>
                 <li><a href="pages/configuracoes.php">Configurações</a></li>
                 <li><a href="pages/logout.php"><i class="material-icons">exit_to_app</i></a></li>
             </ul>
@@ -47,7 +49,9 @@ if (!isset($_SESSION['username'])) {
     <ul class="sidenav" id="mobile-nav">
         <li><a href="index.php">Home</a></li>
         <li><a href="pages/cadastro.php">Eventos</a></li>
-        <li><a href="pages/cartaz.php">Cartaz/Em Breve</a></li>
+        <li><a href="pages/cartaz.php">Editar Filmes</a></li>
+        <li><a href="pages/teatro.php">Editar Teatros</a></li>
+        <li><a href="pages/show.php">Editar Shows</a></li>
         <li><a href="pages/configuracoes.php">Configurações</a></li>
         <li><a href="logout.php"><i class="material-icons">exit_to_app</i></a></li>
     </ul>

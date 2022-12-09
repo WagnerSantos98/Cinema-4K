@@ -28,15 +28,15 @@ if(!empty($id)){
 	$sql = mysqli_query($con, $sql);
 	if(mysqli_affected_rows($con)){
 		$_SESSION['msg'] = "<p style='color:green;'>Show excluído com sucesso.</p>";
-		header("Location: ../pages/cartaz.php");
+		header("Location: ../pages/editar_show.php");
 	}else{
 		
 		$_SESSION['msg'] = "<p style='color:red;'>Erro ao excluir o show.</p>";
-		header("Location: ../pages/cartaz.php");
+		header("Location: ../pages/editar_show.php");
 	}
 }else{	
 	$_SESSION['msg'] = "<p style='color:red;'>Necessário selecionar um show.</p>";
-	header("Location: ../pages/cartaz.php");
+	header("Location: ../pages/editar_show.php");
 }
 
 //Exclusão de Teatro
@@ -46,15 +46,15 @@ if(!empty($id)){
 	$sql = mysqli_query($con, $sql);
 	if(mysqli_affected_rows($con)){
 		$_SESSION['msg'] = "<p style='color:green;'>Peça de teatro excluído com sucesso.</p>";
-		header("Location: ../pages/cartaz.php");
+		header("Location: ../pages/editar_teatro.php");
 	}else{
 		
 		$_SESSION['msg'] = "<p style='color:red;'>Erro ao excluir a peça de teatro.</p>";
-		header("Location: ../pages/cartaz.php");
+		header("Location: ../pages/editar_teatro.php");
 	}
 }else{	
 	$_SESSION['msg'] = "<p style='color:red;'>Necessário selecionar uma peça de teatro.</p>";
-	header("Location: ../pages/cartaz.php");
+	header("Location: ../pages/editar_teatro.php");
 }
 
 //Exclusão de Usuario

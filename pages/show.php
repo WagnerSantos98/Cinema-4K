@@ -27,7 +27,7 @@ session_start();
     <!--Navbar-->   
     <nav class="red" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="#" class="brand-logo" >Sistema Integrado</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
@@ -75,15 +75,15 @@ session_start();
 
         $inicio = ($qnt_pagina * $pagina) - $qnt_pagina;
 
-        $result_cartaz =  "SELECT * FROM tb_cinema LIMIT $inicio, $qnt_pagina";
-        $resultado_cartaz = mysqli_query($con,$result_cartaz);
+        $result_show =  "SELECT * FROM tb_show LIMIT $inicio, $qnt_pagina";
+        $resultado_show = mysqli_query($con,$result_show);
 
-        while($row_filme = mysqli_fetch_assoc($resultado_cartaz)){
-            echo  "<img height='198' width='156' src='../upload/". $row_filme['arquivo'] ."'><br>";
-            echo "" . $row_filme['titulo'] . "<br>";
-            echo "" . $row_filme['data_estreia'] . "<br>";
-            echo "<a class='waves-effect waves-light btn' href='../pages/editar_filme.php?id=" . $row_filme['id'] . "'>Editar</a>";
-            echo "<a class='waves-effect waves-light btn modal-trigger' href='../pages/excluir.php?id=" . $row_filme['id'] . "'>Excluir</a><hr>";
+        while($row_show = mysqli_fetch_assoc($resultado_show)){
+            echo  "<img height='198' width='156' src='../upload_show/". $row_show['file_atracao'] ."'><br>";
+            echo "" . $row_show['atracao'] . "<br>";
+            echo "" . $row_show['data'] . "<br>";
+            echo "<a class='waves-effect waves-light btn' href='../pages/editar_show.php?id=" . $row_show['id'] . "'>Editar</a>";
+            echo "<a class='waves-effect waves-light btn modal-trigger' style='margin-left:15px;' href='../pages/excluir.php?id=" . $row_show['id'] . "'>Excluir</a><hr>";
 
         }
 
@@ -98,20 +98,20 @@ session_start();
 
         //Limitar
         $max_links = 2;
-        echo "<a href = 'cartaz.php?pagina=1'>< </a>";
+        echo "<a href = 'show.php?pagina=1'>< </a>";
     for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
         if($pag_ant >= 1){
-            echo "<a href = 'cartaz.php?pagina=$pag_ant'>$pag_ant</a>";
+            echo "<a href = 'show.php?pagina=$pag_ant'>$pag_ant</a>";
         }
     }
     echo "$pagina";
 
     for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
         if($pag_dep <= $qtd_pagina){
-            echo "<a href = 'cartaz.php?pagina=$pag_dep'>$pag_dep</a>";
+            echo "<a href = 'show.php?pagina=$pag_dep'>$pag_dep</a>";
         }
     }
-        echo "<a href = 'cartaz.php?pagina=$qtd_pagina'> ></a>";
+        echo "<a href = 'show.php?pagina=$qtd_pagina'> ></a>";
         ?>
      </div>
      

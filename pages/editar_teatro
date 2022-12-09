@@ -6,13 +6,13 @@ session_start();
 
 
 //Retorna o campos com valores do banco de dados
-$id_show = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$result_show = "SELECT * FROM tb_show WHERE id = '$id_show'";
-$resultado_show = mysqli_query($con, $result_show);
-$row_shows = mysqli_fetch_assoc($resultado_show);
+$id_teatro = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_teatro = "SELECT * FROM tb_teatro WHERE id = '$id_teatro'";
+$resultado_teatro = mysqli_query($con, $result_teatro);
+$row_teatros = mysqli_fetch_assoc($resultado_teatro);
 
-//Alterar os dados dos fshows
-if (isset($_POST['editar_show'])) {
+//Alterar os dados dos fteatros
+if (isset($_POST['editar_teatro'])) {
   $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
   $atracao = filter_input(INPUT_POST, 'atracao', FILTER_SANITIZE_STRING);
   $data = filter_input(INPUT_POST, 'data', FILTER_SANITIZE_STRING);
@@ -20,20 +20,20 @@ if (isset($_POST['editar_show'])) {
   $endereco = filter_input(INPUT_POST, 'endereco', FILTER_SANITIZE_STRING);
   $horario = filter_input(INPUT_POST, 'horario', FILTER_SANITIZE_STRING);
   $classificacao_etaria = filter_input(INPUT_POST, 'classificacao_etaria', FILTER_SANITIZE_STRING);
-  $show_inteira = filter_input(INPUT_POST, 'show_inteira', FILTER_SANITIZE_NUMBER_FLOAT);
-  $show_meia = filter_input(INPUT_POST, 'show_meia', FILTER_SANITIZE_NUMBER_FLOAT);
+  $teatro_inteira = filter_input(INPUT_POST, 'teatro_inteira', FILTER_SANITIZE_NUMBER_FLOAT);
+  $teatro_meia = filter_input(INPUT_POST, 'teatro_meia', FILTER_SANITIZE_NUMBER_FLOAT);
   
 
 
-  $sql = "UPDATE tb_show SET atracao='$atracao', data='$data', local='$local', endereco='$endereco', horario='$horario', classificacao_etaria='$classificacao_etaria',
-                               show_inteira='$show_inteira', show_meia='$show_meia' WHERE id = '$id'";
+  $sql = "UPDATE tb_teatro SET atracao='$atracao', data='$data', local='$local', endereco='$endereco', horario='$horario', classificacao_etaria='$classificacao_etaria',
+                               teatro_inteira='$teatro_inteira', teatro_meia='$teatro_meia' WHERE id = '$id'";
   $sql = mysqli_query($con, $sql);
   if(mysqli_affected_rows($con)){
     $_SESSION['msg'] = "<p style='color:green;'>Registro atualizado com sucesso</p>";
-    header("Location: ../pages/show.php");
+    header("Location: ../pages/teatro.php");
   }else{
     $_SESSION['msg'] = "<p style='color:red;'>Não foi possível atualizar o registro</p>";
-    header("Location: ../pages/show.php");
+    header("Location: ../pages/teatro.php");
   }
 
 }
