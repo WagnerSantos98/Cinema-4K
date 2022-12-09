@@ -6,10 +6,10 @@ session_start();
 
 
 //Retorna o campos com valores do banco de dados
-$id_filme = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$result_filme = "SELECT * FROM tb_cinema WHERE id = '$id_filme'";
-$resultado_filme = mysqli_query($con, $result_filme);
-$row_filmes = mysqli_fetch_assoc($resultado_filme);
+$id_show = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_show = "SELECT * FROM tb_show WHERE id = '$id_show'";
+$resultado_show = mysqli_query($con, $result_show);
+$row_shows = mysqli_fetch_assoc($resultado_show);
 
 //Alterar os dados dos filme
 if (isset($_POST['editar_filme'])) {
@@ -26,7 +26,7 @@ if (isset($_POST['editar_filme'])) {
   $trailer = filter_input(INPUT_POST, 'trailer', FILTER_SANITIZE_STRING);
 
 
-  $sql = "UPDATE tb_cinema SET titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse='$sinopse', elenco='$elenco',
+  $sql = "UPDATE tb_show SET titulo='$titulo', genero='$genero', duracao='$duracao', classificacao='$classificacao', sinopse='$sinopse', elenco='$elenco',
                                diretor='$diretor', data_estreia='$data_estreia', distribuidora='$distribuidora', trailer='$trailer' WHERE id = '$id'";
   $sql = mysqli_query($con, $sql);
   if(mysqli_affected_rows($con)){
@@ -98,25 +98,25 @@ if (isset($_POST['editar_filme'])) {
             
             <div class="row">
             <div class="input-field col s6">
-                  <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_filmes['id']; ?>">
+                  <input id="id" name="id" type="hidden" class="validate" value="<?php echo $row_shows['id']; ?>">
                 </div>
                 <div class="input-field col s6">
-                  <input id="titulo" name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>">
+                  <input id="titulo" name="titulo" type="text" class="validate" value="<?php echo $row_shows['titulo']; ?>">
                   <label for="titulo">Título</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="genero" name="genero" type="text" class="validate" value="<?php echo $row_filmes['genero']; ?>">
+                  <input id="genero" name="genero" type="text" class="validate" value="<?php echo $row_shows['genero']; ?>">
                   <label for="genero">Gênero</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="duracao"  name="duracao" type="text" class="duracao" value="<?php echo $row_filmes['duracao']; ?>">
+                  <input id="duracao"  name="duracao" type="text" class="duracao" value="<?php echo $row_shows['duracao']; ?>">
                   <label for="duracao">Duração</label>
                 </div>
                 <div class="input-field col s6">
-                  <select id="classificacao" name="classificacao" value="<?php echo $row_filmes['classificacao']; ?>">
-                    <option><?php echo $row_filmes['classificacao']; ?></option>
+                  <select id="classificacao" name="classificacao" value="<?php echo $row_shows['classificacao']; ?>">
+                    <option><?php echo $row_shows['classificacao']; ?></option>
                     <option>Livre</option>
                     <option>+10</option>
                     <option>+12</option>
@@ -129,33 +129,33 @@ if (isset($_POST['editar_filme'])) {
               </div>
               <div class="row">
               <div class="input-field col s12">
-                  <textarea id="sinopse" name="sinopse" class="materialize-textarea" value="<?php echo $row_filmes['sinopse']; ?>"></textarea>
+                  <textarea id="sinopse" name="sinopse" class="materialize-textarea" value="<?php echo $row_shows['sinopse']; ?>"></textarea>
                   <label for="sinopse">Sinopse</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="elenco" name="elenco" type="text" class="validate" value="<?php echo $row_filmes['elenco']; ?>">
+                  <input id="elenco" name="elenco" type="text" class="validate" value="<?php echo $row_shows['elenco']; ?>">
                   <label for="elenco">Elenco</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="diretor" name="diretor" type="text" class="validate" value="<?php echo $row_filmes['diretor']; ?>">
+                  <input id="diretor" name="diretor" type="text" class="validate" value="<?php echo $row_shows['diretor']; ?>">
                   <label for="diretor">Diretor</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="data_estreia" name="data_estreia" type="text" class="validate" value="<?php echo $row_filmes['data_estreia']; ?>">
+                  <input id="data_estreia" name="data_estreia" type="text" class="validate" value="<?php echo $row_shows['data_estreia']; ?>">
                   <label for="data_estreia">Data de Estreia</label>
                 </div>
                 <div class="input-field col s6">
-                  <input id="distribuidora" name="distribuidora" type="text" class="validate" value="<?php echo $row_filmes['distribuidora']; ?>">
+                  <input id="distribuidora" name="distribuidora" type="text" class="validate" value="<?php echo $row_shows['distribuidora']; ?>">
                   <label for="distribuidora">Distribuidora</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s6">
-                  <input id="trailer" name="trailer" type="text" class="validate" value="<?php echo $row_filmes['trailer']; ?>">
+                  <input id="trailer" name="trailer" type="text" class="validate" value="<?php echo $row_shows['trailer']; ?>">
                   <label for="trailer">Trailer</label>
                 </div>
               </div>

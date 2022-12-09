@@ -213,7 +213,7 @@ $link_completo = $link.$link_banco.$link_final;
                             <li>
                                 <a href="#">(11)99195-8787</a>
                                 <p class="contact">
-                                <a href="mailto:ll@ticket.com.br">ll@ticket.com.br</a>
+                                <a href="mailto:llticket.sytem@gmail.com">ll@ticket.com.br</a>
                                 </p>
                             </li>
                         </ul>
