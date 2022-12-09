@@ -60,7 +60,7 @@ $link_completo = $link.$link_banco.$link_final;
                 <li><a href="#" data-scroll="cinema">Cinema</a></li>
                 <li><a href="#" data-scroll="show">Show</a></li>
                 <li><a href="#" data-scroll="teatro">Teatro</a></li>
-                <li><a type="button" href="https://google.com"><i class="material-icons">open_in_new</i></a></li>
+                <li><a href="https://google.com"><i class="material-icons">open_in_new</i></a></li>
             </ul>
         </div>
     </nav>
@@ -169,22 +169,12 @@ $link_completo = $link.$link_banco.$link_final;
             <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <h6>Sobre</h6>
-                        <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> 
-                        is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. 
-                        We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+                        <p class="text-justify"> 
+                        [Texto sobre o sistema]</p>
                     </div>
 
                     <div class="col-xs-6 col-md-3">
                         <h3>Categorias</h3>
-                        <ul class="footer-links">
-                            <li>
-                                <a href="http://scanfcode.com/category/c-language/">UI Design</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-xs-6 col-md-3">
-                        <h6>Quick Links</h6>
                         <ul class="footer-links">
                             <li>
                                 <a href="http://scanfcode.com/category/c-language/">UI Design</a>

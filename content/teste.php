@@ -8,27 +8,28 @@ $result_filme = "SELECT * FROM tb_cinema WHERE id = '$id_filme'";
 $resultado_filme = mysqli_query($con, $result_filme);
 $row_filmes = mysqli_fetch_assoc($resultado_filme);
 
-
-$result_poltrona = "SELECT * FROM tb_igressos_cinema WHERE poltrona = '2_10'";
-
+$id_ingresso = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$result_ingresso = "SELECT * FROM tb_ingesso_cinema WHERE id = '$id_ingresso'";
+$resultado_ingresso = mysqli_query($con, $result_ingresso);
+$row_ingressos = mysqli_fetch_assoc($resultado_ingresso);
     
 //Venda 
 if(isset($_POST['realizar_venda'])){
-  $titulo = $_POST['titulo'];
-  $duracao = $_POST['duracao'];
-  $qtde = $_POST['qtde'];
-  $total = $_POST['total'];
-  $seat = (isset($_POST['seat']) ? $_POST['seat']:array());
-  if(is_array($seat)){
-    foreach($seat as $selectedOption){
-      $sql_ingresso = "INSERT INTO tb_ingressos_cinema(titulo,duracao,poltrona,qtde,total)
-      VALUES ('$titulo', '$duracao', '$selectedOption', '$qtde', '$total');";
-      $sql_ingressos = mysqli_query($con, $sql_ingresso)
-      or die ("<div class='alert alert-danger' role='alert'>You couldn't execute query</div>");
+    $titulo = $_POST['titulo'];
+    $duracao = $_POST['duracao'];
+    $qtde = $_POST['qtde'];
+    $total = $_POST['total'];
+    $seat = (isset($_POST['seat']) ? $_POST['seat']:array());
+    if(is_array($seat)){
+      foreach($seat as $selectedOption){
+        $sql_ingresso = "INSERT INTO tb_ingressos_cinema(titulo,duracao,poltrona,qtde,total)
+        VALUES ('$titulo', '$duracao', '$selectedOption', '$qtde', '$total');";
+        $sql_ingressos = mysqli_query($con, $sql_ingresso)
+        or die ("<div class='alert alert-danger' role='alert'>You couldn't execute query</div>");
+      }
+      echo "  <div class='alert alert-success' role='success'>Congrats your booking has been done! Print the tickets <a target='_blank'>here</a>!</div>";
     }
-    echo "  <div class='alert alert-success' role='success'>Congrats your booking has been done! Print the tickets <a target='_blank'>here</a>!</div>";
   }
-}
 ?>
 
 <!DOCTYPE html>
@@ -86,30 +87,14 @@ if(isset($_POST['realizar_venda'])){
     <div class="section grey lighten-5">
       <div class="container">
         <div class="row">
-        <form class="col s12" method="POST" action="" enctype="multipart/form-data">
             <h3 class="light center-align blue-text">Comprar Ingresso</h3>
             <div class="card">
               <div class="card-content">
 
-                <ul class="stepper parallel horizontal">
-                  <li class="step active">
-                    <div class="step-title waves-effect waves-dark">Ingressos</div>
-                    <div class="step-content">
+               
+                  
                       <div class="row">
-                      <img height='198' width='156' class="validate" src="../upload/<?php echo $row_filmes['arquivo']; ?>">
-                        <p>Filme: <span id="title"></span><input id="titulo" hidden name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>"></p>
-                        <p>Duração: <span id="timer"></span><input id="duracao" hidden name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>"></p>
-                        <p>Data: <span id="data"></span><input id="data_estreia" hidden name="data_estreia" type="text" class="validate" value="<?php echo $row_filmes['data_estreia']; ?>"></p>
-                      </div>
-                      <div class="step-actions">
-                        <button class="waves-effect waves-dark btn blue next-step" data-feedback="anyThing">Continuar</button>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="step">
-                    <div class="step-title waves-effect waves-dark">Lugares</div>
-                    <div class="step-content">
-                      <div class="row">
+                      <form class="col s12" method="POST" action="" enctype="multipart/form-data">
                         <!--Poltronas-->
                         <div class="container-fluid">        
                                 <div class="demo">
@@ -118,101 +103,37 @@ if(isset($_POST['realizar_venda'])){
                                 </div>
                                 
                                 <div class="booking-details">
-                                    <p>Filme: <span id="title_lugares"></span><input id="titulo_lug" hidden name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>"></p>
-                                    <p>Duração: <span id="timer_lugares"></span><input id="duracao_lug" hidden name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>"></p>
+                                    
+                                    <p>Filme: <span id="title_lugares"></span><input id="titulo_lug"  name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>"></p>
+                                    <p>Duração: <span id="timer_lugares"></span><input id="duracao_lug"  name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>"></p>
                                     <p>Poltronas: </p>
-                                    <select id="selected-seats" name="seat[]"></select>
-                                    <p>Ingressos: <span id="counter" name="qtde">0</span></p>
-                                    <p>Total: <b>R$<span id="total" name="total">0</span></b></p>
+                                    <select id="selected-seats" name="seat[]" ></select>
+                                    <p>Ingressos: <input id="counter" name="qtde"></p>
+                                    <p>Total: <b>R$<input  id="total" name="total"></b></p>
                                     
                                     
                                     <div id="legend"></div>
+                                   
                                 </div>
                                 <div style="clear:both"></div>
                                 </div>
+                                <button class="waves-effect waves-dark btn grey" name="realizar_venda">Teste</button>
 
                             </div>
+</form>
                       </div>
                       <div class="step-actions">
-                        <button class="waves-effect waves-dark btn blue next-step">Continuar</button>
-                        <button class="waves-effect waves-dark btn-flat previous-step">Voltar</button>
+                      <button class="waves-effect waves-dark btn grey" name="realizar_venda">Teste</button>
+                        <!--<button class="waves-effect waves-dark btn blue next-step">Continuar</button>
+                        <button class="waves-effect waves-dark btn-flat previous-step">Voltar</button>-->
                       </div>
                     </div>
                   </li>
-                  <li class="step">
-                    <div class="step-title waves-effect waves-dark">Pagamento</div>
-                    <div class="step-content">
-                      <div class="row">
-                      <div id="test1" class="col s12">
-                        <h6 class='header'>Formas de Pagamento</h6>
-                        <div class="container">
-                          <div class="row">
-                            
-                          <form class="col s12" method="POST" action="">
-                          <div class="row">
-                            <div class="input-field col s12">
-                            <p>
-                              <label>
-                                <input name="pix" type="radio" disabled/>
-                                <span><i class="fa-brands fa-pix" style="color:#2ebdae"></i> PIX</span>
-                              </label>
-                            </p>
-                            <p>
-                              <label>
-                                <input name="dinheiro" type="radio" checked />
-                                <span><i class="fas fa-sack-dollar"></i> Dinheiro</span>
-                              </label>
-                            </p>
-                            <p>
-                              <label>
-                                <input name="boleto" type="radio" disabled/>
-                                <span><i class="fas fa-barcode"></i> Boleto Bancário</span>
-                              </label>
-                            </p>
-                            <p>
-                              <label>
-                                <input name="cartao" type="radio" disabled/>
-                                <span><i class="far fa-credit-card"></i> Cartão de Crédito</span>
-                              </label>
-                            </p>
-                            <p>Total: <b>R$<span id="total_ingresso">0</span></b></p>
-                            <p><input class="validate" id="valor" placeholder="Informe o valor" onkeyup="calcularValor()"></p>
-                            <p>Troco R$ <span id="resultado"></span>
-                            </div>
-                          
-                      </div>     
-                        </div>
-                      </div>
-                        </div>
-                      </div>
-                      <div class="step-actions">
-                        <button class="waves-effect waves-dark btn blue next-step"> Continuar</button>
-                        <button class="waves-effect waves-dark btn-flat previous-step">Voltar</button>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="step">
-                    <div class="step-title waves-effect waves-dark">Conclusão</div>
-                    <div class="step-content">
-                    <div class="row">
-                        <div class="input-field col s12">
-                        <p>Filme: <span id="title_conclusao"></span><input id="titulo_conc" hidden name="titulo" type="text" class="validate" value="<?php echo $row_filmes['titulo']; ?>"></p>
-                        <p>Duração: <span id="timer_conclusao"></span><input id="duracao_conc" hidden name="duracao" type="text" class="validate" value="<?php echo $row_filmes['duracao']; ?>"></p>
-                        <p>Poltronas: </p>
-                        <span id="selected-seats-conc" name="poltronas"></span>
-                        
-                        </div>
-                      </div>
-                      <div class="step-actions">
-                        <button class="waves-effect waves-dark btn green" name="realizar_venda" type="submit">Finalizar!</button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                 
+                    
 
               </div>
             </div>
-  </form>
         </div>
       </div>
     </div>
@@ -228,21 +149,7 @@ if(isset($_POST['realizar_venda'])){
     var instances = M.Sidenav.init(elems);
   });
 
-  
-    function anyThing(destroyFeedback) {
-  setTimeout(function() {
-    destroyFeedback(true);
-  }, 1500);
-}
 
-function noThing(destroyFeedback) {
-  setTimeout(function() {
-    destroyFeedback(true);
-  }, 10000);
-}
-var stepperDiv = document.querySelector('.stepper');
-console.log(stepperDiv);
-var stepper = new MStepper(stepperDiv);
  
 function calcularValor(){
   var total = parseFloat(document.getElementById("total_ingresso").innerText, 10);
@@ -324,7 +231,7 @@ var price = 10; //price
                           }
                         });
                         //sold seat
-                       sc.get(['#selected-seats']).status('unavailable');
+                        sc.get([<?php echo $row_ingressos['poltrona']; ?>]).status('unavailable');
                           
                       });
                       //sum total money
@@ -338,6 +245,8 @@ var price = 10; //price
                             
                         return total, total_ingresso;
                       }
+
+
  
 
 </script>

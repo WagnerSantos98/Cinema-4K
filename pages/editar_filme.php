@@ -116,7 +116,7 @@ if (isset($_POST['editar_filme'])) {
                 </div>
                 <div class="input-field col s6">
                   <select id="classificacao" name="classificacao" value="<?php echo $row_filmes['classificacao']; ?>">
-                    <option disabled selected>Selecione...</option>
+                    <option><?php echo $row_filmes['classificacao']; ?></option>
                     <option>Livre</option>
                     <option>+10</option>
                     <option>+12</option>
