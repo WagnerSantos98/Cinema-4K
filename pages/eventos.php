@@ -111,7 +111,7 @@ if(isset($_POST['cadastrar_show'])){
     <!--Navbar-->   
     <nav class="red" style="padding: 0px 10px;">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo" >Sistema Inegrado</a>
+            <a href="#" class="brand-logo" >Sistema Integrado</a>
 
             <a href="#" class="sidenav-trigger" data-target="mobile-nav"><i class="material-icons">menu</i></a>
 
@@ -477,24 +477,8 @@ jQuery("input.duracao")
             }  
         });
 
-        $(document).ready(function() {
-  $(".horario").mask("00:00");
-});
 
-jQuery("input.horario")
-        .mask("99:99")
-        .focusout(function (event) {  
-            var target, phone, element;  
-            target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
-            phone = target.value.replace(/\D/g, '');
-            element = $(target);  
-            element.unmask();  
-            if(phone.length > 10) {  
-                element.mask("99:99");  
-            } else {  
-                element.mask("99:99");  
-            }  
-        });
+
     </script>
     
 </body>

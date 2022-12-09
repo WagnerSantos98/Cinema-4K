@@ -90,11 +90,19 @@ $link_completo = $link.$link_banco.$link_final;
                         echo  "<a class='carousel-item' href='../content/ingresso.php?id=" . $row_filme['id'] . "'><img height='198' width='156' src='../upload/". $row_filme['arquivo'] ."'><br>";
                         
                     }
+
                     $result_shows =  "SELECT * FROM tb_show";
                     $resultado_shows = mysqli_query($con,$result_shows);
 
                     while($row_show = mysqli_fetch_assoc($resultado_shows)){
                         echo  "<a class='carousel-item' href='../content/setores_show.php?id=" . $row_show['id'] . "'><img height='198' width='156' src='../upload_show/". $row_show['file_atracao'] ."'><br>";
+                    }
+
+                    $result_teatros =  "SELECT * FROM tb_teatro";
+                    $resultado_teatros = mysqli_query($con,$result_teatros);
+
+                    while($row_teatro = mysqli_fetch_assoc($resultado_teatros)){
+                        echo  "<a class='carousel-item' href='../content/setores_teatro.php?id=" . $row_teatro['id'] . "'><img height='198' width='156' src='../upload_teatro/". $row_teatro['arquivo_peca'] ."'><br>";
                     }
 
 
@@ -103,7 +111,7 @@ $link_completo = $link.$link_banco.$link_final;
   </div>
     </div>
     <div id="cinema" class="block">
-        <h2>Cinema</h2><br>
+        <h2>Filmes em Cartaz</h2><br>
     <!--Container Cinema-->
     <div class="container">
         <div class="exibicao"> 
@@ -125,9 +133,6 @@ $link_completo = $link.$link_banco.$link_final;
                     ?>
                     
             </div>
-            <div id="breve" class="col s12">
-                
-            </div>
             </div>   
             
         </div>
@@ -136,7 +141,7 @@ $link_completo = $link.$link_banco.$link_final;
     </div>
 
     <div id="show" class="block">
-        <h2>Show</h2><br>
+        <h2>Shows e Apresentações</h2><br>
          <!--Container Cinema-->
     <div class="container">
         <div class="exibicao"> 
@@ -157,9 +162,6 @@ $link_completo = $link.$link_banco.$link_final;
                     ?>
                     
             </div>
-            <div id="breve" class="col s12">
-                
-            </div>
             </div>   
             
         </div>
@@ -167,7 +169,31 @@ $link_completo = $link.$link_banco.$link_final;
     </div>
 
     <div id="teatro" class="block">
-        <h2>Teatro</h2>
+        <h2>Peças de Teatro e Apresentações</h2><br>
+         <!--Container Teatro-->
+    <div class="container">
+        <div class="exibicao"> 
+            <div class="row">
+            <div id="cartaz" class="col s12">
+            <?php
+                    $result_teatros =  "SELECT * FROM tb_teatro";
+                    $resultado_teatros = mysqli_query($con,$result_teatros);
+
+                    while($row_teatro = mysqli_fetch_assoc($resultado_teatros)){
+                        echo  "<img height='198' width='156' src='../upload_teatro/". $row_teatro['arquivo_peca'] ."'><br>";
+                        echo "" . $row_teatro['evento'] . "<br>";
+                        echo "" . $row_teatro['data_evento'] . "<br>";
+                        echo "" . $row_teatro['localizacao'] . "<br>";
+                        echo "" . $row_teatro['classificacao_etaria'] . "<br>";
+                        echo "<a class='waves-effect waves-light btn' href='../content/setores_teatro.php?id=" . $row_teatro['id'] . "'>Comprar</a><br><br><hr>";
+                    }
+                    ?>
+                    
+            </div>
+            </div>   
+            
+        </div>
+    </div>            
     </div>
 
     <footer class="site-footer">
